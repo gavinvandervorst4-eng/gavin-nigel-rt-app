@@ -1233,6 +1233,71 @@ function drawCross(gm,hi,faultOn){
  x.strokeStyle="#17202a";x.lineWidth=5;x.beginPath();x.moveTo(55,680);x.lineTo(155,680);x.stroke();
  x.fillStyle="#17202a";x.font="11px Arial";x.fillText("100 mm",55,670);
 }
+
+/* TASTER SLEEPBEDIENING — touch op iPhone/iPad + muis op desktop.
+   Alleen de horizontale tasterpositie wordt bediend; de bestaande rekenkern
+   en overige bediening blijven ongewijzigd. */
+(function enableProbeDrag(){
+  const canvas=$('cross');
+  if(!canvas) return;
+  canvas.style.cursor='grab';
+  canvas.style.touchAction='none';
+  let dragging=false;
+  let pointerId=null;
+  const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
+  function canvasX(ev){
+    const r=canvas.getBoundingClientRect();
+    return (ev.clientX-r.left)*(canvas.width/r.width);
+  }
+  function geometry(){
+    const gm=g();
+    const scale=Math.min(8.5,300/gm.t);
+    const center=600;
+    const frontX=center-gm.frontToSeam*scale;
+    const pw=105;
+    return {gm,scale,center,frontX,halfW:pw/2};
+  }
+  function onDown(ev){
+    if(ev.pointerType==='mouse' && ev.button!==0) return;
+    const z=geometry();
+    const x=canvasX(ev);
+    /* Alleen de getekende tasterzone is sleepbaar. */
+    if(Math.abs(x-z.frontX)>z.halfW+18) return;
+    dragging=true;
+    pointerId=ev.pointerId;
+    canvas.setPointerCapture?.(pointerId);
+    canvas.style.cursor='grabbing';
+    ev.preventDefault();
+  }
+  function onMove(ev){
+    if(!dragging || ev.pointerId!==pointerId) return;
+    const z=geometry();
+    const x=canvasX(ev);
+    /* De taster blijft aan de linkerzijde van het las-hart; 0 mm is de grens. */
+    const maxLeft=250;
+    const frontToSeam=clamp((z.center-x)/z.scale,0,maxLeft);
+    $('frontToSeam').value=frontToSeam.toFixed(1);
+    drawAll();
+    ev.preventDefault();
+  }
+  function onUp(ev){
+    if(ev.pointerId!==pointerId) return;
+    dragging=false;
+    pointerId=null;
+    canvas.style.cursor='grab';
+    ev.preventDefault();
+  }
+  canvas.addEventListener('pointerdown',onDown,{passive:false});
+  canvas.addEventListener('pointermove',onMove,{passive:false});
+  canvas.addEventListener('pointerup',onUp,{passive:false});
+  canvas.addEventListener('pointercancel',onUp,{passive:false});
+  canvas.addEventListener('lostpointercapture',()=>{
+    dragging=false;
+    pointerId=null;
+    canvas.style.cursor='grab';
+  });
+})();
+
 function drawFault(x,cx,cy,type,len,deg){
  x.save();x.translate(cx,cy);x.rotate(deg*Math.PI/180);x.lineWidth=3;x.strokeStyle="#c9222a";x.fillStyle="#c9222a";
  if(type==="point"){x.beginPath();x.arc(0,0,8,0,Math.PI*2);x.fill()}

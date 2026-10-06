@@ -115,19 +115,23 @@ body:after{content:"UT"!important;position:fixed;right:-80px;bottom:2%;font-size
 .weldDimension{stroke-width:1!important}
 .weldDimensionText{font-size:8px!important}
 .rootLabel{font-size:8px!important}
+
+/* ===== JIP & JANNEKE HOEKENCALCULATOR ===== */
+.angleLayout{display:grid;grid-template-columns:minmax(240px,1fr) minmax(260px,1fr);gap:14px;align-items:start}.triangleBox{background:#061723;border:1px solid #1b4c61;border-radius:12px;padding:8px}.triangleBox svg{display:block;width:100%;height:auto}.anglePanel{display:grid;gap:8px}.angleExplain{margin-top:12px;padding:12px;border-left:3px solid #ffd15c;background:#071b27;border-radius:10px;color:#d5e2e7;font-size:12px;line-height:1.5}.angleExplain h3{margin:0 0 7px;color:#ffd15c;font-size:14px}.angleExplain p{margin:6px 0}.angleExplain .tip{color:#9ff2ff;border-top:1px solid #1b4c61;padding-top:8px}.angleCalcCard input,.angleCalcCard select{min-height:44px}.angleCalcCard .result strong{font-size:25px}
+@media(max-width:700px){.angleLayout{grid-template-columns:1fr}.triangleBox{order:2}.anglePanel{order:1}.angleExplain{order:3}}
 </style>
 </head>
 <body>
 <div class="app">
 <header class="header"><div class="brand"><div class="logo">BT</div><div><h1>BEAM TOOL – UT</h1><p>iPHONE • MANUELE ULTRASOONDE TESTING • NDT</p></div></div></header>
-<nav class="tabs"><button class="tab active" data-tool="beam"><svg class="tabIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17h18M5 14l5-5 3 3 6-6"/><path d="M16 6h3v3"/></svg><span>BEAM TOOL</span></button><button class="tab" data-tool="k1"><svg class="tabIcon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4M8 16l8-8"/></svg><span>K1 INDEXPUNT</span></button><button class="tab" data-tool="angle"><svg class="tabIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16M5 19L18 6"/><path d="M9 19a5 5 0 0 0-1.5-3.5"/></svg><span>TASTERHOEK</span></button><button class="tab" data-tool="cal"><svg class="tabIcon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M8 18h8"/></svg><span>KALIBRATIE</span></button></nav>
+<nav class="tabs"><button class="tab active" data-tool="beam"><svg class="tabIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17h18M5 14l5-5 3 3 6-6"/><path d="M16 6h3v3"/></svg><span>BEAM TOOL</span></button><button class="tab" data-tool="k1"><svg class="tabIcon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4M8 16l8-8"/></svg><span>K1 INDEXPUNT</span></button><button class="tab" data-tool="angle"><svg class="tabIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16M5 19L18 6"/><path d="M9 19a5 5 0 0 0-1.5-3.5"/></svg><span>TASTERHOEK</span></button><button class="tab" data-tool="angles"><svg class="tabIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16M5 19L18 6"/><path d="M8 19a6 6 0 0 1 6-6"/></svg><span>HOEKEN</span></button><button class="tab" data-tool="cal"><svg class="tabIcon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M8 18h8"/></svg><span>KALIBRATIE</span></button></nav>
 <main class="wrap">
 <section id="beam" class="tool active">
 <div class="card"><div class="inputs">
 <div class="field"><label>PLAATDIKTE LINKS (mm)</label><input id="thickL" type="number" value="20" min="1" max="300" step="0.5"></div>
 <div class="field"><label>PLAATDIKTE RECHTS (mm)</label><input id="thickR" type="number" value="20" min="1" max="300" step="0.5"></div>
 <div class="field"><label>TASTERHOEK (°)</label><select id="angleSel"><option>45</option><option selected>60</option><option>70</option></select></div>
-<div class="field"><label>TASTER</label><select id="probe"><option>4 MHz 8x9</option><option>2 MHz 8x9</option><option>2 MHz 14x14</option><option>Recht 10 mm</option><option>Recht 24 mm</option></select></div>
+<div class="field"><label>TASTER</label><select id="probe"><option>4 MHz 8x9</option><option>2 MHz 8x9</option><option>2 MHz 14x14</option><option>2 MHz 20x22</option><option>Recht 10 mm</option><option>Recht 24 mm</option></select></div>
 <div class="field"><label>LASCONFIGURATIE</label><select id="weldType"><option>V-naad (enkelzijdig) - Full Pen</option><option>X-naad - Full Pen</option><option>½ V-naad - Full Pen</option><option>U-naad - Full Pen</option><option>Dubbele U-naad - Full Pen</option><option>J-naad - Full Pen</option><option>Dubbele J-naad - Full Pen</option><option>ongelijkzijdige X-naad - Full Pen</option><option>½ U-naad - Full Pen</option></select></div>
 <div class="field"><label>LASZIJDEN</label><select id="weldSymmetry"><option value="equal" selected>Gelijkzijdig</option><option value="unequal">Ongelijkzijdig</option></select></div>
 <div class="field"><label>LASFOUT</label><select id="defectType"><option>Geen fout</option><option>Scheur</option><option>Bindingsfout</option><option>Onvoldoende doorlas</option><option>Porositeit</option><option>Slakinsluiting</option><option>Ondersnijding</option></select></div>
@@ -154,6 +158,10 @@ body:after{content:"UT"!important;position:fixed;right:-80px;bottom:2%;font-size
 </section>
 <section id="k1" class="tool"><div class="card"><h2>K1 INDEXPUNT – 100 mm RADIUS</h2><p class="help">Beweeg de taster op het 100 mm radiusblok naar de maximale respons. Meet de afstand van de voorzijde van het blok tot de voorzijde van de taster. Trek die afstand af van 100 mm.</p><div class="field"><label>GEMETEN AFSTAND (mm)</label><input id="k1dist" type="number" value="14" min="0" max="100" step="0.1"></div><div class="result" style="margin-top:9px"><span>INDEXPUNT</span><strong id="k1out">86.0</strong></div></div></section>
 <section id="angle" class="tool"><div class="card"><h2>TASTERHOEK CONTROLEREN</h2><p class="help">Vul alleen de werkelijk gemeten maat a en het eerder bepaalde indexpunt b in. Gatdiepte 15 mm en vaste maat 35 mm zijn vaste blokmaten.</p><div class="inputs"><div class="field"><label>MAAT a (mm)</label><input id="a" type="number" placeholder="gemeten" step="0.1"></div><div class="field"><label>INDEXPUNT b (mm)</label><input id="b" type="number" placeholder="gemeten" step="0.1"></div><div class="field"><label>VASTE MAAT (mm)</label><input id="fixed" value="35" readonly></div><div class="field"><label>GATDIEPTE (mm)</label><input id="holeDepth" value="15" readonly></div></div><div class="result" style="margin-top:9px"><span>BC = a + b − 35</span><strong id="bc">—</strong></div><div class="result" style="margin-top:9px"><span>BEREKENDE HOEK</span><strong id="angleOut">—</strong></div></div></section>
+<section id="angles" class="tool"><div class="card angleCalcCard"><h2>HOEKEN CALCULATOR – JIP &amp; JANNEKE</h2><p class="help">Geen moeilijke wiskunde. Kies wat je weet, vul de maten in en de calculator doet de rest.</p>
+<div class="angleLayout"><div class="triangleBox"><svg viewBox="0 0 300 220" aria-label="Rechthoekige driehoek"><path d="M45 185 L250 185 L250 55 Z" fill="none" stroke="#dce8ed" stroke-width="3"/><path d="M230 185 L230 165 L250 165" fill="none" stroke="#ffd15c" stroke-width="2"/><text x="145" y="205" fill="#9ff2ff" font-size="14" text-anchor="middle">AANGRENZENDE ZIJDE</text><text x="266" y="122" fill="#9ff2ff" font-size="14" transform="rotate(90 266 122)" text-anchor="middle">OVERSTAANDE ZIJDE</text><text x="135" y="108" fill="#ffd15c" font-size="14" transform="rotate(-32 135 108)" text-anchor="middle">SCHUINE ZIJDE</text><path d="M75 185 A30 30 0 0 1 94 166" fill="none" stroke="#ffbd4a" stroke-width="3"/><text x="74" y="160" fill="#ffbd4a" font-size="18" font-weight="800">HOEK</text></svg></div>
+<div class="anglePanel"><div class="field"><label>WAT WIL JE BEREKENEN?</label><select id="angleMode"><option value="angle">HOEK UIT 2 ZIJDEN</option><option value="side">ZIJDE UIT HOEK + ZIJDE</option></select></div><div class="field" id="trigField"><label>FORMULE</label><select id="trigMode"><option value="tan">TOA — overstaande / aanliggende</option><option value="sin">SOS — overstaande / schuine</option><option value="cos">CAS — aanliggende / schuine</option></select></div><div class="field"><label id="angleLabel1">OVERSTAANDE ZIJDE (mm)</label><input id="angleVal1" type="number" inputmode="decimal" min="0.01" step="0.1" placeholder="bijv. 20"></div><div class="field"><label id="angleLabel2">AANLIGGENDE ZIJDE (mm)</label><input id="angleVal2" type="number" inputmode="decimal" min="0.01" step="0.1" placeholder="bijv. 30"></div><div class="result"><span id="angleResultLabel">BEREKENDE HOEK</span><strong id="angleResult">—</strong></div></div></div>
+<div class="angleExplain"><h3>Jip &amp; Janneke-uitleg</h3><p><b>TOA:</b> je weet de <b>overstaande</b> en <b>aanliggende</b> zijde. Dan doe je <b>overstaande ÷ aanliggende</b>.</p><p><b>SOS:</b> je weet de <b>overstaande</b> en <b>schuine</b> zijde. Dan doe je <b>overstaande ÷ schuine</b>.</p><p><b>CAS:</b> je weet de <b>aanliggende</b> en <b>schuine</b> zijde. Dan doe je <b>aanliggende ÷ schuine</b>.</p><p class="tip">💡 Denk simpel: <b>SOH – CAH – TOA</b>. De calculator zet daarna de uitkomst om naar graden.</p></div></div></section>
 <section id="cal" class="tool"><div class="card"><h2>KALIBRATIE – EPOCH 650</h2><div class="help"><p><b>1.</b> Kies het juiste kalibratieblok en controleer de taster.</p><p><b>2.</b> Controleer indexpunt en tasterhoek.</p><p><b>3.</b> Stel de benodigde Range in.</p><p><b>4.</b> Zoek maximale echo en zet het referentiepunt rond 80% FSH.</p><p><b>5.</b> Leg de DAC-punten vast en controleer de kalibratie.</p></div></div></section>
 </main></div>
 <button id="coreBtn" class="lock"><svg class="lockIcon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>CORE VERGRENDELD</span></button>
@@ -167,6 +175,7 @@ function probeInfo(){
  if(p==='4 MHz 8x9') return {kind:'angle',freq:4,size:'8x9',spread:3.0,label:'Olympus 4 MHz 8x9',wave:'TRANSVERSAAL'};
  if(p==='2 MHz 8x9') return {kind:'angle',freq:2,size:'8x9',spread:4.0,label:'Olympus 2 MHz 8x9',wave:'TRANSVERSAAL'};
  if(p==='2 MHz 14x14') return {kind:'angle',freq:2,size:'14x14',spread:3.0,label:'Olympus 2 MHz 14x14',wave:'TRANSVERSAAL'};
+ if(p==='2 MHz 20x22') return {kind:'angle',freq:2,size:'20x22',spread:3.0,label:'Olympus 2 MHz 20x22',wave:'TRANSVERSAAL'};
  if(p==='Recht 10 mm') return {kind:'straight',freq:4,size:'Ø10',spread:5.0,label:'Olympus recht Ø10 mm',wave:'LONGITUDINAAL'};
  return {kind:'straight',freq:2,size:'Ø24',spread:3.0,label:'Olympus recht Ø24 mm',wave:'LONGITUDINAAL'};
 }
@@ -259,8 +268,8 @@ function weldGeometry(pg){
  const topRootY=yTop+dir*hTop;
  const bottomRootY=yRoot-dir*hBottom;
  const centerY=(topRootY+bottomRootY)/2;
- const halfTop=Math.max(gap/2+3,Math.min(width/2,Math.max(8,hTop*Math.tan(a/2))));
- const halfBottom=Math.max(gap/2+3,Math.min(width/2,Math.max(8,hBottom*Math.tan(a/2))));
+ const halfTop=Math.max(gap/2+3,Math.max(8,hTop/Math.tan(a)));
+ const halfBottom=Math.max(gap/2+3,Math.max(8,hBottom/Math.tan(a)));
  const xTL=c-halfTop, xTR=c+halfTop, xR1=c-gap/2, xR2=c+gap/2;
  const unequal=symmetry==='unequal';
  const oneSided=(type==='V-naad (enkelzijdig) - Full Pen'||type==='½ V-naad - Full Pen'||type==='U-naad - Full Pen'||type==='J-naad - Full Pen'||type==='½ U-naad - Full Pen');
@@ -270,8 +279,8 @@ function weldGeometry(pg){
  const mid=doubleSided?(yTop+dir*depth*(topH/(topH+botH))):yRoot;
  const topEnd=doubleSided?mid-dir*land/2:yRoot-dir*land;
  const botEnd=doubleSided?mid+dir*land/2:yRoot;
- const bevelHalf=Math.max(gap/2+2,Math.min(width/2,Math.max(7,Math.abs(topEnd-yTop)*Math.tan(a/2))));
- const bevelBottom=Math.max(gap/2+2,Math.min(width/2,Math.max(7,Math.abs(yRoot-botEnd)*Math.tan(a/2))));
+ const bevelHalf=Math.max(gap/2+2,Math.abs(topEnd-yTop)/Math.tan(a));
+ const bevelBottom=Math.max(gap/2+2,Math.abs(yRoot-botEnd)/Math.tan(a));
  const topL=c-bevelHalf, topR=c+bevelHalf;
  const r=Math.min(radius,Math.abs(yRoot-yTop)*.28,Math.max(4,width*.32));
  const makeU=(left=true,j=false)=>{
@@ -298,8 +307,8 @@ function weldGeometry(pg){
    hasBottom=true;
    const centerTop=mid-dir*land/2;
    const centerBottom=mid+dir*land/2;
-   const topHalf=Math.max(gap/2+4,Math.min(width/2,Math.max(10,Math.abs(centerTop-yTop)*Math.tan(a/2))));
-   const bottomHalf=Math.max(gap/2+4,Math.min(width/2,Math.max(10,Math.abs(yRoot-centerBottom)*Math.tan(a/2))));
+   const topHalf=Math.max(gap/2+4,Math.max(10,Math.abs(centerTop-yTop)/Math.tan(a)));
+   const bottomHalf=Math.max(gap/2+4,Math.max(10,Math.abs(yRoot-centerBottom)/Math.tan(a)));
    polys=[
      [[c-topHalf,yTop],[c+topHalf,yTop],[c+gap/2,centerTop],[c-gap/2,centerTop]],
      [[c-gap/2,centerBottom],[c+gap/2,centerBottom],[c+bottomHalf,yRoot],[c-bottomHalf,yRoot]]
@@ -388,10 +397,51 @@ function pointInPoly(x,y,poly){
  return inside;
 }
 
+function flankPointAtY(w,y,side){
+ // Zoek de lasflank die bij deze diepte hoort. Dit voorkomt dat een bindingsfout
+ // als een verticale lijn midden in de las wordt getekend.
+ const segs=(w.edges||[]).filter(e=>{
+   const [x1,y1,x2,y2]=e, lo=Math.min(y1,y2)-0.5, hi=Math.max(y1,y2)+0.5;
+   const mx=(x1+x2)/2;
+   return y>=lo && y<=hi && (side==='right'?mx>=w.c:mx<=w.c);
+ });
+ if(!segs.length) return side==='right'?w.xTR:w.xTL;
+ let best=null;
+ for(const e of segs){
+   const [x1,y1,x2,y2]=e;
+   const t=Math.abs(y2-y1)<1e-9?0:Math.max(0,Math.min(1,(y-y1)/(y2-y1)));
+   const x=x1+(x2-x1)*t;
+   const score=Math.abs(y-(y1+(y2-y1)*t));
+   if(!best || score<best.score) best={x,score};
+ }
+ return best.x;
+}
+
 function faultPoint(pg,w){
+ const defectType=$('defectType')?.value||'Geen fout';
  const rel=n('flawX');
  const depth=Math.max(.5,n('flawDepth'));
  const polyList=weldPolygons(pg,w);
+ // Een bindingsfout zit typisch tegen één van de lasflanken, niet in het midden.
+ // De zijde wordt gekozen met flawX: links = negatieve waarde, rechts = positieve waarde.
+ // Bij nul kiezen we bewust de rechterflank als startpositie; de fout blijft daarna vrij versleepbaar.
+ if(defectType==='Bindingsfout'){
+   const side=rel<0?'left':'right';
+   const targetX=w.c+(rel===0?0:rel*pg.sx);
+   let y=pg.ySurface(targetX)+depth*pg.sy;
+   if(pg.flipped) y=pg.ySurface(targetX)-depth*pg.sy;
+   const flankX=flankPointAtY(w,y,side);
+   const inset=3;
+   const x=side==='right'?flankX-inset:flankX+inset;
+   return {x,y,depth:Math.max(.5,Math.abs(y-pg.ySurface(x))/pg.sy),relX:side==='right'?Math.abs(x-w.c)/pg.sx:-Math.abs(x-w.c)/pg.sx,flank:side};
+ }
+ // Bij een X-naad ligt ONVOLDOENDE DOORLAS altijd in de centrale doorlaszone.
+ // De fout blijft dus op de hartlijn, midden tussen de twee X-voorbereidingen.
+ if(w.type==='X-naad - Full Pen' && defectType==='Onvoldoende doorlas'){
+   const x=w.c;
+   const y=(w.handleTop+w.handleBottom)/2;
+   return {x,y,depth:Math.max(.5,Math.abs(y-pg.ySurface(x))/pg.sy),relX:0};
+ }
  const targetX=w.c+rel*pg.sx;
  let y=pg.ySurface(targetX)+depth*pg.sy;
  if(pg.flipped) y=pg.ySurface(targetX)-depth*pg.sy;
@@ -521,8 +571,19 @@ const weldCap=(w.edges||[]).map(e=>`<path d="M ${e[0]} ${e[1]} L ${e[2]} ${e[3]}
   if(defectType==='Geen fout')return '';
   const x=f.x,y=f.y;
   if(defectType==='Scheur')return `<path d="M ${x-5} ${y+10} l 3 -7 l -2 -5 l 4 -6 l -2 -6 l 5 -7" fill="none" stroke="#ff4d5f" stroke-width="3" stroke-linecap="round"/>`;
-  if(defectType==='Bindingsfout'){const side=x>=w.c?w.xTR-2:w.xTL+2;return `<path d="M ${side} ${y-13} L ${side} ${y+13}" stroke="#ff4d5f" stroke-width="4" stroke-linecap="round"/>`;}
-  if(defectType==='Onvoldoende doorlas')return `<path d="M ${w.xR1-4} ${w.rootY} Q ${w.c} ${w.rootY-8} ${w.xR2+4} ${w.rootY}" fill="none" stroke="#ff4d5f" stroke-width="4"/>`;
+  if(defectType==='Bindingsfout'){
+    const side=f.flank|| (x>=w.c?'right':'left');
+    const x1=flankPointAtY(w,y-12,side), x2=flankPointAtY(w,y+12,side);
+    const inset=side==='right'?-2:2;
+    return `<path d="M ${x1+inset} ${y-12} L ${x2+inset} ${y+12}" stroke="#ff4d5f" stroke-width="4" stroke-linecap="round"/>`;
+  }
+  if(defectType==='Onvoldoende doorlas'){
+    if(w.type==='X-naad - Full Pen'){
+      const yy=(w.handleTop+w.handleBottom)/2;
+      return `<path d="M ${w.c-9} ${yy} L ${w.c+9} ${yy}" fill="none" stroke="#ff4d5f" stroke-width="4" stroke-linecap="round"/>`;
+    }
+    return `<path d="M ${w.xR1-4} ${w.rootY} Q ${w.c} ${w.rootY-8} ${w.xR2+4} ${w.rootY}" fill="none" stroke="#ff4d5f" stroke-width="4"/>`;
+  }
   if(defectType==='Porositeit')return `<circle cx="${x-5}" cy="${y}" r="4.5" fill="#ff5966"/><circle cx="${x+5}" cy="${y-5}" r="3.5" fill="#ff5966"/><circle cx="${x+6}" cy="${y+6}" r="3" fill="#ff5966"/>`;
   if(defectType==='Slakinsluiting')return `<ellipse cx="${x}" cy="${y}" rx="13" ry="5" fill="#ff5966" transform="rotate(-18 ${x} ${y})"/>`;
   return `<path d="M ${w.xTR-2} ${w.yTop+2} q 8 8 15 0" fill="none" stroke="#ff5966" stroke-width="4"/>`;
@@ -537,6 +598,7 @@ const weldCap=(w.edges||[]).map(e=>`<path d="M ${e[0]} ${e[1]} L ${e[2]} ${e[3]}
  <line class="rootGuide" x1="${w.xR1}" y1="${w.rootY}" x2="${w.xR2}" y2="${w.rootY}"/>
  <text class="rootLabel" x="${w.c+34}" y="${w.rootY-7}" text-anchor="start">WORTEL / NEUS</text>
  <text class="weldDimensionText" x="${w.c}" y="${Math.max(75,w.yTop-12)}" text-anchor="middle">HARTLIJN LAS</text>
+  <text class="weldDimensionText" x="${w.c}" y="${Math.max(90,w.yTop+8)}" text-anchor="middle">VOORBEREIDING ${w.prep.toFixed(0)}°</text>
  <line class="weldDimension" x1="${w.xR1}" y1="${w.rootY+10}" x2="${w.xR2}" y2="${w.rootY+10}"/>
  <line class="weldDimension" x1="${w.xR1}" y1="${w.rootY+6}" x2="${w.xR1}" y2="${w.rootY+15}"/><line class="weldDimension" x1="${w.xR2}" y1="${w.rootY+6}" x2="${w.xR2}" y2="${w.rootY+15}"/>
  <text class="weldDimensionText" x="${w.c}" y="${w.rootY+25}" text-anchor="middle">WORTELOPENING ${n('rootGap').toFixed(1)} mm</text>
@@ -666,6 +728,37 @@ $('soundSpeed').addEventListener('input',()=>{$('soundSpeed').dataset.userEdited
 $('k1dist').addEventListener('input',()=>$('k1out').textContent=(100-n('k1dist')).toFixed(1));
 function angleCalc(){const a=n('a'),b=n('b'),bc=a+b-35;$('bc').textContent=a&&b?bc.toFixed(2):'—';$('angleOut').textContent=a&&b&&bc>0?(Math.atan(15/bc)*180/Math.PI).toFixed(2):a&&b?'ONGELDIGE METING':'—';}
 ['a','b'].forEach(id=>$(id).addEventListener('input',angleCalc));
+function angleToolCalc(){
+ const mode=$('angleMode').value, trig=$('trigMode').value;
+ const v1=parseFloat($('angleVal1').value),v2=parseFloat($('angleVal2').value);
+ const l1=$('angleLabel1'),l2=$('angleLabel2'),resL=$('angleResultLabel');
+ if(mode==='angle'){
+   $('trigField').style.display='block';
+   if(trig==='tan'){l1.textContent='OVERSTAANDE ZIJDE (mm)';l2.textContent='AANLIGGENDE ZIJDE (mm)';}
+   if(trig==='sin'){l1.textContent='OVERSTAANDE ZIJDE (mm)';l2.textContent='SCHUINE ZIJDE (mm)';}
+   if(trig==='cos'){l1.textContent='AANLIGGENDE ZIJDE (mm)';l2.textContent='SCHUINE ZIJDE (mm)';}
+   resL.textContent='BEREKENDE HOEK';
+   if(!(v1>0&&v2>0)){ $('angleResult').textContent='—'; return; }
+   let ratio=trig==='tan'?v1/v2:trig==='sin'?v1/v2:v1/v2;
+   if(ratio<=0||ratio>1&&trig!=='tan'){ $('angleResult').textContent='ONGELDIGE MATEN'; return; }
+   const a=(trig==='tan'?Math.atan(ratio):Math.asin(Math.min(1,ratio))*(trig==='sin'?1:0)+ (trig==='cos'?Math.acos(Math.min(1,ratio)):0))*180/Math.PI;
+   $('angleResult').textContent=Number.isFinite(a)?a.toFixed(2)+'°':'ONGELDIGE MATEN';
+ }else{
+   $('trigField').style.display='block';
+   if(trig==='tan'){l1.textContent='BEKENDE HOEK (°)';l2.textContent='AANLIGGENDE ZIJDE (mm)';}
+   if(trig==='sin'){l1.textContent='BEKENDE HOEK (°)';l2.textContent='SCHUINE ZIJDE (mm)';}
+   if(trig==='cos'){l1.textContent='BEKENDE HOEK (°)';l2.textContent='SCHUINE ZIJDE (mm)';}
+   resL.textContent='BEREKENDE ZIJDE';
+   if(!(v1>0&&v2>0&&v1<90)){ $('angleResult').textContent='VUL HOEK + MAAT IN'; return; }
+   const rad=v1*Math.PI/180; let out;
+   if(trig==='tan') out=Math.tan(rad)*v2;
+   else if(trig==='sin') out=Math.sin(rad)*v2;
+   else out=Math.cos(rad)*v2;
+   $('angleResult').textContent=Number.isFinite(out)?out.toFixed(2)+' mm':'ONGELDIGE MATEN';
+ }
+}
+['angleMode','trigMode','angleVal1','angleVal2'].forEach(id=>$(id).addEventListener('input',angleToolCalc));
+['angleMode','trigMode'].forEach(id=>$(id).addEventListener('change',angleToolCalc));
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.tool').forEach(x=>x.classList.toggle('active',x.id===b.dataset.tool));});
 const HASH='9053a5939d7b4a748f4c4fa56fc9409ba4c00b6fd0062556803d961509b91d94';
 async function sha(s){const d=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return [...new Uint8Array(d)].map(x=>x.toString(16).padStart(2,'0')).join('');}
@@ -674,6 +767,6 @@ $('coreBtn').onclick=()=>{if(coreUnlocked){coreUnlocked=false;$('coreBtn').textC
 $('cancel').onclick=()=>modal.classList.remove('show');
 $('unlock').onclick=async()=>{if(await sha($('pin').value)===HASH){coreUnlocked=true;modal.classList.remove('show');$('coreBtn').textContent='🔓 CORE ONTGRENDELD';}else $('err').textContent='Onjuiste PIN.';};
 window.BEAM_CORE={isUnlocked:()=>coreUnlocked,lock:()=>{coreUnlocked=false;$('coreBtn').textContent='🔐 CORE VERGRENDELD';}};
-updateRadiusField(); setDiagramZoom(1); $('zoomIn').onclick=()=>{setDiagramZoom(state.zoom+0.25);}; $('zoomOut').onclick=()=>{setDiagramZoom(state.zoom-0.25);}; $('zoomReset').onclick=()=>{setDiagramZoom(1);}; $('toggleBlue').onclick=()=>{state.showBlueHandle=!state.showBlueHandle; const b=$('toggleBlue'); b.textContent=state.showBlueHandle?'🔵 CIRCEL AAN':'⚪ CIRCEL UIT'; b.classList.toggle('off',!state.showBlueHandle); render();}; render(); bindDrag(); $('k1out').textContent=(100-n('k1dist')).toFixed(1);angleCalc();
+updateRadiusField(); angleToolCalc(); setDiagramZoom(1); $('zoomIn').onclick=()=>{setDiagramZoom(state.zoom+0.25);}; $('zoomOut').onclick=()=>{setDiagramZoom(state.zoom-0.25);}; $('zoomReset').onclick=()=>{setDiagramZoom(1);}; $('toggleBlue').onclick=()=>{state.showBlueHandle=!state.showBlueHandle; const b=$('toggleBlue'); b.textContent=state.showBlueHandle?'🔵 CIRCEL AAN':'⚪ CIRCEL UIT'; b.classList.toggle('off',!state.showBlueHandle); render();}; render(); bindDrag(); $('k1out').textContent=(100-n('k1dist')).toFixed(1);angleCalc();
 </script>
 </body></html>

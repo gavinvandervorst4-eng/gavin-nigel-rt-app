@@ -2,1742 +2,583 @@
 <html lang="nl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>BEAM TOOL – UT</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#031019">
+<title>BEAM TOOL – UT iPhone</title>
 <style>
-*{box-sizing:border-box}
-:root{--navy:#071c2c;--navy2:#0d2a3e;--panel:#102f43;--panel2:#0b2536;--line:#315269;--text:#f4f8fb;--muted:#a9bbc7;--blue:#1683c7;--cyan:#36b6e8;--green:#63d52b;--danger:#ff4d4d}
-body{margin:0;background:#071b2a;color:var(--text);font-family:Arial,Helvetica,sans-serif;position:relative;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.20;background-image:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27900%27 height=%27500%27 viewBox=%270 0 900 500%27%3E%3Cg fill=%27none%27 stroke=%27%236aa0b8%27 stroke-width=%272%27 opacity=%27.75%27%3E%3Ccircle cx=%27450%27 cy=%27250%27 r=%27145%27/%3E%3Ccircle cx=%27450%27 cy=%27250%27 r=%27105%27/%3E%3Cpath d=%27M450 65v370M265 250h370M350 150l200 200M550 150L350 350%27/%3E%3Cpath d=%27M85 405h730M120 380h660M150 95h600%27/%3E%3Cpath d=%27M115 95v55M165 95v35M735 95v55M785 95v35%27/%3E%3Cpath d=%27M190 405l55-65h410l55 65M285 340l35-75h260l35 75%27/%3E%3C/g%3E%3Cg fill=%27%236aa0b8%27 font-family=%27Arial%27 font-weight=%27900%27 opacity=%27.55%27%3E%3Ctext x=%27450%27 y=%27265%27 text-anchor=%27middle%27 font-size=%2772%27 letter-spacing=%2712%27%3EUT%3C/text%3E%3Ctext x=%27450%27 y=%27305%27 text-anchor=%27middle%27 font-size=%2716%27 letter-spacing=%274%27%3EINDUSTRIAL INSPECTION%3C/text%3E%3C/g%3E%3C/svg%3E");background-size:900px 500px;background-repeat:repeat;mix-blend-mode:screen}
-body::after{content:"UT  •  INDUSTRIAL INSPECTION";position:fixed;left:50%;top:52%;transform:translate(-50%,-50%) rotate(-18deg);z-index:0;pointer-events:none;color:#55b6dc;font-size:clamp(54px,9vw,150px);font-weight:900;letter-spacing:12px;white-space:nowrap;opacity:.085;text-shadow:0 0 22px #0b79a8;}
-body>*{position:relative;z-index:1}
-main,.tooltabs,.calpanel,header{position:relative}
-header{background:linear-gradient(110deg,#04121e,#0b2c42 52%,#061b2c);color:#fff;padding:18px 24px;border-bottom:1px solid #2d5269;box-shadow:0 4px 18px #0006}
-.headerbar{max-width:1450px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.brand{display:flex;align-items:center;gap:14px;min-width:0}.brandmark{width:62px;height:62px;border:2px solid #6e8796;border-radius:10px;display:grid;place-items:center;background:#081d2d;font-size:24px;font-weight:900;color:#fff}.brandmark span{color:#35b9ed}
-header h1{margin:0;font-size:30px;letter-spacing:.8px;font-weight:900} header p{margin:4px 0 0;color:#b9cbd6;font-size:12px;letter-spacing:.7px}.brandtag{display:inline-block;margin-top:6px;padding:3px 7px;border:1px solid #3e6478;border-radius:4px;color:#8fdcff;font-size:9px;font-weight:800;letter-spacing:.8px;background:#092338}.probeBadge{margin-top:8px;padding:8px 10px;border:1px solid #31586d;border-radius:6px;background:#071d2d;color:#dbeaf1;font-size:10px;line-height:1.35}.probeBadge strong{color:#7ed7ff}.probeBadge .warnline{color:#9db2bd;font-size:9px}
-.navchips{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.navchip{padding:10px 13px;border:1px solid #31566d;border-radius:7px;background:#0a2639;color:#cbdbe4;font-size:11px;font-weight:700}.navchip.active{border-color:#27a7df;color:#fff;background:#0c3852;box-shadow:inset 0 -2px 0 #27a7df}
-main{max-width:1550px;margin:14px auto;padding:0 14px}.grid{display:grid;grid-template-columns:330px minmax(0,1fr) 300px;gap:14px;align-items:start}.grid>section:nth-child(2){min-width:0}.sidecard{position:sticky;top:12px}.instrument{display:grid;grid-template-columns:1fr 1fr;gap:7px}.instrument .mini{background:#0a2333;border:1px solid #315268;border-radius:6px;padding:7px}.instrument .mini span{display:block;color:#8ea5b2;font-size:8px}.instrument .mini strong{display:block;color:#fff;font-size:13px;margin-top:3px}.meter{height:7px;background:#07141e;border:1px solid #315269;border-radius:5px;overflow:hidden;margin-top:6px}.meter i{display:block;height:100%;width:62%;background:linear-gradient(90deg,#1b8ac7,#63d52b)}
-.card{background:linear-gradient(180deg,#102f43,#0b2536);border:1px solid #315269;border-radius:10px;padding:14px;box-shadow:0 8px 24px #0005}
-h2{margin:0 0 10px;font-size:16px;letter-spacing:.3px;color:#fff;text-transform:uppercase}h2:before{content:'';display:inline-block;width:4px;height:16px;background:#2ba9dc;margin-right:8px;vertical-align:-2px;border-radius:2px}
-h3{margin:16px 0 7px;font-size:12px;color:#6fd2f5;text-transform:uppercase;letter-spacing:.7px;border-bottom:1px solid #24475b;padding-bottom:5px}
-label{display:block;font-size:10px;font-weight:700;margin:8px 0 4px;color:#b8cbd6;text-transform:uppercase;letter-spacing:.25px}
-input,select{width:100%;padding:9px 10px;border:1px solid #496779;border-radius:6px;font-size:13px;background:#071d2d;color:#f2f7fa;outline:none}input:focus,select:focus{border-color:#39b9ea;box-shadow:0 0 0 2px #1683c733}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-button{width:100%;padding:12px;border:1px solid #42b51c;border-radius:7px;background:linear-gradient(180deg,#73e53a,#45a91a);color:#081a0a;font-weight:900;cursor:pointer;margin-top:10px;box-shadow:0 3px 10px #0005;letter-spacing:.2px}button.secondary{background:#183b50;border-color:#45677a;color:#e8f2f6}
-.info{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}.info div,.result{background:#0a2333;border:1px solid #315268;border-radius:6px;padding:7px}.info span,.result span{display:block;color:#8ea5b2;font-size:9px}.info strong,.result strong{display:block;margin-top:3px;color:#fff;font-size:14px}
-.results{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:8px}.result strong{font-size:16px}
-.status{margin-top:9px;padding:9px;border-radius:6px;border:1px solid #315268;background:#0a2333;color:#c5d4dc;font-size:11px}.ok{background:#103821;border-color:#49a965;color:#baf0c9}.bad{background:#3a1719;border-color:#a94a4a;color:#ffc3c3}.warn{background:#3b2c11;border-color:#a37a2d;color:#ffe0a0}
-.hidden{display:none!important}.note{font-size:9px;line-height:1.45;color:#849aa7;margin-top:8px}
-canvas{display:block;width:100%;height:auto;border:1px solid #315269;border-radius:7px;background:#07141e;box-shadow:inset 0 0 20px #0008}
-.legend{font-size:10px;color:#9eb2bd;margin:5px 0 9px}.legend:before{content:'● ';color:#ff4545}hr{border:0;border-top:1px solid #29495c;margin:14px 0}
-@media(max-width:1200px){.grid{grid-template-columns:320px minmax(0,1fr)}.grid>.sidecard{grid-column:1 / -1;position:static;display:grid;grid-template-columns:1fr 1fr;gap:14px}.grid>.sidecard>h2,.grid>.sidecard>.note{grid-column:1 / -1}}
-@media(max-width:1050px){.headerbar{align-items:flex-start}.navchips{display:none}}
-@media(max-width:950px){.grid{grid-template-columns:1fr}.grid>.sidecard{display:block}.info{grid-template-columns:repeat(2,1fr)}}
+:root{--bg:#031019;--panel:#071a27;--panel2:#0a2232;--line:#17445b;--cyan:#21d8ff;--cyan2:#65e7ff;--white:#f4fbff;--muted:#91aabd;--orange:#ffbd4a;--red:#ff5966;--green:#5bea77}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;background:var(--bg);color:var(--white);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}body{padding-bottom:28px}.app{max-width:1100px;margin:auto}.header{padding:14px 16px 11px;border-bottom:1px solid #17445b;background:#031019}.brand{display:flex;align-items:center;gap:12px}.logo{width:44px;height:44px;border:1.5px solid var(--cyan);border-radius:11px;display:grid;place-items:center;color:var(--cyan);font-weight:900;font-size:18px}.brand h1{font-size:19px;line-height:1;margin:0}.brand p{font-size:10px;letter-spacing:.08em;color:var(--muted);margin:5px 0 0}.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:12px 16px}.tab{border:1px solid #16425a;background:#071c2a;color:#fff;border-radius:11px;padding:12px 8px;font-weight:900;font-size:12px}.tab.active{border-color:var(--cyan);background:#0a3145}.wrap{padding:0 16px}.tool{display:none}.tool.active{display:block}.card{background:linear-gradient(180deg,#071d2b,#061722);border:1px solid #17465e;border-radius:17px;padding:12px;margin-bottom:12px}.card h2{font-size:15px;margin:0 0 10px}.inputs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.field{background:#061522;border:1px solid #18465d;border-radius:11px;padding:8px}.field label{display:block;font-size:10px;color:#9ab0bf;margin-bottom:5px}.field input,.field select{width:100%;background:#0a2333;border:1px solid #25566e;color:#fff;border-radius:8px;padding:10px 9px;font-size:15px;outline:0}.field input:focus,.field select:focus{border-color:var(--cyan)}
+.visualRow{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(250px,.8fr);gap:12px}.diagramCard{background:#061723;border:1px solid #17465e;border-radius:14px;padding:10px;overflow:hidden}.diagramCard svg{width:100%;display:block;touch-action:none}.caption{font-size:11px;color:#b8cad5;margin-top:8px}.legend{display:flex;gap:13px;flex-wrap:wrap;font-size:10px;color:#a6b9c6;margin-top:8px}.legend i{display:inline-block;width:13px;height:3px;vertical-align:middle;margin-right:4px}.cyan{background:var(--cyan)}.white{background:#fff}.orange{background:var(--orange)}.red{background:var(--red)}
+.ascan{background:#061723;border:1px solid #17465e;border-radius:14px;padding:11px}.ascan h3{font-size:14px;margin:0 0 8px}.ascan svg{width:100%;display:block;background:#020b11;border:1px solid #16394b;border-radius:9px}.results{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}.result{background:#061622;border:1px solid #17445b;border-radius:11px;padding:9px;min-height:72px}.result span{display:block;font-size:9px;color:#9bb0be;line-height:1.2}.result strong{display:block;font-size:17px;margin-top:7px}.statusGood{background:#062516;border:1px solid #13713d;border-radius:11px;padding:10px;text-align:center;color:#6cf187;font-weight:900;min-height:72px}.statusGood small{display:block;font-size:9px;margin-bottom:6px;color:#62e57d}.help{font-size:11px;line-height:1.45;color:#b7c9d3}.lock{position:fixed;right:12px;bottom:12px;z-index:50;border:1px solid #536f7e;background:#071925;color:#fff;border-radius:12px;padding:11px 14px;font-weight:900;box-shadow:0 8px 25px #0009}.modal{position:fixed;inset:0;background:#000c;z-index:100;display:none;align-items:flex-end;padding:12px}.modal.show{display:flex}.sheet{width:100%;max-width:500px;margin:auto;background:#081d2b;border:1px solid #1a4b63;border-radius:18px;padding:16px}.sheet input{width:100%;padding:13px;background:#061522;border:1px solid #2b5a70;color:#fff;border-radius:10px;text-align:center;font-size:20px;letter-spacing:.25em}.btn{width:100%;border:1px solid #285b73;background:#0a293a;color:#fff;border-radius:11px;padding:12px;font-weight:900;margin-top:9px}.primary{border-color:var(--cyan);background:#0b4963}.err{color:#ff8490;font-size:12px;min-height:18px;margin-top:5px}
+@media(max-width:700px){.header{padding:13px 12px 10px}.tabs{padding:10px 12px;grid-template-columns:1fr 1fr}.wrap{padding:0 12px}.inputs{grid-template-columns:1fr 1fr}.visualRow{grid-template-columns:1fr}.results{grid-template-columns:repeat(2,1fr)}.result:last-child{grid-column:span 2}.statusGood{grid-column:span 2}.card{padding:10px}.brand h1{font-size:18px}}
+@media(min-width:701px){.lock{right:18px;bottom:18px}}
 
-.tooltabs{display:flex;gap:6px;flex-wrap:wrap;margin:12px auto;max-width:1600px;padding:0 14px}
-.tooltab{border:1px solid #35657e;background:linear-gradient(180deg,#18384b,#102b3c);color:#dce8ee;padding:12px 16px;border-radius:5px;font-weight:800;letter-spacing:.4px;cursor:pointer}
-.tooltab.active{background:linear-gradient(180deg,#1687ca,#075b91);color:#fff;border-color:#3f91cc}
-.calpanel{max-width:1600px;margin:0 auto 18px;padding:18px 22px;background:#122b3b;border:1px solid #29495d;border-radius:12px;box-sizing:border-box}
-.calhead h2{margin:0 0 6px}.calhead p{margin:0 0 16px;color:#b9cbd5}
-.calgrid{display:grid;grid-template-columns:repeat(5,minmax(130px,1fr));gap:12px;align-items:end}.calgrid label{display:flex;flex-direction:column;gap:6px;color:#c8d8e0;font-size:12px}.calgrid select{padding:10px;border-radius:7px;border:1px solid #496879;background:#f4f7f8;color:#152a36}
-.calinfo{background:#0d202c;border:1px solid #2c4b5d;border-radius:8px;padding:10px;min-height:52px}.calinfo span{display:block;color:#91aab8;font-size:11px}.calinfo strong{display:block;color:#fff;margin-top:4px}.caldrawing{margin-top:16px;min-height:130px;border:1px solid #2c4b5d;border-radius:10px;background:#eef3f6;position:relative;overflow:hidden}
-.calbar{height:28px;background:#1d6ea8;color:#fff;font-weight:800;padding:8px 12px;box-sizing:border-box;font-size:12px}.calblock{position:absolute;left:10%;right:10%;bottom:18px;height:58px;background:linear-gradient(#cfd7da,#9da9ae);border:2px solid #46545d;border-radius:4px}.calblock:before{content:"";position:absolute;left:20%;right:20%;top:18px;border-top:3px solid #1769aa}.calblock:after{content:"¼T     ½T     ¾T";position:absolute;left:24%;top:27px;color:#1769aa;font:bold 12px Arial;white-space:pre}.calcaption{position:absolute;bottom:2px;left:0;right:0;text-align:center;color:#26343c;font:bold 11px Arial}
-@media(max-width:900px){.calgrid{grid-template-columns:1fr 1fr}.tooltabs{padding:0 8px}.calpanel{margin-left:8px;margin-right:8px;padding:14px}}
-
-.anglecheck{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.anglebox{background:#0b2738;border:1px solid #24526a;border-radius:10px;padding:14px}.anglebox h3{margin:0 0 8px;color:#6fd2f5;font-size:16px}.anglebox label{display:block;margin:8px 0 5px;color:#d9edf5}.anglebox select,.anglebox input{width:100%;box-sizing:border-box;padding:10px;border-radius:7px;border:1px solid #3a6579;background:#081b27;color:#fff;font-size:16px}.angle-result{margin-top:10px;padding:12px;border-radius:9px;background:#102f40;border:1px solid #37677e}.angle-result strong{font-size:22px}.anglehint{margin-top:10px;color:#b8d1dc;font-size:13px;line-height:1.45}@media(max-width:800px){.anglecheck{grid-template-columns:1fr}}
-
-.angle-drawing-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.angle-drawing-card{background:#101c25;border:1px solid #314652;border-radius:12px;padding:14px}.angle-drawing-card h3{margin:0 0 8px;color:#dbe7ed;font-size:15px}.angle-drawing-card svg{width:100%;height:auto;display:block;background:#0d161d;border-radius:8px}.angle-caption{margin:8px 0 0;color:#b9c8d0;font-size:13px;line-height:1.45}.angle-drawing-card strong{color:#f4d06f}@media(max-width:900px){.angle-drawing-grid{grid-template-columns:1fr}}
-
-/* INDUSTRIAL EXAMPLE SKIN — visual layer only; calculation JS untouched */
-.industrialHeader{padding:0!important;background:linear-gradient(110deg,#03131f 0%,#08283e 46%,#03131e 100%)!important;border-bottom:1px solid #176f9f!important;box-shadow:0 5px 24px #000b!important;overflow:hidden}
-.industrialHeader .headerbar{max-width:none;height:112px;padding:0 28px;position:relative}
-.industrialHeader .headerbar:after{content:"";position:absolute;right:255px;top:0;width:420px;height:100%;opacity:.22;background:repeating-linear-gradient(90deg,transparent 0 38px,#27a9df 39px,#27a9df 40px,transparent 41px 78px),linear-gradient(transparent 49%,#28b4ea 50%,transparent 51%);clip-path:polygon(0 50%,10% 48%,18% 20%,27% 76%,36% 42%,48% 58%,60% 25%,73% 65%,84% 45%,100% 50%,100% 100%,0 100%);pointer-events:none}
-.brand{gap:16px}.brandmark{width:72px!important;height:72px!important;border:0!important;border-radius:4px!important;background:linear-gradient(145deg,#f4f8fb,#a7bdc9)!important;color:#062035!important;font-size:24px!important;box-shadow:0 0 0 2px #1979a9,0 0 22px #0a78a855;transform:skew(-8deg)}
-.brandmark span{color:#087cb5!important}.industrialHeader h1{font-size:34px!important;letter-spacing:1px!important;text-transform:uppercase}.industrialHeader h1 em{font-style:normal;color:#1ea7e5}.industrialHeader p{font-size:13px!important;color:#d2e6ef!important;letter-spacing:1px}.industrialHeader .brandtag{background:#051a29;border-color:#1679a6;color:#58c8f4;padding:5px 9px;font-size:10px}
-.headerTech{margin-left:auto;height:100%;min-width:300px;display:flex;align-items:center;justify-content:flex-end;gap:18px;position:relative}.techPulse{width:150px;height:58px;opacity:.8;background:linear-gradient(transparent 49%,#1ea8e6 50%,transparent 51%);clip-path:polygon(0 51%,10% 50%,18% 47%,23% 15%,29% 85%,35% 45%,43% 52%,51% 49%,57% 20%,63% 80%,69% 50%,100% 50%,100% 54%,69% 54%,63% 84%,57% 24%,51% 53%,43% 56%,35% 49%,29% 89%,23% 19%,18% 51%,10% 54%,0 54%)}
-.techAngles{font-size:12px;font-weight:900;color:#72d9ff;letter-spacing:2px}.techLabel{text-align:right;color:#6bbbdc;font-size:10px;letter-spacing:1px;line-height:1.2}.techLabel b{font-size:12px;color:#e5f5fb}
-.industrialTabs{max-width:none!important;margin:0!important;padding:0!important;gap:0!important;display:grid!important;grid-template-columns:1.05fr 1fr 1fr 1.15fr 1.15fr 1.05fr 1fr .85fr!important;background:#041522;border-bottom:1px solid #176f9f;box-shadow:0 4px 14px #0008}
-.industrialTabs .tooltab{min-height:58px;border:0!important;border-right:1px solid #21495f!important;border-radius:0!important;background:linear-gradient(180deg,#071d2d,#061725)!important;color:#dcecf3!important;padding:7px 9px!important;display:flex;align-items:center;justify-content:center;gap:7px;text-align:center;line-height:1.08;font-size:11px;letter-spacing:.2px;box-shadow:none!important}
-.industrialTabs .tooltab span{font-size:21px;color:#26b4ee;line-height:1}.industrialTabs .tooltab b{font-weight:900}.industrialTabs .tooltab.active{background:linear-gradient(180deg,#1689ce,#07598e)!important;color:#fff!important;box-shadow:inset 0 -3px 0 #45c5f5!important}.industrialTabs .tooltab.active span{color:#fff}
-main{margin-top:10px!important}.calpanel{box-shadow:0 10px 28px #0006!important;background:linear-gradient(145deg,#102f43,#0a2435)!important}
-body:after{opacity:.13!important;font-size:clamp(80px,11vw,180px)!important;letter-spacing:18px!important}
-@media(max-width:1100px){.industrialTabs{grid-template-columns:repeat(4,1fr)!important}.headerTech{display:none}}
-@media(max-width:700px){.industrialHeader .headerbar{height:92px;padding:0 14px}.industrialHeader h1{font-size:24px!important}.industrialHeader p{font-size:9px!important}.industrialTabs{grid-template-columns:repeat(2,1fr)!important}.industrialTabs .tooltab{min-height:52px}}
-
-.tooltabs{max-width:1550px;margin:0 auto;padding:8px 14px;display:grid;grid-template-columns:repeat(6,1fr);gap:5px;background:#061724;border-top:1px solid #23465b;border-bottom:1px solid #2e6179}.tooltab{min-height:58px;padding:7px 8px;border:1px solid #31566d;border-radius:6px;background:#0a2639;color:#cbdbe4;display:grid;grid-template-columns:26px 1fr;grid-template-rows:auto auto;align-items:center;text-align:left;cursor:pointer}.tooltab span{grid-row:1/3;font-size:22px;color:#36b6e8;text-align:center}.tooltab b{font-size:11px;letter-spacing:.3px}.tooltab small{font-size:8px;color:#8ea5b2;letter-spacing:.7px}.tooltab.active{background:linear-gradient(180deg,#0e5a83,#0b3852);border-color:#28a9df;box-shadow:inset 0 -3px 0 #22b5ee,0 0 12px #0d6d9b55}.calpanel{max-width:1550px;margin:14px auto;padding:0 14px}.index-layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(300px,.65fr);gap:14px}.index-input-box{align-self:stretch;display:flex;flex-direction:column}.index-input-box .primary{margin:14px 0}.calpanel[hidden]{display:none!important}@media(max-width:1000px){.tooltabs{grid-template-columns:repeat(2,1fr)}.index-layout{grid-template-columns:1fr}}
-
-/* SMART WORKBENCH / FIELD UI */
-.uiBar{max-width:1450px;margin:0 auto;padding:8px 12px;display:flex;gap:8px;justify-content:flex-end;align-items:center;background:rgba(5,22,34,.94);border-bottom:1px solid #29485c}
-.uiBtn{border:1px solid #3e6378;background:#0b2739;color:#dff6ff;border-radius:7px;padding:8px 12px;font-weight:800;cursor:pointer}
-.uiBtn:hover{border-color:#43c3f2;transform:translateY(-1px)}
-.uiBtn.active{background:#1683c7;color:#fff;border-color:#54d1ff}
-body.lightMode{--navy:#eaf1f5;--navy2:#dce8ee;--panel:#f7fafc;--panel2:#eef4f7;--line:#9db4c1;--text:#10283a;--muted:#526b79;--blue:#167bc1;--cyan:#007ea8;--green:#198754;--danger:#c62828;background:#edf3f6;color:var(--text)}
-body.lightMode header{background:linear-gradient(110deg,#f8fbfd,#dceaf2 55%,#eef5f8);color:#10283a}
-body.lightMode .tooltabs,body.lightMode .uiBar{background:#f7fafc}
-body.lightMode .tooltab{color:#17384d;background:#edf4f7;border-color:#b4c7d1}
-body.lightMode .tooltab.active{background:#1683c7;color:#fff}
-body.lightMode .calpanel,body.lightMode .panel,body.lightMode .card,body.lightMode aside{color:#10283a}
-body.lightMode body::before{opacity:.10;filter:grayscale(1)}
-body.lightMode body::after{color:#164d6a;opacity:.08;text-shadow:none}
-body.tabletMode{font-size:16px}
-body.tabletMode input,body.tabletMode select,body.tabletMode button{min-height:48px;font-size:16px}
-body.tabletMode .tooltab{min-height:62px}
-.recommendbar{display:grid;grid-template-columns:1.1fr 1fr auto;gap:10px;align-items:center;margin:10px 0;padding:10px;border:1px solid #31566b;border-radius:9px;background:linear-gradient(90deg,#0a2536,#102f43)}
-.recommendbar .rec{padding:8px 10px;border-radius:7px;background:#071d2c;border:1px solid #27495d}.recommendbar strong{color:#7ddfff}.recommendbar.warn{border-color:#e4ad32}.recommendbar.ok{border-color:#4fbd79}
-.dacWorkbench{margin-top:12px;border:1px solid #31566b;border-radius:10px;background:linear-gradient(180deg,#0b2638,#081c2a);overflow:hidden}
-.dacWorkbench h3{margin:0;padding:10px 12px;background:#126fae;color:#fff;font-size:16px}
-.dacwbgrid{display:grid;grid-template-columns:1.15fr .85fr;gap:12px;padding:12px}
-.dacTarget{border:1px solid #31566b;border-radius:8px;padding:10px;background:#071b29}.dacTarget h4{margin:0 0 8px;color:#69d5ff}
-.dacTarget select,.dacTarget input{width:100%}.dacTarget .bigread{font-size:24px;font-weight:900;color:#fff}
-.seekStatus{margin-top:8px;padding:10px;border-radius:7px;border:1px solid #31566b;background:#0a2434}.seekStatus.good{border-color:#48c77a;background:#0c2c20}.seekStatus.bad{border-color:#d95b5b;background:#351a1a}
-.dac-table{width:100%;border-collapse:collapse}.dac-table th,.dac-table td{border:1px solid #31566b;padding:7px 8px;text-align:left}.dac-table th{background:#123c55;color:#bdeeff}.dac-table tr.active{background:#114b68}
-.compare-table{width:100%;border-collapse:collapse;margin-top:8px}.compare-table th,.compare-table td{padding:6px;border:1px solid #31566b}.compare-table th{background:#123c55;color:#bdeeff}
-.checklist{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px}.checkitem{padding:9px;border:1px solid #31566b;border-radius:7px;background:#081f2e}.checkitem input{margin-right:8px;transform:scale(1.2)}
-.epochbar{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:10px}.epochstep{padding:9px;border:1px solid #31566b;border-radius:7px;background:#081f2e;text-align:center;font-weight:800;font-size:12px}.epochstep.active{background:#1683c7;border-color:#6bd7ff}
-@media(max-width:900px){.dacwbgrid,.recommendbar{grid-template-columns:1fr}.checklist{grid-template-columns:1fr}.epochbar{grid-template-columns:repeat(2,1fr)}.uiBar{justify-content:center;flex-wrap:wrap}}
-body.lightMode .dacWorkbench,body.lightMode .dacTarget,body.lightMode .recommendbar{background:#f8fbfd;color:#10283a}
-body.lightMode .dacTarget .bigread{color:#10283a}.lightMode .dac-table th,.lightMode .compare-table th{background:#dcebf2;color:#12384d}
-
-
-/* MOBILE / IPHONE FIELD LAYOUT */
-@media (max-width: 700px){
-  html,body{width:100%;min-width:0;overflow-x:hidden}
-  .industrialHeader{height:auto!important;min-height:112px!important;padding-bottom:8px}
-  .industrialHeader .headerbar{height:auto!important;min-height:104px!important;padding:12px 12px 8px!important;gap:8px}
-  .industrialHeader .brand{gap:9px;align-items:center}
-  .industrialHeader .brandmark{width:48px!important;height:48px!important;font-size:19px}
-  .industrialHeader h1{font-size:23px!important;line-height:1.05!important;letter-spacing:.3px}
-  .industrialHeader p{font-size:8px!important;line-height:1.2!important;letter-spacing:.45px!important;max-width:240px}
-  .industrialHeader .brandtag{font-size:8px!important;padding:3px 6px!important;margin-top:4px}
-  .industrialHeader .headerTech{display:none!important}
-  .tooltabs{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:5px!important;margin:6px 6px 8px!important;padding:0!important}
-  .tooltab{min-width:0!important;min-height:54px!important;height:auto!important;padding:7px 8px!important;border-radius:7px!important;grid-template-columns:22px 1fr!important}
-  .tooltab span{font-size:18px!important}
-  .tooltab b{font-size:9px!important;line-height:1.1!important}
-  .tooltab small{font-size:7px!important;line-height:1.05!important}
-  .uiBar{margin:0 6px 8px!important;padding:6px!important;display:grid!important;grid-template-columns:1fr 1fr!important;gap:5px!important}
-  .uiBar .uiBtn{min-height:44px!important;padding:8px 6px!important;font-size:11px!important}
-  .uiBar>span{grid-column:1/-1;text-align:center;font-size:9px!important}
-  main{width:100%;max-width:none;margin:0;padding:0 7px!important}
-  .grid{display:grid!important;grid-template-columns:1fr!important;gap:8px!important}
-  .grid>.sidecard{display:block!important;grid-column:auto!important;position:static!important}
-  .card,.calpanel{border-radius:8px!important;padding:11px!important}
-  .calpanel{margin:0 6px 10px!important;padding:11px!important}
-  .calgrid{grid-template-columns:1fr!important;gap:8px!important}
-  .caldrawing{min-height:180px!important}
-  .dacwbgrid,.recommendbar,.anglecheck,.angle-drawing-grid,.index-layout{grid-template-columns:1fr!important}
-  .info,.results{grid-template-columns:1fr 1fr!important}
-  input,select{min-height:44px!important;font-size:16px!important}
-  button{min-height:46px!important;font-size:14px!important}
-  canvas{max-width:100%!important;height:auto!important}
-  .table-wrap{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+/* ===== STOERE PROFESSIONELE SKIN ===== */
+:root{
+ --bg:#02070c;--panel:#07151f;--panel2:#0a1f2d;--line:#1a536c;
+ --cyan:#18d9ff;--cyan2:#79edff;--white:#f4fbff;--muted:#8ea8b8;
+ --orange:#ffc23d;--orange2:#ff9f1c;--red:#ff5261;--green:#55ed7a;
+ --steel:#172b37;--steel2:#294452
 }
-@media (min-width:701px) and (max-width:1050px){
-  .tooltabs{grid-template-columns:repeat(3,1fr)!important;display:grid!important}
-}
-/* LIGHT INDUSTRIAL WATERMARK: lighter background, dark technical lines */
-body.lightMode::before{opacity:.16!important;mix-blend-mode:multiply!important;filter:none!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='500' viewBox='0 0 900 500'%3E%3Cg fill='none' stroke='%233c6274' stroke-width='2' opacity='.48'%3E%3Ccircle cx='450' cy='250' r='145'/%3E%3Ccircle cx='450' cy='250' r='105'/%3E%3Cpath d='M450 65v370M265 250h370M350 150l200 200M550 150L350 350'/%3E%3Cpath d='M85 405h730M120 380h660M150 95h600'/%3E%3Cpath d='M115 95v55M165 95v35M735 95v55M785 95v35'/%3E%3Cpath d='M190 405l55-65h410l55 65M285 340l35-75h260l35 75'/%3E%3C/g%3E%3Cg fill='%233c6274' font-family='Arial' font-weight='900' opacity='.25'%3E%3Ctext x='450' y='265' text-anchor='middle' font-size='72' letter-spacing='12'%3EUT%3C/text%3E%3Ctext x='450' y='305' text-anchor='middle' font-size='16' letter-spacing='4'%3EINDUSTRIAL INSPECTION%3C/text%3E%3C/g%3E%3C/svg%3E");background-size:900px 500px;background-repeat:repeat}
-body.lightMode::after{color:#2f5264!important;opacity:.105!important;text-shadow:none!important}
-</style>
-
-<style>
-html,body{margin:0;padding:0;width:100%;min-height:100%;-webkit-text-size-adjust:100%;}
-button,input,select{font-size:16px;min-height:44px;box-sizing:border-box;}
-button{touch-action:manipulation;padding:10px 14px;}
-input,select{padding:9px 10px;}
-canvas{max-width:100%;height:auto;touch-action:none;}
-@media (max-width:900px){
- body{overflow-x:hidden;}
- .app,.wrap,.container,.grid{max-width:100%!important;width:auto!important;}
- .grid{grid-template-columns:1fr!important;}
- .card{width:100%!important;box-sizing:border-box;}
- .row,.formrow{grid-template-columns:1fr!important;}
- h1{font-size:22px!important;}
- .small,.muted{font-size:13px!important;}
- canvas{width:100%!important;}
-}
-@media (orientation:landscape) and (max-height:600px){
- body{font-size:14px;}
- .grid{grid-template-columns:minmax(260px,360px) 1fr!important;}
+html,body{background:
+ radial-gradient(circle at 50% -10%,#12384c 0,#06131d 32%,#02070c 72%),
+ linear-gradient(135deg,#02070c,#06131a 50%,#02070c);}
+body{position:relative;overflow-x:hidden}
+body:before{content:"BEAM TOOL • UT   ULTRASONIC TESTING   •   BEAM TOOL • UT   ULTRASONIC TESTING";position:fixed;inset:-12% -25%;z-index:0;pointer-events:none;display:block;font-size:clamp(48px,11vw,150px);font-weight:1000;letter-spacing:.12em;line-height:2.1;color:rgba(73,119,139,.045);transform:rotate(-17deg);white-space:pre-wrap;text-align:center;text-shadow:0 0 30px rgba(0,0,0,.35)}
+body:after{content:"◈";position:fixed;right:-55px;bottom:8%;z-index:0;pointer-events:none;font-size:280px;font-weight:900;color:rgba(24,217,255,.025);transform:rotate(18deg)}
+.app{position:relative;z-index:1;max-width:1120px}
+.header{position:relative;overflow:hidden;padding:16px 16px 13px;border-bottom:1px solid #205a73;background:linear-gradient(180deg,rgba(4,18,27,.97),rgba(3,12,19,.94));box-shadow:0 8px 30px #0009}
+.header:after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,transparent 0%,var(--cyan) 25%,var(--orange) 50%,var(--cyan) 75%,transparent 100%);opacity:.9}
+.brand{gap:13px}.logo{width:47px;height:47px;border:2px solid var(--cyan);border-radius:12px;background:linear-gradient(145deg,#0d3344,#06131d);box-shadow:0 0 18px rgba(24,217,255,.25),inset 0 0 12px rgba(24,217,255,.08);font-size:17px;letter-spacing:-.04em}
+.brand h1{font-size:21px;letter-spacing:.06em;text-shadow:0 0 16px rgba(24,217,255,.18)}.brand h1:after{content:"";display:inline-block;width:8px;height:8px;margin-left:7px;border-radius:50%;background:var(--orange);box-shadow:0 0 10px var(--orange)}
+.brand p{font-size:9px;letter-spacing:.16em;color:#7fa5b8}
+.tabs{position:relative;z-index:2;padding:12px 16px 10px;background:linear-gradient(180deg,rgba(2,10,15,.8),transparent)}
+.tab{border:1px solid #1d536a;background:linear-gradient(180deg,#0b2534,#06151f);box-shadow:inset 0 1px 0 #ffffff12,0 4px 12px #0006;color:#dcecf3;letter-spacing:.03em;transition:.15s}.tab.active{border-color:var(--cyan);background:linear-gradient(180deg,#0d4157,#082436);box-shadow:0 0 18px rgba(24,217,255,.16),inset 0 1px 0 #ffffff1c;color:#fff}
+.wrap{position:relative}.card{background:linear-gradient(145deg,rgba(9,29,41,.96),rgba(3,15,23,.97));border:1px solid #1b5269;box-shadow:0 10px 30px #0008,inset 0 1px 0 #ffffff0a;backdrop-filter:blur(3px)}
+.card h2{color:#eaf9ff;letter-spacing:.04em}.field{background:linear-gradient(145deg,#071b27,#05111a);border-color:#1b526a;box-shadow:inset 0 1px 0 #ffffff09}.field label{color:#78c4dc;text-transform:uppercase;letter-spacing:.05em}.field input,.field select{background:linear-gradient(180deg,#0b293a,#081b27);border-color:#255f78;box-shadow:inset 0 2px 5px #0008,0 0 0 1px #0002;color:#f7fcff}.field input:focus,.field select:focus{border-color:var(--cyan);box-shadow:0 0 0 2px rgba(24,217,255,.12),inset 0 2px 5px #0008}
+.visualRow{gap:13px}.diagramCard,.ascan{background:linear-gradient(145deg,rgba(5,20,29,.97),rgba(2,10,16,.98));border-color:#1c5269;box-shadow:0 10px 28px #0009,inset 0 1px 0 #ffffff08}.diagramCard{position:relative}.diagramCard:before,.ascan:before{content:"UT";position:absolute;right:12px;top:7px;font-size:9px;font-weight:1000;letter-spacing:.25em;color:rgba(121,237,255,.18)}
+.legend{color:#aac0cc}.caption{color:#9eb7c5}
+.results .result{background:linear-gradient(145deg,#081c29,#041018);border-color:#1b5067;box-shadow:inset 0 1px 0 #ffffff09,0 5px 15px #0006}.result span{color:#72b8ce;text-transform:uppercase;letter-spacing:.04em}.result strong{color:#f4fbff;text-shadow:0 0 10px rgba(24,217,255,.12)}.statusGood{background:linear-gradient(145deg,#07301a,#041b11);border-color:#1a914d;box-shadow:0 0 18px rgba(85,237,122,.08)}
+.lock{right:12px;bottom:12px;background:linear-gradient(145deg,#111f27,#071119);border:1px solid #ffbf3c;color:#fff;box-shadow:0 0 20px rgba(255,194,61,.12),0 10px 30px #000b}.lock:first-letter{color:var(--orange)}
+.modal{background:rgba(0,5,9,.88);backdrop-filter:blur(5px)}.sheet{background:linear-gradient(145deg,#0b2635,#04131d);border-color:#24627c;box-shadow:0 20px 50px #000d}.btn{background:linear-gradient(180deg,#0d2e40,#071923);border-color:#285f77}.primary{background:linear-gradient(180deg,#0c5670,#08374a);border-color:var(--cyan);box-shadow:0 0 15px rgba(24,217,255,.12)}
+@media(max-width:700px){
+ .header{padding:14px 12px 11px}.brand h1{font-size:18px}.brand p{font-size:8px}.tabs{padding:10px 12px}.tab{min-height:44px;font-size:11px}.wrap{padding:0 12px}.card{border-radius:15px}.field{border-radius:10px}.field input,.field select{min-height:43px}.visualRow{gap:10px}.diagramCard,.ascan{border-radius:13px}
+ body:before{font-size:42px;line-height:2.5;inset:-5% -75%;letter-spacing:.09em}
 }
 
-.dacsteps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
-.dacstep{background:#0b2738;border:1px solid #24526a;border-radius:10px;padding:14px;line-height:1.45}
-.dacstep b{color:#6fd2f5;display:block;margin-bottom:6px}
-.dacstep p{margin:6px 0;color:#e7f3f8}
-@media(max-width:800px){.dacsteps{grid-template-columns:1fr}}
-</style>
-
-<style id="industrial-final-overrides">
-body{background:#020d16!important;color:#f4f8fb}
-body::before{opacity:.34!important;background-size:900px 500px!important}
-body::after{opacity:.16!important;font-size:clamp(60px,10vw,170px)!important;letter-spacing:14px!important}
-.industrialHeader{height:132px!important;padding:0!important;border:0!important;border-radius:0!important;background:linear-gradient(110deg,#020a12 0%,#06263a 48%,#020a12 100%)!important;box-shadow:0 5px 22px #000b!important;position:relative!important;overflow:hidden!important}
-.industrialHeader .headerbar{display:none!important}
-.industrialTabs{position:relative!important;left:auto!important;right:auto!important;bottom:auto!important;margin:0!important;padding:0!important;max-width:none!important;height:56px!important;display:grid!important;grid-template-columns:130px 180px 180px 1fr 1fr 1fr 150px!important;gap:0!important;z-index:10!important}
-.industrialTabs .tooltab{height:43px!important;min-height:43px!important;margin:0!important;padding:0 8px!important;border:1px solid rgba(42,120,158,.6)!important;border-radius:0!important;background:rgba(0,15,26,.08)!important;color:transparent!important;box-shadow:none!important;font-size:0!important;cursor:pointer!important}
-.industrialTabs .tooltab span,.industrialTabs .tooltab b{opacity:0!important;color:transparent!important;font-size:0!important}
-.industrialTabs .tooltab:hover{background:rgba(22,131,199,.18)!important}
-.industrialTabs .tooltab.active{background:rgba(18,135,202,.28)!important;box-shadow:inset 0 -3px 0 #2fc0ff!important;border-color:#2aa9dc!important}
-main{max-width:1672px!important;margin:10px auto!important;padding:0 10px!important}
-.grid{grid-template-columns:330px minmax(0,1fr) 330px!important;gap:8px!important}
-.card,.calpanel{background:linear-gradient(180deg,rgba(8,36,54,.96),rgba(4,22,34,.96))!important;border:1px solid #1e6283!important;border-radius:8px!important;box-shadow:0 7px 22px #0008,inset 0 0 40px rgba(19,105,145,.08)!important}
-h2{font-size:15px!important}
-.results{gap:5px!important}
-.result{background:rgba(3,25,38,.88)!important;border-color:#24536b!important}
-@media(max-width:1200px){.industrialHeader{height:150px!important;background-size:auto 150px!important}.industrialTabs{grid-template-columns:repeat(4,1fr)!important;height:48px!important;position:relative!important;bottom:auto!important}.industrialTabs .tooltab{height:48px!important}}
-@media(max-width:700px){.industrialHeader{height:190px!important;background-size:auto 190px!important;background-position:center top!important}.industrialTabs{height:76px!important;grid-template-columns:repeat(4,1fr)!important;position:relative!important;bottom:auto!important}.industrialTabs .tooltab{height:38px!important}}
-</style>
-
-<style>
-.embeddedAnglePanel{max-width:none!important;margin:0 0 12px!important;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important}
-.embeddedAnglePanel .calhead{background:linear-gradient(90deg,#0c4e73,#0a2d42);border:1px solid #1c6c91;border-radius:7px 7px 0 0;padding:10px 12px}
-.embeddedAnglePanel .calhead h2{margin:0 0 4px!important}
-.embeddedAnglePanel .calhead p{margin:0!important;font-size:10px!important}
-.embeddedAnglePanel .status{font-size:10px!important;margin:6px 0!important}
-.embeddedAnglePanel .dacsteps{display:grid!important;grid-template-columns:1fr 1fr!important;gap:6px!important}
-.embeddedAnglePanel .dacstep{padding:7px!important;background:rgba(4,24,36,.92)!important;border:1px solid #214f66!important;border-radius:5px!important}
-.embeddedAnglePanel .angle-drawing-grid{grid-template-columns:1fr 1fr!important;gap:7px!important;margin-top:7px!important}
-.embeddedAnglePanel .angle-drawing-card{padding:7px!important}
-.embeddedAnglePanel .angle-drawing-card svg{max-height:170px!important}
-.embeddedAnglePanel .anglecheck{gap:7px!important;margin-top:7px!important}
-.embeddedAnglePanel .anglebox{padding:8px!important}
-@media(max-width:900px){.embeddedAnglePanel .dacsteps,.embeddedAnglePanel .angle-drawing-grid{grid-template-columns:1fr!important}}
-</style>
-
-<style id="brand-neutral-final">
-.industrialHeader{background:
-  radial-gradient(circle at 76% 38%,rgba(24,166,226,.22) 0 2px,transparent 3px 36px),
-  linear-gradient(90deg,transparent 0 8%,rgba(44,181,235,.10) 8.1% 8.2%,transparent 8.3% 16%,rgba(44,181,235,.08) 16.1% 16.2%,transparent 16.3% 100%),
-  linear-gradient(110deg,#020a12 0%,#06263a 48%,#020a12 100%) !important;}
-.industrialHeader:after{content:"UT";position:absolute;right:5%;top:-20px;font-size:170px;font-weight:900;letter-spacing:12px;color:rgba(56,185,235,.075);line-height:1;pointer-events:none}
-.industrialHeader .headerbar{display:flex!important;max-width:none;height:100%;padding:0 28px;align-items:center;justify-content:space-between;position:relative;z-index:2}
-.industrialHeader .brand{display:flex!important;align-items:center;gap:16px}
-.industrialHeader .brandmark{width:76px;height:58px;display:grid;place-items:center;border:1px solid #2188b7;border-radius:10px;background:linear-gradient(145deg,#0b3850,#04141f);box-shadow:inset 0 0 18px rgba(42,181,235,.12),0 5px 18px #0008}
-.industrialHeader .brandmark span{font-size:30px!important;font-weight:900;color:#7edfff!important;letter-spacing:2px}
-.industrialHeader h1{font-size:36px!important;margin:0!important;letter-spacing:1px!important;text-transform:uppercase}
-.industrialHeader h1 em{font-style:normal;color:#1ea7e5}
-.industrialHeader p{font-size:12px!important;margin:3px 0 7px!important;color:#d2e6ef!important;letter-spacing:1px}
-.industrialHeader .brandtag{background:#051a29;border-color:#1679a6;color:#58c8f4;padding:5px 9px;font-size:10px}
-.industrialHeader .headerTech{display:flex!important;align-items:center;gap:18px;position:relative;z-index:2}
-.industrialHeader .techPulse{width:190px;height:52px;opacity:.85;background:linear-gradient(transparent 48%,#18aee8 49%,#18aee8 51%,transparent 52%);clip-path:polygon(0 50%,8% 50%,12% 20%,18% 78%,25% 50%,34% 50%,40% 8%,46% 92%,53% 50%,62% 50%,69% 25%,75% 75%,82% 50%,100% 50%,100% 55%,82% 55%,75% 80%,69% 30%,62% 55%,53% 55%,46% 97%,40% 13%,34% 55%,25% 55%,18% 83%,12% 25%,8% 55%,0 55%)}
-.industrialHeader .techAngles{font-weight:800;color:#69d7ff;white-space:nowrap}
-.industrialHeader .techLabel{font-size:10px;letter-spacing:1px;color:#a8d6e8;text-align:right;line-height:1.25}
-@media(max-width:900px){.industrialHeader{height:120px!important}.industrialHeader .headerbar{padding:0 14px}.industrialHeader .headerTech{display:none!important}.industrialHeader h1{font-size:26px!important}.industrialHeader p{font-size:9px!important}.industrialHeader .brandmark{width:60px;height:48px}.industrialHeader:after{font-size:120px}}
-</style>
-
-<style id="readability-color-only">
-/* Alleen visuele leesbaarheid: geen functies, berekeningen of inhoud gewijzigd. */
-.industrialHeader h1{color:#f4f8fb!important}
-.industrialHeader h1 em{color:#25b9f2!important}
-.industrialHeader p{color:#d9edf5!important}
-.industrialHeader .brandtag{color:#72d8ff!important}
-.industrialTabs .tooltab{color:#eaf7fc!important}
-.industrialTabs .tooltab span{opacity:1!important;color:#48c8f4!important;font-size:21px!important}
-.industrialTabs .tooltab b{opacity:1!important;color:#f3fbff!important;font-size:11px!important}
-.industrialTabs .tooltab small{color:#a9c7d5!important}
-.uiBar .uiBtn{color:#eefaff!important}
-label{color:#d7e7ee!important}
-.note,.legend{color:#b5c9d3!important}
-.result span,.info span,.calinfo span{color:#a9c1cd!important}
-.result strong,.info strong,.calinfo strong{color:#f7fbfd!important}
-.calhead p{color:#d0e0e8!important}
-.status{color:#dceaf0!important}
-</style>
-
-<style id="readability-color-only">
-/* Alleen kleur/contrast — geen layout, functies of berekeningen gewijzigd */
-.industrialTabs .tooltab{color:#17384d!important;background:#e9f1f5!important;border-color:#6f9caf!important}
-.industrialTabs .tooltab span{color:#087eb7!important;opacity:1!important}
-.industrialTabs .tooltab b{color:#17384d!important;opacity:1!important}
-.industrialTabs .tooltab small{color:#466777!important}
-.industrialTabs .tooltab.active{background:linear-gradient(180deg,#1689ce,#07598e)!important;color:#fff!important;border-color:#2aa9dc!important}
-.industrialTabs .tooltab.active span,.industrialTabs .tooltab.active b{color:#fff!important}
-.industrialTabs .tooltab.active small{color:#dff5ff!important}
-.uiBar>span{color:#d9eaf2!important}
-.uiBar .uiBtn{color:#eefaff!important}
-.status,.note,.legend{color:#dceaf0!important}
-.calhead p{color:#d9e8ee!important}
-.recommendbar .rec span,.dacTarget span{color:#c9dce5!important}
-</style>
-
-<style id="unit-readability-color-only">
-/* Alleen kleur: eenheden zoals "mm" buiten de value blijven altijd leesbaar. */
-.result,.info div,.calinfo{color:#f7fbfd!important}
-body.lightMode .result,body.lightMode .info div,body.lightMode .calinfo{color:#10283a!important}
-</style>
-
-<style id="dark-panel-white-text">
-/* ALLEEN LEESBAARHEID: tekst in donkere vakken/kaarten wit */
-body:not(.lightMode) .card,
-body:not(.lightMode) .card *,
-body:not(.lightMode) .calpanel,
-body:not(.lightMode) .calpanel *,
-body:not(.lightMode) .sidecard,
-body:not(.lightMode) .sidecard *,
-body:not(.lightMode) .result,
-body:not(.lightMode) .result *,
-body:not(.lightMode) .info,
-body:not(.lightMode) .info *,
-body:not(.lightMode) .status,
-body:not(.lightMode) .status *,
-body:not(.lightMode) .recommendbar,
-body:not(.lightMode) .recommendbar *,
-body:not(.lightMode) .rec,
-body:not(.lightMode) .rec *,
-body:not(.lightMode) .dacWorkbench,
-body:not(.lightMode) .dacWorkbench *,
-body:not(.lightMode) .dacTarget,
-body:not(.lightMode) .dacTarget *,
-body:not(.lightMode) .seekStatus,
-body:not(.lightMode) .seekStatus *,
-body:not(.lightMode) .checkitem,
-body:not(.lightMode) .checkitem *,
-body:not(.lightMode) .epochstep,
-body:not(.lightMode) .epochstep *,
-body:not(.lightMode) .anglebox,
-body:not(.lightMode) .anglebox *,
-body:not(.lightMode) .angle-result,
-body:not(.lightMode) .angle-result *,
-body:not(.lightMode) .angle-drawing-card,
-body:not(.lightMode) .angle-drawing-card *,
-body:not(.lightMode) .calinfo,
-body:not(.lightMode) .calinfo *,
-body:not(.lightMode) .instrument,
-body:not(.lightMode) .instrument *,
-body:not(.lightMode) .probeBadge,
-body:not(.lightMode) .probeBadge * {
-  color:#fff !important;
+/* ===== VISUAL MATCH — STOER / PROFESSIONEEL ===== */
+html,body{min-height:100%;background:#02070b!important}
+body{background-image:
+ radial-gradient(ellipse at 50% -8%,rgba(24,91,122,.42),transparent 42%),
+ radial-gradient(ellipse at 105% 42%,rgba(18,56,73,.22),transparent 38%),
+ repeating-linear-gradient(115deg,rgba(255,255,255,.018) 0,rgba(255,255,255,.018) 1px,transparent 1px,transparent 7px),
+ linear-gradient(135deg,#010509 0%,#06131b 48%,#02070b 100%)!important;}
+body:before{content:"BEAM TOOL • UT     ULTRASONIC TESTING     NDT     BEAM TOOL • UT     ULTRASONIC TESTING     NDT"!important;position:fixed;inset:-20% -55%;font-size:clamp(38px,9vw,145px);line-height:2.35;letter-spacing:.11em;font-weight:1000;color:rgba(115,170,190,.055);text-shadow:0 0 22px rgba(0,0,0,.5);transform:rotate(-18deg);z-index:0;pointer-events:none;white-space:pre-wrap;text-align:center}
+body:after{content:"UT"!important;position:fixed;right:-80px;bottom:2%;font-size:340px;font-weight:1000;letter-spacing:-.08em;color:rgba(45,196,229,.025);text-shadow:0 0 35px rgba(45,196,229,.04);transform:rotate(-12deg);z-index:0;pointer-events:none}
+.app{max-width:1160px;position:relative;z-index:1}
+.header{padding:18px 18px 15px!important;background:linear-gradient(180deg,rgba(4,18,27,.985),rgba(2,9,14,.96))!important;border-bottom:1px solid #28667f!important;box-shadow:0 12px 35px #000b,inset 0 1px 0 rgba(255,255,255,.04)}
+.header:before{content:"";position:absolute;right:18px;top:10px;width:120px;height:52px;border:1px solid rgba(91,213,240,.18);border-radius:12px;transform:skewX(-18deg);box-shadow:inset 0 0 18px rgba(20,190,230,.04)}
+.header:after{height:3px!important;background:linear-gradient(90deg,transparent,#17d8ff 22%,#17d8ff 40%,#ffc13d 50%,#17d8ff 60%,#17d8ff 78%,transparent)!important;box-shadow:0 0 12px rgba(24,217,255,.35)}
+.logo{width:54px!important;height:54px!important;border-radius:14px!important;border:2px solid #63e8ff!important;background:linear-gradient(145deg,#164356,#06141e)!important;box-shadow:0 0 22px rgba(24,217,255,.24),inset 0 0 18px rgba(24,217,255,.12)!important;font-size:18px!important;color:#fff!important;position:relative;overflow:hidden}
+.logo:after{content:"";position:absolute;width:34px;height:3px;background:#ffc13d;transform:rotate(-24deg);bottom:10px;left:9px;box-shadow:0 0 8px rgba(255,193,61,.45)}
+.brand h1{font-size:clamp(22px,3vw,31px)!important;letter-spacing:.055em!important;font-weight:1000!important;text-shadow:0 0 18px rgba(24,217,255,.25)!important}
+.brand h1:after{width:9px!important;height:9px!important;background:#ffc13d!important;box-shadow:0 0 12px #ffc13d!important}
+.brand p{font-size:9px!important;letter-spacing:.19em!important;color:#82b9cb!important}
+.tabs{padding:12px 18px 11px!important;gap:9px!important;background:linear-gradient(180deg,rgba(1,7,11,.95),rgba(2,9,14,.7))!important}
+.tab{min-height:46px;border-radius:12px!important;border:1px solid #225b72!important;background:linear-gradient(180deg,#0b2737,#06141e)!important;box-shadow:inset 0 1px 0 #ffffff12,0 5px 16px #0008!important;color:#dff5fb!important;font-size:12px!important;letter-spacing:.055em!important;text-shadow:0 1px 2px #000}
+.tab.active{border-color:#1edbff!important;background:linear-gradient(180deg,#0c4a62,#082436)!important;box-shadow:0 0 20px rgba(24,217,255,.2),inset 0 1px 0 #ffffff22!important;color:#fff!important}
+.wrap{padding:0 18px!important}
+.card{border-radius:18px!important;background:linear-gradient(145deg,rgba(10,31,43,.98),rgba(2,12,19,.985))!important;border-color:#205b73!important;box-shadow:0 13px 34px #0009,inset 0 1px 0 rgba(255,255,255,.06)!important}
+.field{border-radius:12px!important;background:linear-gradient(145deg,#09202d,#04121a)!important;border-color:#225b72!important;box-shadow:inset 0 1px 0 #ffffff0b,0 4px 10px #0004!important}
+.field label{color:#72d2ea!important;font-weight:800!important;letter-spacing:.07em!important}
+.field input,.field select{min-height:43px;border-radius:9px!important;background:linear-gradient(180deg,#0c2b3c,#071a25)!important;border-color:#2b6680!important;font-weight:650;box-shadow:inset 0 2px 6px #0009!important}
+.field select{color-scheme:dark!important}
+.field select option{background:#081b27!important;color:#f7fcff!important}
+.field select option:checked{background:#0c4a62!important;color:#fff!important}
+.visualRow{gap:14px!important}
+.diagramCard,.ascan{border-radius:16px!important;background:linear-gradient(145deg,rgba(6,24,34,.985),rgba(1,9,14,.99))!important;border-color:#215c74!important;box-shadow:0 14px 34px #000b,inset 0 1px 0 #ffffff0b!important}
+.diagramCard{padding:12px!important}
+.diagramCard:after{content:"BUNDELWEERGAVE";position:absolute;left:14px;top:10px;font-size:10px;font-weight:1000;letter-spacing:.14em;color:#ffc13d;text-shadow:0 0 8px rgba(255,193,61,.18)}
+.ascan:after{content:"LIVE SIMULATIE";position:absolute;right:12px;top:10px;font-size:9px;font-weight:900;letter-spacing:.12em;color:#65e7ff}
+.ascan h3{padding-top:4px;font-size:15px!important;letter-spacing:.05em}
+.legend{border-top:1px solid rgba(70,145,168,.2);padding-top:8px}
+.results{gap:9px!important;margin-top:2px}
+.result{min-height:78px!important;border-radius:12px!important;background:linear-gradient(145deg,#09202d,#030e15)!important;border-color:#205a71!important;box-shadow:inset 0 1px 0 #ffffff0a,0 6px 16px #0007!important}
+.result span{color:#70cce3!important;font-weight:800!important}
+.result strong{font-size:18px!important;color:#f8fdff!important;text-shadow:0 0 12px rgba(24,217,255,.16)!important}
+.statusGood{min-height:78px!important;border-radius:12px!important;background:linear-gradient(145deg,#07331c,#03170e)!important;border:1px solid #20a957!important;box-shadow:0 0 22px rgba(85,237,122,.11),inset 0 1px 0 #ffffff0c!important}
+.lock{right:14px!important;bottom:14px!important;border-radius:14px!important;padding:12px 17px!important;border:1px solid #ffc13d!important;background:linear-gradient(145deg,#17252d,#061017)!important;box-shadow:0 0 24px rgba(255,193,61,.14),0 12px 30px #000d!important}
+.modal{backdrop-filter:blur(7px)!important}
+.sheet{border-radius:20px!important;background:linear-gradient(145deg,#0b2938,#03111a)!important;border:1px solid #2a6880!important;box-shadow:0 25px 65px #000e!important}
+@media(max-width:700px){
+ .header{padding:15px 12px 12px!important}.logo{width:48px!important;height:48px!important}.brand h1{font-size:20px!important}.brand p{font-size:7px!important;letter-spacing:.13em!important}.tabs{padding:10px 12px!important}.wrap{padding:0 12px!important}.card{border-radius:15px!important}.visualRow{gap:10px!important}.diagramCard{padding:10px!important}.diagramCard:after{left:11px;top:8px;font-size:8px}.ascan:after{right:9px;top:8px;font-size:7px}.result{min-height:74px!important}.lock{right:10px!important;bottom:10px!important;font-size:12px!important}
 }
-body:not(.lightMode) input,
-body:not(.lightMode) select { color:#fff !important; }
-body:not(.lightMode) input::placeholder { color:#dbe8ef !important; opacity:1; }
-</style>
-<style id="mm-white-only">
-/* Alleen kleur: mm in donkere resultaatvakken wit. */
-body:not(.lightMode) .result .unit{color:#f7fbfd !important;opacity:1 !important;text-shadow:none !important;}
-body.lightMode .result .unit{color:#10283a !important;opacity:1 !important;text-shadow:none !important;}
-</style>
-<style id="mm-final-white">
-/* Alleen kleur: de mm-eenheid in donkere resultaatvakken exact dezelfde tekstkleur als de witte waarden. */
-body:not(.lightMode) .results .result > .unit { color: rgb(244,248,251) !important; -webkit-text-fill-color: rgb(244,248,251) !important; opacity: 1 !important; text-shadow: none !important; }
+
+
+.lockIcon{width:21px;height:21px;fill:none;stroke:#ffbd4a;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 5px rgba(255,189,74,.45))}
+/* STOERE TECHNISCHE KNOP-ICONEN */
+.tab{display:flex;align-items:center;justify-content:center;gap:7px;min-height:46px;position:relative;overflow:hidden}
+.tabIcon{width:22px;height:22px;flex:0 0 22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 4px rgba(33,216,255,.28))}
+.tab span{display:inline-block;line-height:1.1}
+.tab.active .tabIcon{color:var(--cyan);filter:drop-shadow(0 0 7px rgba(33,216,255,.55))}
+.lock{display:flex!important;align-items:center;justify-content:center;gap:8px}
+/* LASGEOMETRIE: sleepbare hoogte-handles */
+.weldHandle{cursor:ns-resize;touch-action:none;filter:drop-shadow(0 0 7px rgba(33,216,255,.65))}.weldHandle circle{fill:#071923;stroke:#22d8ff;stroke-width:3}.weldHandle line{stroke:#22d8ff;stroke-width:2}.weldHandle text{fill:#9ff2ff;font-size:9px;font-weight:800;pointer-events:none}
+@media(max-width:430px){.tab{gap:5px;font-size:10px}.tabIcon{width:19px;height:19px;flex-basis:19px}}
 </style>
 </head>
 <body>
-
-<header class="industrialHeader"><div class="headerbar"><div class="brand"><div class="brandmark"><span>BT</span></div><div><h1>BEAM TOOL <em>– UT</em></h1><p>ULTRASONIC TESTING • LASDOORSNEDE • LASGEOMETRIE • BUNDEL</p><span class="brandtag">MANUELE UT • K1 / V1 • EN / ISO • ASME</span></div></div><div class="headerTech"><div class="techPulse"></div><div class="techAngles">45° &nbsp; 60° &nbsp; 70°</div><div class="techLabel">INDUSTRIAL<br><b>UT INSPECTION</b></div></div></div></header>
-<div class="tooltabs industrialTabs" role="tablist" aria-label="BEAM TOOL functies">
-<button type="button" class="tooltab active" data-tab="beam" aria-selected="true"><span>⌂</span><b>1. BEAM TOOL</b><small>UT • BUNDEL & RESULTAAT</small></button>
-<button type="button" class="tooltab" data-tab="index" aria-selected="false"><span>⌖</span><b>2. K1 INDEXPUNT</b><small>INDEXPUNT BEPALEN</small></button>
-<button type="button" class="tooltab" data-tab="angle" aria-selected="false"><span>⌁</span><b>3. TASTERHOEK CONTROLEREN</b><small>K1 / V1 • POSITIE A</small></button>
-<button type="button" class="tooltab" data-tab="asme" aria-selected="false"><span>⊕</span><b>4. ASME</b><small>DIEPTES & AFSTANDEN</small></button>
-<button type="button" class="tooltab" data-tab="en" aria-selected="false"><span>⊕</span><b>5. EN / ISO</b><small>DIEPTES & AFSTANDEN</small></button>
-<button type="button" class="tooltab" data-tab="dac" aria-selected="false"><span>◈</span><b>6. DAC / EPOCH 650</b><small>KALIBRATIE</small></button>
+<div class="app">
+<header class="header"><div class="brand"><div class="logo">BT</div><div><h1>BEAM TOOL – UT</h1><p>iPHONE • MANUELE ULTRASOONDE TESTING • NDT</p></div></div></header>
+<nav class="tabs"><button class="tab active" data-tool="beam"><svg class="tabIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17h18M5 14l5-5 3 3 6-6"/><path d="M16 6h3v3"/></svg><span>BEAM TOOL</span></button><button class="tab" data-tool="k1"><svg class="tabIcon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4M8 16l8-8"/></svg><span>K1 INDEXPUNT</span></button><button class="tab" data-tool="angle"><svg class="tabIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16M5 19L18 6"/><path d="M9 19a5 5 0 0 0-1.5-3.5"/></svg><span>TASTERHOEK</span></button><button class="tab" data-tool="cal"><svg class="tabIcon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M8 18h8"/></svg><span>KALIBRATIE</span></button></nav>
+<main class="wrap">
+<section id="beam" class="tool active">
+<div class="card"><div class="inputs">
+<div class="field"><label>PLAATDIKTE LINKS (mm)</label><input id="thickL" type="number" value="20" min="1" max="300" step="0.5"></div>
+<div class="field"><label>PLAATDIKTE RECHTS (mm)</label><input id="thickR" type="number" value="20" min="1" max="300" step="0.5"></div>
+<div class="field"><label>TASTERHOEK (°)</label><select id="angleSel"><option>45</option><option selected>60</option><option>70</option></select></div>
+<div class="field"><label>TASTER</label><select id="probe"><option>4 MHz 8x9</option><option>2 MHz 8x9</option><option>2 MHz 14x14</option><option>Recht 10 mm</option><option>Recht 24 mm</option></select></div>
+<div class="field"><label>LASCONFIGURATIE</label><select id="weldType"><option>V-naad (enkelzijdig) - Full Pen</option><option>X-naad - Full Pen</option><option>½ V-naad - Full Pen</option><option>U-naad - Full Pen</option><option>Dubbele U-naad - Full Pen</option><option>J-naad - Full Pen</option><option>Dubbele J-naad - Full Pen</option><option>ongelijkzijdige X-naad - Full Pen</option><option>½ U-naad - Full Pen</option></select></div>
+<div class="field"><label>LASZIJDEN</label><select id="weldSymmetry"><option value="equal" selected>Gelijkzijdig</option><option value="unequal">Ongelijkzijdig</option></select></div>
+<div class="field"><label>LASFOUT</label><select id="defectType"><option>Geen fout</option><option>Scheur</option><option>Gebrek aan versmelting</option><option>Gebrek aan doorlassing</option><option>Porositeit</option><option>Slakinsluiting</option><option>Ondersnijding</option></select></div>
+<div class="field"><label>LASBREEDTE (mm)</label><input id="weld" type="number" value="8" min="1" max="100" step="0.5"></div> <div class="field"><label>RADIUS U/J (mm)</label><input id="grooveRadius" type="number" value="8" min="2" max="30" step="0.5"></div>
+<div class="field"><label>VOORBEREIDINGSHOEK (°)</label><input id="prepAngle" type="number" value="60" min="20" max="120" step="1"></div>
+<div class="field"><label>WORTELOPENING (mm)</label><input id="rootGap" type="number" value="2" min="0" max="20" step="0.5"></div>
+<div class="field"><label>WORTELVLAK / LAND (mm)</label><input id="rootLand" type="number" value="2" min="0" max="20" step="0.5"></div>
+<div class="field"><label>VERJONGING</label><select id="taper"><option value="no">Geen</option><option value="yes" selected>Ja</option></select></div>
+<div class="field"><label>VERJONGINGSLENGTE (mm)</label><input id="taperLen" type="number" value="40" min="1" max="300" step="1"></div>
+<div class="field"><label>PLAATORIËNTATIE</label><select id="plateFlip"><option value="normal" selected>Verjonging onder</option><option value="flipped">Verjonging boven</option></select></div>
+<div class="field"><label>INDICATIE DIEPTE (mm)</label><input id="flawDepth" type="number" value="10" min="0.5" max="299" step="0.5"></div>
+<div class="field"><label>FOUT X T.O.V. HARTLIJN (mm)</label><input id="flawX" type="number" value="0" min="-50" max="50" step="0.5"></div>
+<div class="field"><label>RANGE (mm)</label><select id="range"><option>50</option><option selected>100</option><option>150</option><option>200</option><option>300</option><option>500</option></select></div>
+<div class="field"><label>SPRONG IN A-SCAN</label><select id="skipSelect"><option value="half" selected>½ sprong</option><option value="whole">1 hele sprong</option><option value="onehalf">1½ sprong</option></select></div>
+<div class="field"><label>GELUIDSSNELHEID (m/s)</label><input id="soundSpeed" type="number" value="3250" min="500" max="7000" step="10"></div>
+</div></div>
+<div class="visualRow">
+<div class="diagramCard"><svg id="beamSvg" viewBox="0 0 700 390" preserveAspectRatio="xMidYMid meet"></svg><div class="legend"><span><i class="cyan"></i>Bundel (heen)</span><span><i class="cyan"></i>Bundel (terug)</span><span><i class="white"></i>Achterwand</span><span><i class="orange"></i>Taster</span><span><i class="red"></i>Indicatie</span></div><div class="caption">Sleep de oranje taster over het plaatoppervlak. De geluidshoek blijft exact behouden. Sleep de rode lasfout in de las om zelf de foutlocatie te bepalen; X wordt gemeten vanaf de hartlijn van de las en de diepte vanaf het oppervlak.</div></div>
+<div class="ascan"><h3>A-SCAN <span style="font-weight:400;color:#8fa8b8">(simulatie)</span></h3><svg id="aScan" viewBox="0 0 300 220"></svg><div class="caption">Bereik: <b id="rangeLabel">100 mm</b></div></div>
 </div>
-<div class="uiBar" aria-label="Weergave-instellingen">
-  <button class="uiBtn" id="themeBtn" type="button">☀ LICHT / 🌙 DONKER</button>
-  <button class="uiBtn" id="tabletBtn" type="button">▣ TABLET-MODUS</button>
-  <span style="font-size:11px;color:var(--muted);font-weight:800">VELDWEERGAVE • SNEL • DUIDELIJK</span>
-</div>
-<section id="tab-asme" class="calpanel" hidden>
-  <div class="calhead"><h2>ASME V • DIEPTES & AFSTANDEN</h2><p>Jip en Janneke rekent de praktische geluidsweg-, skip-, range- en scanmaten uit voor de ASME-route uit ASME-procedure / kalibratie-instructie.</p></div>
-  <div class="calgrid">
-    <label>Wanddikte t (mm)<input id="asmeT" type="number" min="1" step="0.1" value="35"></label>
-    <label>Kies taster<select id="asmeProbe">
-      <option value="AM4R-8x9-45">AM4R 8×9 • 4 MHz • 45°</option>
-      <option value="AM4R-8x9-60" selected>AM4R 8×9 • 4 MHz • 60°</option>
-      <option value="AM4R-8x9-70">AM4R 8×9 • 4 MHz • 70°</option>
-      <option value="AM2R-8x9-45">AM2R 8×9 • 2 MHz • 45°</option>
-      <option value="AM2R-8x9-60">AM2R 8×9 • 2 MHz • 60°</option>
-      <option value="AM2R-8x9-70">AM2R 8×9 • 2 MHz • 70°</option>
-      <option value="AM2R-14x14-45">AM2R 14×14 • 2 MHz • 45°</option>
-      <option value="AM2R-14x14-60">AM2R 14×14 • 2 MHz • 60°</option>
-      <option value="AM2R-14x14-70">AM2R 14×14 • 2 MHz • 70°</option>
-      <option value="AM2R-20x22-45">AM2R 20×22 • 2 MHz • 45°</option>
-      <option value="AM2R-20x22-60">AM2R 20×22 • 2 MHz • 60°</option>
-      <option value="AM2R-20x22-70">AM2R 20×22 • 2 MHz • 70°</option>
-    </select></label>
-    <label>Kies ASME referentieblok<select id="asmeBlockSelect">
-      <option value="19">19 mm • Ø 2,5 ± 0,8 mm • voor 10 &lt; t ≤ 25</option>
-      <option value="38" selected>38 mm • Ø 3,0 ± 0,8 mm • voor 25 &lt; t ≤ 50</option>
-      <option value="75">75 mm • Ø 5,0 ± 0,8 mm • voor 50 &lt; t ≤ 100</option>
-      <option value="125">125 mm • Ø 6,5 ± 0,8 mm • voor 100 &lt; t ≤ 150</option>
-      <option value="175">175 mm • Ø 8,0 ± 0,8 mm • voor 150 &lt; t ≤ 200</option>
-    </select></label>
-    <div class="calinfo"><span>Gekozen blok</span><strong id="asmeThickness">38 mm</strong></div>
-    <div class="calinfo"><span>Referentiegat</span><strong id="asmeSdh">Ø 3,0 ± 0,8 mm</strong></div>
-    <div class="calinfo"><span>Gekozen taster</span><strong id="asmeProbeInfo">AM2R 8×9 • 2 MHz • 60°</strong></div>
-  </div>
-  <div class="recommendbar" id="asmeRecommendBar"><div class="rec"><span>Aanbevolen blok</span><br><strong id="asmeRecommended">—</strong></div><div class="rec"><span>Status keuze</span><br><strong id="asmeBlockState">—</strong></div><button type="button" class="uiBtn" id="asmeAutoBlockBtn">AUTO BLOK</button></div>
-  <div class="results" style="grid-template-columns:repeat(3,1fr)">
-    <div class="result"><span>½ skip – horizontale afstand</span><strong id="asmeHalfSkip">60,6 mm</strong></div>
-    <div class="result"><span>1 × full skip</span><strong id="asmeFullSkip">121,2 mm</strong></div>
-    <div class="result"><span>Geluidspad tot backwall</span><strong id="asmeSoundPath">70,0 mm</strong></div>
-    <div class="result"><span>Min. Range ASME</span><strong id="asmeMinRange">140,0 mm</strong></div>
-    <div class="result"><span>Min. scan area ASME</span><strong id="asmeScanArea">122,5 mm</strong></div>
-    <div class="result"><span>1,25 × full skip</span><strong id="asme125Skip">151,5 mm</strong></div>
-    <div class="result"><span>Diepte ¼T • geometrisch</span><strong id="asmeQuarterDepth">8,8 mm</strong></div>
-    <div class="result"><span>Horizontaal op ¼T</span><strong id="asmeQuarterX">15,2 mm</strong></div>
-    <div class="result"><span>Diepte ½T • geometrisch</span><strong id="asmeHalfDepth">17,5 mm</strong></div>
-    <div class="result"><span>Horizontaal op ½T</span><strong id="asmeHalfX">30,3 mm</strong></div>
-  </div>
-  <div class="calcaption" style="position:static;text-align:left;margin-top:8px;padding:8px;background:#0b2738;border-radius:6px;color:#b9cbd5">De ¼T/½T-dieptes hieronder zijn <strong>geometrische hulpmaten</strong> voor de gekozen hoek. Ze zijn niet automatisch een voorgeschreven DAC-punt.</div>
-  <div class="status" id="asmeNote">ASME-procedure: 45° ≥ 3,5t; 60° ≥ 5t; 70° ≥ 7,5t. Voor de scanzone gelden de procedurewaarden van kalibratie-instructie.</div>
-  <div class="caldrawing" id="asmeDrawing"></div>
-  <div class="dacWorkbench">
-    <h3>ASME • DAC-WERKBLAD — ZOEK HET GAT</h3>
-    <div class="dacwbgrid">
-      <div class="dacTarget"><h4>REFERENTIEPUNT</h4>
-        <label>DAC-punt<select id="asmePointSelect"><option value="0.25">¼T</option><option value="0.5" selected>½T</option><option value="0.75">¾T</option></select></label>
-        <label style="margin-top:8px;display:block">Huidige tasterpositie vanaf indexpunt (mm)<input id="asmeProbePos" type="number" step="0.1" value="0"></label>
-        <div class="seekStatus" id="asmeSeekStatus">—</div>
-        <div style="margin-top:8px"><span style="color:var(--muted)">Theoretische positie</span><div class="bigread" id="asmeTargetX">—</div></div>
-        <div style="margin-top:8px"><span style="color:var(--muted)">Geluidspad naar gat</span><div class="bigread" id="asmeTargetSP">—</div></div>
-      </div>
-      <div class="dacTarget"><h4>DAC-PUNTENLIJST</h4><div id="asmePointTable"></div><div style="margin-top:10px"><h4>45° / 60° / 70° VERGELIJKING</h4><div id="asmeAngleCompare"></div></div></div>
-    </div>
-  </div>
-
+<div class="card"><div class="results">
+<div class="result"><span>SOUND PATH (mm)</span><strong id="path">—</strong></div><div class="result"><span>GELUIDSSNELHEID (m/s)</span><strong id="speedOut">3250</strong></div><div class="result"><span>PROJECTIE OPPERVLAK (mm)</span><strong id="proj">—</strong></div><div class="result"><span>HALVE SPRONG (mm)</span><strong id="half">—</strong></div><div class="result"><span>HELE SPRONG (mm)</span><strong id="whole">—</strong></div><div class="result"><span>INDICATIEPOSITIE (mm)</span><strong id="flawPath">—</strong></div><div class="result"><span>DIEPTE (mm)</span><strong id="depthOut">—</strong></div><div class="statusGood" id="beamStatus"><small>INDICATIE IN BUNDEL</small>JA</div>
+</div></div>
 </section>
-<section id="tab-en" class="calpanel" hidden>
-  <div class="calhead"><h2>EN / ISO 17640 • DIEPTES & AFSTANDEN</h2><p>Jip en Janneke rekent de praktische geluidsweg-, skip-, range- en scanmaten uit voor EN-procedure / ISO 17640 Technique 1.</p></div>
-  <div class="calgrid">
-    <label>Wanddikte t (mm)<input id="enT" type="number" min="1" step="0.1" value="35"></label>
-    <label>Kies taster<select id="enProbe">
-      <option value="AM4R-8x9-45">AM4R 8×9 • 4 MHz • 45°</option>
-      <option value="AM4R-8x9-60">AM4R 8×9 • 4 MHz • 60°</option>
-      <option value="AM4R-8x9-70" selected>AM4R 8×9 • 4 MHz • 70°</option>
-      <option value="AM2R-8x9-45">AM2R 8×9 • 2 MHz • 45°</option>
-      <option value="AM2R-8x9-60">AM2R 8×9 • 2 MHz • 60°</option>
-      <option value="AM2R-8x9-70">AM2R 8×9 • 2 MHz • 70°</option>
-      <option value="AM2R-14x14-45">AM2R 14×14 • 2 MHz • 45°</option>
-      <option value="AM2R-14x14-60">AM2R 14×14 • 2 MHz • 60°</option>
-      <option value="AM2R-14x14-70">AM2R 14×14 • 2 MHz • 70°</option>
-      <option value="AM2R-20x22-45">AM2R 20×22 • 2 MHz • 45°</option>
-      <option value="AM2R-20x22-60">AM2R 20×22 • 2 MHz • 60°</option>
-      <option value="AM2R-20x22-70">AM2R 20×22 • 2 MHz • 70°</option>
-    </select></label>
-    <label>Kies EN referentieblok<select id="enBlockSelect">
-      <option value="20">20 mm • Ø 3,0 ± 0,2 mm • voor 8 &lt; t ≤ 25</option>
-      <option value="40" selected>40 mm • Ø 3,0 ± 0,2 mm • voor 25 &lt; t ≤ 50</option>
-      <option value="75">75 mm • Ø 3,0 ± 0,2 mm • voor 50 &lt; t ≤ 100</option>
-    </select></label>
-    <div class="calinfo"><span>Gekozen blok</span><strong id="enThickness">40 mm</strong></div>
-    <div class="calinfo"><span>Referentiegat</span><strong id="enSdh">Ø 3,0 ± 0,2 mm</strong></div>
-    <div class="calinfo"><span>Gekozen taster</span><strong id="enProbeInfo">AM4R 8×9 • 4 MHz • 70°</strong></div>
-  </div>
-  <div class="recommendbar" id="enRecommendBar"><div class="rec"><span>Aanbevolen blok</span><br><strong id="enRecommended">—</strong></div><div class="rec"><span>Status keuze</span><br><strong id="enBlockState">—</strong></div><button type="button" class="uiBtn" id="enAutoBlockBtn">AUTO BLOK</button></div>
-  <div class="results" style="grid-template-columns:repeat(3,1fr)">
-    <div class="result"><span>½ skip – horizontale afstand</span><strong id="enHalfSkip">60,6 mm</strong></div>
-    <div class="result"><span>1 × full skip</span><strong id="enFullSkip">121,2 mm</strong></div>
-    <div class="result"><span>Geluidspad tot backwall</span><strong id="enSoundPath">70,0 mm</strong></div>
-    <div class="result"><span>Min. Range EN / ISO</span><strong id="enMinRange">175,0 mm</strong></div>
-    <div class="result"><span>Min. scan area EN / ISO</span><strong id="enScanArea">157,5 mm</strong></div>
-    <div class="result"><span>1,25 × full skip</span><strong id="en125Skip">151,5 mm</strong></div>
-    <div class="result"><span>Diepte ¼T • geometrisch</span><strong id="enQuarterDepth">8,8 mm</strong></div>
-    <div class="result"><span>Horizontaal op ¼T</span><strong id="enQuarterX">15,2 mm</strong></div>
-    <div class="result"><span>Diepte ½T • geometrisch</span><strong id="enHalfDepth">17,5 mm</strong></div>
-    <div class="result"><span>Horizontaal op ½T</span><strong id="enHalfX">30,3 mm</strong></div>
-  </div>
-  <div class="calcaption" style="position:static;text-align:left;margin-top:8px;padding:8px;background:#0b2738;border-radius:6px;color:#b9cbd5">De ¼T/½T-dieptes hieronder zijn <strong>geometrische hulpmaten</strong> voor de gekozen hoek. Ze zijn niet automatisch een voorgeschreven DAC-punt.</div>
-  <div class="status" id="enNote">EN-procedure: 45° ≥ 3,5t; 60° ≥ 5t; 70° ≥ 7,5t. Voor volledige welddekking moet minimaal 1,25 × full skip worden gecontroleerd.</div>
-  <div class="caldrawing" id="enDrawing"></div>
-  <div class="dacWorkbench">
-    <h3>EN / ISO • DAC-WERKBLAD — ZOEK HET GAT</h3>
-    <div class="dacwbgrid">
-      <div class="dacTarget"><h4>REFERENTIEPUNT</h4>
-        <label>DAC-punt<select id="enPointSelect"><option value="0.25">¼T</option><option value="0.5" selected>½T</option><option value="0.75">¾T</option></select></label>
-        <label style="margin-top:8px;display:block">Huidige tasterpositie vanaf indexpunt (mm)<input id="enProbePos" type="number" step="0.1" value="0"></label>
-        <div class="seekStatus" id="enSeekStatus">—</div>
-        <div style="margin-top:8px"><span style="color:var(--muted)">Theoretische positie</span><div class="bigread" id="enTargetX">—</div></div>
-        <div style="margin-top:8px"><span style="color:var(--muted)">Geluidspad naar gat</span><div class="bigread" id="enTargetSP">—</div></div>
-      </div>
-      <div class="dacTarget"><h4>DAC-PUNTENLIJST</h4><div id="enPointTable"></div><div style="margin-top:10px"><h4>45° / 60° / 70° VERGELIJKING</h4><div id="enAngleCompare"></div></div></div>
-    </div>
-  </div>
+<section id="k1" class="tool"><div class="card"><h2>K1 INDEXPUNT – 100 mm RADIUS</h2><p class="help">Beweeg de taster op het 100 mm radiusblok naar de maximale respons. Meet de afstand van de voorzijde van het blok tot de voorzijde van de taster. Trek die afstand af van 100 mm.</p><div class="field"><label>GEMETEN AFSTAND (mm)</label><input id="k1dist" type="number" value="14" min="0" max="100" step="0.1"></div><div class="result" style="margin-top:9px"><span>INDEXPUNT</span><strong id="k1out">86.0</strong></div></div></section>
+<section id="angle" class="tool"><div class="card"><h2>TASTERHOEK CONTROLEREN</h2><p class="help">Vul alleen de werkelijk gemeten maat a en het eerder bepaalde indexpunt b in. Gatdiepte 15 mm en vaste maat 35 mm zijn vaste blokmaten.</p><div class="inputs"><div class="field"><label>MAAT a (mm)</label><input id="a" type="number" placeholder="gemeten" step="0.1"></div><div class="field"><label>INDEXPUNT b (mm)</label><input id="b" type="number" placeholder="gemeten" step="0.1"></div><div class="field"><label>VASTE MAAT (mm)</label><input id="fixed" value="35" readonly></div><div class="field"><label>GATDIEPTE (mm)</label><input id="holeDepth" value="15" readonly></div></div><div class="result" style="margin-top:9px"><span>BC = a + b − 35</span><strong id="bc">—</strong></div><div class="result" style="margin-top:9px"><span>BEREKENDE HOEK</span><strong id="angleOut">—</strong></div></div></section>
+<section id="cal" class="tool"><div class="card"><h2>KALIBRATIE – EPOCH 650</h2><div class="help"><p><b>1.</b> Kies het juiste kalibratieblok en controleer de taster.</p><p><b>2.</b> Controleer indexpunt en tasterhoek.</p><p><b>3.</b> Stel de benodigde Range in.</p><p><b>4.</b> Zoek maximale echo en zet het referentiepunt rond 80% FSH.</p><p><b>5.</b> Leg de DAC-punten vast en controleer de kalibratie.</p></div></div></section>
+</main></div>
+<button id="coreBtn" class="lock"><svg class="lockIcon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>CORE VERGRENDELD</span></button>
+<div id="modal" class="modal"><div class="sheet"><h3>CORE BEVEILIGING</h3><p class="help">Voer de PIN in om de rekenkern tijdelijk te ontgrendelen.</p><input id="pin" type="password" inputmode="numeric" maxlength="6"><div id="err" class="err"></div><button id="unlock" class="btn primary">ONTGRENDEL CORE</button><button id="cancel" class="btn">ANNULEREN</button></div></div>
+<script>const $=id=>document.getElementById(id);
+const state={probeX:120,dragMode:null,dragPointerId:null,weldHandle:null,weldTopFrac:.5,weldBottomFrac:.5};
+const n=id=>parseFloat($(id).value)||0;
 
-</section>
-
-<section id="tab-dac" class="calpanel" hidden>
-  <div class="calhead"><h2>DAC MAKEN – JIP EN JANNEKE</h2><p>Stapsgewijze instructie voor de EPOCH 650. Eerst bepalen welke geluidswegen je nodig hebt, daarna index en tasterhoek controleren en pas daarna de DAC-punten opnemen.</p></div>
-  <div class="dacsteps">
-    <div class="dacstep"><b>1. KIES HET JUISTE BLOK</b><p><strong>EN / EN-procedure:</strong> 20 mm voor 8 &lt; t ≤ 25 mm; 40 mm voor 25 &lt; t ≤ 50 mm; 75 mm voor 50 &lt; t ≤ 100 mm. De referentiegaten zijn Ø 3,0 ± 0,2 mm.</p><p><strong>ASME / ASME-procedure:</strong> 19 mm voor 10 &lt; t ≤ 25 mm; 38 mm voor 25 &lt; t ≤ 50 mm; 75 mm voor 50 &lt; t ≤ 100 mm; 125 mm voor 100 &lt; t ≤ 150 mm; 175 mm voor 150 &lt; t ≤ 200 mm. Gatdiameters: Ø 2,5 ± 0,8 / Ø 3,0 ± 0,8 / Ø 5,0 ± 0,8 / Ø 6,5 ± 0,8 / Ø 8,0 ± 0,8 mm.</p></div>
-    <div class="dacstep"><b>2. BEPAAL EERST DE GELUIDSWEGEN</b><p>Kijk welke referentiepunten je voor de DAC nodig hebt. Zet de <strong>Range</strong> zo dat de eerste en de verdere benodigde echo's zichtbaar zijn.</p><p><strong>Jip en Janneke:</strong> eerst weten over welke geluidsweg je gaat meten. Daarna pas de taster verder kalibreren.</p></div>
-    <div class="dacstep"><b>3. BEPAAL DE INDEX</b><p>Zoek op het kalibratieblok het maximale referentie-echo. Beweeg de taster rustig heen en weer tot de echo maximaal is. Leg het <strong>indexpunt</strong> van de taster vast ten opzichte van de nulmarkering van het blok.</p><p><strong>Jip en Janneke:</strong> waar komt het geluid het materiaal in? Dat punt is je index.</p></div>
-    <div class="dacstep"><b>4. CONTROLEER DE TASTERHOEK</b><p>Open <strong>TASTERHOEK CONTROLEREN</strong> in deze app. Zoek op het kalibratieblok opnieuw de maximale echo bij de juiste hoekmarkering. Lees af welke graadmarkering precies onder het indexpunt staat.</p><p>Dat is de <strong>werkelijke tasterhoek</strong>. Vul die werkelijke hoek daarna in op de EPOCH 650 bij <strong>Trig → Angle</strong>.</p></div>
-    <div class="dacstep"><b>5. ZET DE EPOCH 650 GOED</b><p>Kies de juiste taster. Voor staal gebruikt deze app <strong>3230 m/s transversaal</strong> als werkbasis. Zet <strong>Basic → Range</strong> zo dat alle benodigde referentie-echo's zichtbaar zijn.</p><p>De procedure-minima zijn: 45° ≥ 3,5 × t; 60° ≥ 5 × t; 70° ≥ 7,5 × t.</p></div>
-    <div class="dacstep"><b>6. ZOEK HET EERSTE DAC-GAT</b><p>Coupleer de taster. Zoek het eerste benodigde referentiegat, bijvoorbeeld <strong>¼T</strong> wanneer dat bij jouw gekozen blok en opbouw van toepassing is. Beweeg rustig heen en weer tot de echo maximaal is. Zet Gate 1 over de echo.</p></div>
-    <div class="dacstep"><b>7. MAAK HET EERSTE DAC-PUNT</b><p>Ga naar <strong>DAC/TCG → Setup → Standard</strong> (of ASME-3 wanneer de procedure dat voorschrijft). Gebruik <strong>Add</strong> om het punt vast te leggen. De EPOCH 650 kan met <strong>AUTO 80%</strong> de echo op ongeveer 80% FSH zetten vóór het vastleggen.</p></div>
-    <div class="dacstep"><b>8. HERHAAL VOOR DE VOLGENDE PUNTEN</b><p>Ga naar de volgende referentie-geluidsweg. Zoek opnieuw de maximale echo, centreer Gate 1 en leg het punt vast. Herhaal dit voor alle benodigde referentiepunten.</p></div>
-    <div class="dacstep"><b>9. KLAAR = DAC-REFERENTIE</b><p>Druk <strong>Done</strong>. De EPOCH 650 verbindt de vastgelegde punten tot de DAC-curve. De hoofdcurve is de <strong>100% DAC-referentie</strong>; de circa 80% FSH-instelling wordt gebruikt bij het vastleggen van de echo's.</p></div>
-    <div class="dacstep"><b>10. SCAN-GAIN EN CONTROLE</b><p>Voor EN-procedure is de testing sensitivity <strong>DAC + 6 dB</strong>, met transfercorrectie waar nodig; bij evaluatie wordt de extra +6 dB verwijderd. Controleer de kalibratie vóór, tijdens en na het onderzoek volgens de gekozen procedure.</p></div>
-    <div class="dacstep"><b>11. EN-SCANREGELS</b><p><strong>EN-procedure:</strong> stel de range minimaal in op 1,25 × full skip voor volledige dekking. De scanzone moet minimaal gelijk zijn aan de scanzone van de grootste gebruikte hoekprobe. Houd de probesnelheid maximaal <strong>150 mm/s</strong> en laat opeenvolgende banen minimaal <strong>10% overlappen</strong>.</p><p><strong>Jip en Janneke:</strong> niet te snel, banen laten overlappen en genoeg bereik instellen zodat het hele onderzoeksvolume wordt gezien.</p></div>
-    <div class="dacstep"><b>12. KALIBRATIECONTROLE EN</b><p><strong>EN-procedure:</strong> controle vóór de start, elke 4 uur, na wisselen van probe/batterij of wijziging van een parameter en aan het einde. Sensitiviteitsafwijking ≤4 dB: corrigeren vóór verder testen. &gt;4 dB: corrigeren en het eerdere werk opnieuw testen. Bereiksafwijking ≤2%: corrigeren; &gt;2%: corrigeren en het eerdere werk opnieuw testen.</p></div>
-    <div class="dacstep"><b>13. KALIBRATIECONTROLE ASME</b><p><strong>ASME-procedure:</strong> controle vóór, elke 4 uur, na wisselen van probe/batterij of parameterwijziging en aan het einde. Sensitiviteitsafwijking &gt;2 dB vereist herkalibratie en opnieuw beoordelen van de betreffende data; een gevoeligheidstoename &gt;2 dB vereist opnieuw beoordelen van geregistreerde indicaties. Sweep-afwijking: meer dan 10% van de sweep-reading of 5% van full sweep (wat groter is) vereist opnieuw beoordelen van de data sinds de laatste geldige kalibratie.</p></div>
-    <div class="dacstep"><b>14. SCOPE-CONTROLE</b><p><strong>EN/EN-procedure:</strong> 8 &lt; t ≤ 100 mm voor level A/B; level C vanaf t ≥ 8 mm. <strong>ASME/ASME-procedure:</strong> 10–200 mm. Buiten deze bereiken: niet automatisch als procedureconform markeren; project-/specifieke procedure controleren.</p></div>
-  </div>
-  <div class="status"><strong>Jip en Janneke:</strong> geluidsweg bepalen → index bepalen → tasterhoek controleren → Range goed zetten → maximale echo zoeken → DAC-punt Add → volgende geluidsweg → Add → Done.</div>
-  <div class="status"><strong>Belangrijk:</strong> de BEAM TOOL geeft de instructie en rekent de controlewaarden uit. De echte DAC en de echte tasterhoek worden met de echte taster, het echte kalibratieblok en de EPOCH 650 vastgesteld.</div>
-
-  <div class="dacWorkbench">
-    <h3>EPOCH 650 • SNELLE WERKWIJZE</h3>
-    <div class="epochbar"><div class="epochstep active">1. RANGE</div><div class="epochstep">2. ECHO ZOEKEN</div><div class="epochstep">3. GATE</div><div class="epochstep">4. AUTO 80%</div><div class="epochstep">5. ADD</div><div class="epochstep">6. DONE</div></div>
-    <div class="checklist">
-      <label class="checkitem"><input type="checkbox" id="checkIndex"> Indexpunt gecontroleerd</label>
-      <label class="checkitem"><input type="checkbox" id="checkAngle"> Tasterhoek gecontroleerd</label>
-      <label class="checkitem"><input type="checkbox" id="checkRange"> Range ingesteld</label>
-      <label class="checkitem"><input type="checkbox" id="checkDAC"> DAC-punten opgenomen</label>
-      <label class="checkitem"><input type="checkbox" id="checkSensitivity"> Gevoeligheid gecontroleerd</label>
-      <label class="checkitem"><input type="checkbox" id="checkFinal"> Eindcontrole uitgevoerd</label>
-    </div>
-    <div class="status" id="calCheckStatus" style="margin-top:10px">KALIBRATIECHECK: nog niet compleet.</div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px"><button class="uiBtn" type="button" id="calResetBtn">RESET CHECK</button><button class="uiBtn" type="button" id="calStampBtn">TIJDSTEMPEL</button><strong id="calStamp" style="align-self:center;color:#7ddfff"></strong></div>
-  </div>
-</section>
-<section id="tab-index" class="calpanel" hidden>
-<div class="calhead"><h2>K1 INDEXPUNT – 100 mm RADIUS</h2><p>Aparte controle voor het bepalen van het indexpunt op kalibratieblok 1 (K1 / V1).</p></div>
-<div class="status"><strong>Jip en Janneke:</strong> plaats de taster op de <strong>100 mm radius</strong>, zoek de maximale respons, meet de afstand vanaf de blokrand en laat de tool het indexpunt uitrekenen.</div>
-<div class="index-layout">
-<div class="angle-drawing-card"><h3>TEKENING – 100 mm RADIUS</h3>
-<svg viewBox="0 0 900 300" role="img" aria-label="Indexpunt bepalen op 100 mm radius K1 V1">
-<rect x="70" y="120" width="760" height="105" rx="8" fill="#bcc7cc" stroke="#51636d" stroke-width="3"/><path d="M260 120 A100 100 0 0 1 460 120" fill="none" stroke="#126fae" stroke-width="5"/><line x1="160" y1="120" x2="560" y2="120" stroke="#50616a" stroke-width="2"/><path d="M360 62 L430 62 L450 105 L340 105 Z" fill="#183b55" stroke="#0b2436" stroke-width="3"/><circle cx="395" cy="62" r="5" fill="#f4d06f"/><line x1="70" y1="260" x2="340" y2="260" stroke="#d8e2e7" stroke-width="2"/><polygon points="70,260 85,253 85,267" fill="#d8e2e7"/><polygon points="340,260 325,253 325,267" fill="#d8e2e7"/><text x="205" y="252" text-anchor="middle" font-size="18" fill="#e8f0f4">gemeten afstand vanaf blokrand</text><text x="395" y="48" text-anchor="middle" font-size="18" fill="#f4d06f">INDEXPUNT</text><text x="360" y="108" text-anchor="middle" font-size="16" fill="#0b3348">100 mm radius</text><text x="450" y="287" text-anchor="middle" font-size="16" fill="#dbe7ed">Indexpunt = 100 − gemeten afstand</text></svg>
-<p class="angle-caption">Voorbeeld: 100 − 86 = <strong>14 mm indexpunt</strong>.</p></div>
-<div class="anglebox index-input-box"><h3>METING INVULLEN</h3><label for="indexMeasure">Gemeten afstand vanaf blokrand (mm)</label><input id="indexMeasure" type="number" min="0" max="100" step="0.1" value="86"><button type="button" class="primary" id="calcIndexBtn">BEREKEN INDEXPUNT</button><div class="angle-result"><span>Indexpunt vanaf voorkant taster</span><br><strong id="indexResult">14,0 mm</strong></div><div class="status">Berekening: <strong>100 − gemeten afstand</strong>.</div></div>
-</div></section>
-<section id="tab-angle" class="calpanel" hidden>
-  <div class="calhead">
-    <h2>TASTERHOEK CONTROLEREN – K1 / V1</h2>
-    <p><strong>Volgens kalibratie-instructie, §10.3 en §10.4.</strong> EN-procedure en ASME-procedure verwijzen voor de controle van het indexpunt en de tasterhoek naar deze werkinstructie.</p>
-  </di
-<div class="status"><strong>Jip en Janneke:</strong> bepaal eerst het indexpunt in de aparte <strong>K1 INDEXPUNT</strong>-tool. Daarna controleer je hier de werkelijke tasterhoek.</div>
-  <div class="dacsteps">
-    <div class="dacstep"><b>3. CONTROLEER DE TASTERHOEK – POSITIE A</b><p>Voor de normale hoekbepaling gebruikt kalibratie-instructie <strong>positie A</strong> voor hoeken van <strong>30° t/m 80°</strong>. Scan naar het <strong>Ø1,5 mm gat</strong> en zoek de maximale respons.</p></div>
-    <div class="dacstep"><b>4. MEET MAAT A</b><p>Laat de taster op de positie van maximale respons staan en meet met een liniaal de maat <strong>A</strong> zoals in de tekening hieronder.</p></div>
-    <div class="dacstep"><b>5. LAAT DE APP DE HOEK UITREKENEN</b><p>Voer het eerder bepaalde indexpunt <strong>B</strong> en de gemeten maat <strong>A</strong> in. De app berekent eerst <strong>BC = A + B − 35</strong> en daarna <strong>α = 90° − atan(15 / BC)</strong>.</p></div>
-    <div class="dacstep"><b>6. NOTEER DE WERKELIJKE TASTERHOEK</b><p>De uitkomst is de werkelijk gemeten tasterhoek. Vergelijk die met de hoek die op de taster staat en leg de gemeten waarde vast.</p></div>
-  </div>
-  <div class="angle-drawing-grid">
-    <div class="angle-drawing-card">
-      <h3>TEKENING 2 – POSITIE A / Ø1,5 mm GAT</h3>
-      <svg viewBox="0 0 900 360" role="img" aria-label="Schematische bepaling van de tasterhoek volgens positie A van kalibratie-instructie">
-        <rect x="70" y="95" width="760" height="190" rx="8" fill="#bcc7cc" stroke="#51636d" stroke-width="3"/>
-        <line x1="70" y1="95" x2="830" y2="95" stroke="#263238" stroke-width="3"/>
-        <circle cx="210" cy="225" r="8" fill="#111"/>
-        <line x1="210" y1="225" x2="210" y2="95" stroke="#126fae" stroke-dasharray="7 6" stroke-width="2"/>
-        <line x1="70" y1="95" x2="210" y2="95" stroke="#d8e2e7" stroke-width="2"/>
-        <text x="140" y="82" text-anchor="middle" font-size="17" fill="#e8f0f4">35 mm</text>
-        <text x="210" y="247" text-anchor="middle" font-size="16" fill="#0b3348">Ø1,5 mm</text>
-        <text x="245" y="170" font-size="16" fill="#0b5688">15 mm diep</text>
-        <line x1="210" y1="225" x2="520" y2="95" stroke="#126fae" stroke-width="4"/>
-        <line x1="210" y1="225" x2="210" y2="95" stroke="#f4d06f" stroke-width="3" stroke-dasharray="7 6"/>
-        <path d="M210 165 A60 60 0 0 1 266 140" fill="none" stroke="#f4d06f" stroke-width="4"/>
-        <text x="246" y="151" font-size="20" fill="#f4d06f">α</text>
-        <text x="222" y="158" font-size="13" fill="#f4d06f">normaal</text>
-        <path d="M560 52 L690 52 L715 95 L535 95 Z" fill="#183b55" stroke="#0b2436" stroke-width="3"/>
-        <circle cx="535" cy="95" r="5" fill="#f4d06f"/>
-        <line x1="70" y1="315" x2="535" y2="315" stroke="#d8e2e7" stroke-width="2"/>
-        <polygon points="70,315 85,308 85,322" fill="#d8e2e7"/><polygon points="535,315 520,308 520,322" fill="#d8e2e7"/>
-        <text x="302" y="308" text-anchor="middle" font-size="17" fill="#e8f0f4">A = van blokrand tot voorkant taster</text>
-        <line x1="535" y1="340" x2="690" y2="340" stroke="#d8e2e7" stroke-width="2"/>
-        <polygon points="535,340 550,333 550,347" fill="#d8e2e7"/><polygon points="690,340 675,333 675,347" fill="#d8e2e7"/>
-        <text x="612" y="334" text-anchor="middle" font-size="16" fill="#f4d06f">B = indexpunt</text>
-      </svg>
-      <p class="angle-caption">kalibratie-instructie: BC = A + B − 35. De procedure geeft in het voorbeeld een hoek van 75,26° bij BC = 57 mm en een gatdiepte van 15 mm.</p>
-    </div>
-
-  </div>
-  <div class="anglecheck">
-    <div class="anglebox">
-      <h3>DE METING INVULLEN</h3>
-      <label for="angleNominal">Nominale tasterhoek</label>
-      <select id="angleNominal"><option value="45">45°</option><option value="60" selected>60°</option><option value="70">70°</option></select>
-      <label for="angleIndex">B – indexpunt vanaf voorkant taster (mm)</label>
-      <input id="angleIndex" type="number" min="0" max="100" step="0.1" value="14.0">
-      <label for="angleA">A – gemeten maat volgens tekening (mm)</label>
-      <input id="angleA" type="number" min="35" max="500" step="0.1" value="78.0">
-      <div class="anglehint">Voorbeeld uit kalibratie-instructie: B = 14 mm en A = 78 mm.</div>
-    </div>
-    <div class="anglebox">
-      <h3>UITKOMST</h3>
-      <div class="angle-result"><span>BC</span><br><strong id="angleBC">57,0 mm</strong></div>
-      <div class="angle-result"><span>Werkelijke tasterhoek α</span><br><strong id="angleActual">75,3°</strong></div>
-      <div class="angle-result"><span>Afwijking t.o.v. nominaal</span><br><strong id="angleDelta">+15,3°</strong></div>
-      <div class="angle-result"><span>Procedure</span><br><strong>kalibratie-instructie §10.3 / §10.4</strong></div>
-    </div>
-  </div>
-
-  <div class="angle-drawing-card" style="margin-top:14px">
-    <h3>ALS AWS D1.1 VAN TOEPASSING IS</h3>
-    <svg viewBox="0 0 900 250" role="img" aria-label="Positie B en C volgens AWS D1.1 in kalibratie-instructie">
-      <rect x="50" y="65" width="800" height="125" rx="8" fill="#bcc7cc" stroke="#51636d" stroke-width="3"/>
-      <circle cx="235" cy="130" r="48" fill="none" stroke="#126fae" stroke-width="4"/>
-      <line x1="235" y1="82" x2="235" y2="178" stroke="#51636d" stroke-width="2"/>
-      <path d="M235 130 L470 82" stroke="#126fae" stroke-width="4"/>
-      <path d="M235 130 L470 178" stroke="#73e6a2" stroke-width="4"/>
-      <rect x="455" y="55" width="95" height="35" rx="5" fill="#183b55"/>
-      <rect x="455" y="165" width="95" height="35" rx="5" fill="#183b55"/>
-      <text x="502" y="48" text-anchor="middle" font-size="18" fill="#f4d06f">B: 40°–60°</text>
-      <text x="502" y="225" text-anchor="middle" font-size="18" fill="#73e6a2">C: 60°–70°</text>
-      <text x="660" y="118" text-anchor="middle" font-size="17" fill="#e8f0f4">maximale respons zoeken</text>
-      <text x="660" y="145" text-anchor="middle" font-size="17" fill="#e8f0f4">en toetredingspunt met hoekmarkering vergelijken</text>
-    </svg>
-    <p class="angle-caption">kalibratie-instructie beschrijft voor AWS D1.1 positie B voor 40°–60° en positie C voor 60°–70°. De maximale respons wordt gezocht en het geluidstoetredingspunt wordt met de hoekmarkering vergeleken. De procedure vermeldt daarbij een maximale afwijking door slijtage van ±2°.</p>
-  </div>
-
-  <div class="status"><strong>Belangrijk:</strong> EN-procedure en ASME-procedure verwijzen voor deze controle naar <strong>kalibratie-instructie</strong>. De berekening hierboven is dus de proceduremethode uit kalibratie-instructie en geen zelfbedachte hoekcontrole.</div>
-
-</section>
-<main><div class="grid">
-
-<section class="card">
-<h2>1. BASISGEGEVENS</h2>
-
-<label>Materiaal</label>
-<select id="material"><option value="steel">Staal</option><option value="aluminium">Aluminium</option><option value="custom">Eigen waarde</option></select>
-<label>Geluidssnelheid (m/s)</label><input id="velocity" type="number" value="3230" min="1">
-<div class="status" style="margin-top:6px">Hoekstraaltaster = <strong>transversale / dwarsgolf</strong> (staal 3230 m/s). Rechte taster = <strong>longitudinale / lengtegolf</strong> (staal 5920 m/s). De app schakelt de golfsoort automatisch met de geselecteerde taster.</div>
-
-<label>Handmatige hoekstraaltaster</label>
-<div class="probeBadge"><strong>CONVENTIONELE ENKELKRISTAL HOEKSTRAALPROBE</strong><br>AM4R / AM2R • 8 × 9 mm en 14 × 14 mm • geïntegreerde hoek • direct op het materiaal<br><span class="warnline">Dit model is géén PAUT/phased-array en géén TOFD-taster.</span></div>
-<select id="probeModel">
-<option value="am4r45">Olympus/Evident AM4R 8×9 – 45° – 4 MHz</option>
-<option value="am4r60">Olympus/Evident AM4R 8×9 – 60° – 4 MHz</option>
-<option value="am4r70">Olympus/Evident AM4R 8×9 – 70° – 4 MHz</option>
-<option value="am2r45">Olympus/Evident AM2R 8×9 – 45° – 2 MHz</option>
-<option value="am2r60">Olympus/Evident AM2R 8×9 – 60° – 2 MHz</option>
-<option value="am2r70">Olympus/Evident AM2R 8×9 – 70° – 2 MHz</option>
-<option value="am2r1445">Olympus/Evident AM2R 14×14 – 45° – 2 MHz</option>
-<option value="am2r1460">Olympus/Evident AM2R 14×14 – 60° – 2 MHz</option>
-<option value="am2r1470">Olympus/Evident AM2R 14×14 – 70° – 2 MHz</option>
-<option value="am2r2045">Olympus/Evident AM2R 20×22 – 45° – 2 MHz</option>
-<option value="am2r2060">Olympus/Evident AM2R 20×22 – 60° – 2 MHz</option>
-<option value="am2r2070">Olympus/Evident AM2R 20×22 – 70° – 2 MHz</option>
-<option value="straight2_10">Rechte taster – 10 mm – 2 MHz</option>
-<option value="straight2_24">Rechte taster – 24 mm – 2 MHz</option>
-<option value="straight4_10">Rechte taster – 10 mm – 4 MHz</option>
-<option value="straight4_24">Rechte taster – 24 mm – 4 MHz</option>
-</select>
-<div class="info">
-<div><span>Nominale hoek in staal</span><strong id="angleInfo">45°</strong></div>
-<div><span>Frequentie</span><strong id="freqInfo">4 MHz</strong></div>
-<div><span>Kristal</span><strong id="elementInfo">8 × 9 mm</strong></div>
-<div><span>Near field</span><strong id="nearInfo">30 mm*</strong></div>
-<div><span>Golfsoort</span><strong id="waveInfo">Transversaal</strong></div>
-</div>
-
-<div class="row">
-<div><label>Afstand voorkant / indexpunt → hart las (mm)</label><input id="frontToSeam" type="number" value="15" min="0" step=".5"></div>
-<div><label>Probe-index t.o.v. lasnaad (mm) <span style="font-weight:400;color:#6b7780">(uit positie)</span></label><input id="scanPos" type="number" value="-15" step=".5" readonly></div>
-</div>
-<div class="status" style="margin-top:-4px">De gestippelde lijn is het hart van de las. In dit model valt het index-/uitgangspunt samen met de voorzijde van de taster; de bundel vertrekt vanaf dit punt.</div>
-<div class="row">
-<div><label>Bundelmodel</label>
-<select id="beamModel">
-<option value="auto" selected>Automatisch — 8 mm effectieve apertuur</option>
-<option value="manual">Handmatige bundelspreiding</option>
-</select>
-</div>
-</div>
-<div class="row" id="manualDivRow" style="display:none">
-<div><label>Handmatige halfhoek spreiding (°)</label><input id="divergence" type="number" value="4" min="0" max="45" step=".1"></div>
-<div><label>Effectieve apertuur in doorsnede (mm)</label><input id="aperture" type="number" value="8" min="1" max="50" step=".5"></div>
-</div>
-<div class="status" id="beamPhysics">Bundelmodel wordt automatisch berekend uit frequentie, golflengte en effectieve apertuur.</div>
-
-<h3>Lasgeometrie</h3>
-<div class="row">
-<div><label>Voorbewerking</label><select id="prep"><option value="v">V-naad</option><option value="halfv">Halve V-naad</option><option value="x">X-naad</option><option value="asymx">Ongelijkzijdige X-naad</option><option value="square">I-naad</option></select></div>
-<div><label>Lasbreedte referentie (mm)</label><input id="weldWidth" type="number" value="30" min="1"></div>
-</div>
-<div class="row">
-<div><label>Plaat links (mm)</label><input id="tLeft" type="number" value="20" min="1" step=".5"></div>
-<div><label>Plaat rechts (mm)</label><input id="tRight" type="number" value="20" min="1" step=".5"></div>
-</div>
-<div class="row">
-<div><label>Laskant links (°)</label><input id="bevelL" type="number" value="30" min="0" max="89" step=".5"></div>
-<div><label>Laskant rechts (°)</label><input id="bevelR" type="number" value="30" min="0" max="89" step=".5"></div>
-</div>
-<div class="row">
-<div><label>Wortelopening (mm)</label><input id="gap" type="number" value="2" min="0" step=".5"></div>
-<div><label>Wortelvlak (mm)</label><input id="land" type="number" value="1" min="0" step=".5"></div>
-</div>
-
-<h3>A-scan / meetbereik</h3>
-<div class="row">
-<div><label>Meetbereik A-scan (geluidspad)</label><select id="scanRange"><option value="50">50 mm</option><option value="100" selected>100 mm</option><option value="150">150 mm</option><option value="200">200 mm</option><option value="300">300 mm</option><option value="500">500 mm</option><option value="custom">Eigen bereik</option></select></div>
-<div><label>Eigen bereik (mm)</label><input id="scanRangeCustom" type="number" value="100" min="10" step="5"></div>
-</div>
-<div class="row">
-<div><label>A-scan weergave</label><select id="scanMode"><option value="rect" selected>Volledige golf / rectified</option><option value="rf">RF-model (±)</option></select></div>
-<div><label>Gate</label><select id="gateMode"><option value="auto" selected>Automatisch – indicatiezone</option><option value="manual">Handmatig</option><option value="off">Uit</option></select></div>
-</div>
-<div class="row">
-<div><label>Lasversterking boven (mm)</label><input id="capTop" type="number" value="3" min="0" step=".5"></div>
-<div><label>Lasversterking onder (mm)</label><input id="capBottom" type="number" value="0" min="0" step=".5"></div>
-</div>
-<div class="row">
-<div><label>Verjonging / hoogteverschil (mm)</label><input id="misalign" type="number" value="0" step=".5"></div>
-<div><label>Aantal skips</label><select id="skips"><option value="1">½ sprong</option><option value="2" selected>1 hele sprong</option><option value="3">1½ sprong</option><option value="4">2 hele sprongen</option><option value="5">2½ sprong</option><option value="6">3 hele sprongen</option></select></div>
-</div>
-
-<h3>Foutsimulatie</h3>
-<div class="row">
-<div><label>Simulatie</label><select id="faultMode"><option value="off">Zonder fout – alleen bundel</option><option value="on" selected>Met fout – bundel + fout</option></select></div>
-<div><label>Snelle schakelaar</label><button id="toggleFault" class="secondary" type="button">Fout UIT</button></div>
-</div>
-<div id="faultFields">
-<label>Type indicatie</label><select id="faultType"><option value="point">Puntreflector</option><option value="crack">Scheur</option><option value="lof">Lack of fusion</option><option value="lop">Lack of penetration</option><option value="pore">Porie</option><option value="slag">Slakinsluiting</option></select>
-<div class="row">
-<div><label>Fout X t.o.v. lasnaad (mm)</label><input id="faultX" type="number" value="0" step=".5"></div>
-<div><label>Foutdiepte vanaf boven (mm)</label><input id="faultDepth" type="number" value="10" min="0" step=".5"></div>
-</div>
-<div class="row">
-<div><label>Indicatie-lengte (mm)</label><input id="faultLength" type="number" value="8" min=".5" step=".5"></div>
-<div><label>Indicatie-richting (°)</label><input id="faultDir" type="number" value="0" step="1"></div>
-</div>
-</div>
-
-<button id="drawBtn" type="button">Bereken & teken UT-bundel</button>
-<div class="status ok">Instellingen links • visualisatie midden • detectorweergave rechts.</div>
-<div class="note">Near field is per geselecteerde Evident/Olympus-taster uit de fabrikantgegevens overgenomen. De zichtbare bundelspreiding blijft een model voor visualisatie/training en is geen fabrikant-gecertificeerde −6 dB-bundelmeting. Voor echt onderzoek blijven tastergegevens, kalibratie, procedure en norm leidend.</div>
-</section>
-
-<section class="card">
-<h2>5. UT LASDOORSNEDE – LASGEOMETRIE EN BUNDEL</h2>
-<div class="legend">Rood = centrale bundel • lichtrood = bundelspreiding • blauw = maatvoering • rood/zwart = indicatie</div>
-<canvas id="cross" width="1200" height="720"></canvas>
-<div id="crossStatus" class="status">–</div>
-<hr>
-<h2>6. UT BOVENAANZICHT</h2>
-<canvas id="top" width="1200" height="300"></canvas>
-<hr>
-<h2>8. A-SCAN – REALISTISCHE SIMULATIE</h2>
-<canvas id="scan" width="1200" height="250"></canvas>
-</section>
-
-<aside class="card sidecard">
-<h2>7. DETECTOR / RESULTAAT</h2>
-<div id="status" class="status ok">Klaar.</div>
-<div class="results">
-<div class="result"><span>½ sprong</span><strong id="half">–</strong> <span class="unit" style="color:#f4f8fb !important;-webkit-text-fill-color:#f4f8fb !important;opacity:1 !important;text-shadow:none !important">mm</span></div>
-<div class="result"><span>Hele sprong</span><strong id="full">–</strong> <span class="unit" style="color:#f4f8fb !important;-webkit-text-fill-color:#f4f8fb !important;opacity:1 !important;text-shadow:none !important">mm</span></div>
-<div class="result"><span>Geluidspad naar fout</span><strong id="path">–</strong> <span class="unit" style="color:#f4f8fb !important;-webkit-text-fill-color:#f4f8fb !important;opacity:1 !important;text-shadow:none !important">mm</span></div>
-<div class="result"><span>Bundelcentrum bij fout</span><strong id="beamCenter">–</strong> <span class="unit" style="color:#f4f8fb !important;-webkit-text-fill-color:#f4f8fb !important;opacity:1 !important;text-shadow:none !important">mm</span></div>
-<div class="result"><span>Fout–bundelcentrum</span><strong id="offset">–</strong> <span class="unit" style="color:#f4f8fb !important;-webkit-text-fill-color:#f4f8fb !important;opacity:1 !important;text-shadow:none !important">mm</span></div>
-<div class="result"><span>Bundelbreedte bij fout</span><strong id="beamWidth">–</strong> <span class="unit" style="color:#f4f8fb !important;-webkit-text-fill-color:#f4f8fb !important;opacity:1 !important;text-shadow:none !important">mm</span></div>
-<div class="result"><span>Golflengte</span><strong id="lambda">–</strong> <span class="unit" style="color:#f4f8fb !important;-webkit-text-fill-color:#f4f8fb !important;opacity:1 !important;text-shadow:none !important">mm</span></div>
-<div class="result"><span>Near field model</span><strong id="nf">–</strong> <span class="unit" style="color:#f4f8fb !important;-webkit-text-fill-color:#f4f8fb !important;opacity:1 !important;text-shadow:none !important">mm</span></div>
-</div>
-<hr>
-<h3>Foutdetector-instellingen</h3>
-<div class="instrument"><div class="mini"><span>GAIN</span><strong id="gainRead">36 dB</strong></div><div class="mini"><span>RANGE</span><strong id="rangeRead">100 mm</strong></div></div>
-<label>Gain (dB)</label><input id="gainDb" type="number" value="36" min="0" max="80" step="0.5">
-<label>Gate start (mm)</label><input id="gateStart" type="number" value="5" min="0" step="0.5">
-<label>Gate einde (mm)</label><input id="gateEnd" type="number" value="80" min="1" step="0.5">
-<label>Delay (µs)</label><input id="scanDelay" type="number" value="0" min="0" step="0.1">
-<div class="meter"><i id="gateMeter"></i></div>
-<div class="note">Modelmatige detectorweergave. Gain beïnvloedt de weergegeven echohoogte; range bepaalt het meetvenster. Dit vervangt geen echte kalibratie.</div>
-<hr>
-<h3>UT-status</h3>
-<div class="instrument"><div class="mini"><span>HOEK</span><strong id="sideAngle">–</strong></div><div class="mini"><span>FREQUENTIE</span><strong id="sideFreq">–</strong></div><div class="mini"><span>SPRONG</span><strong id="sideSkip">–</strong></div><div class="mini"><span>STATUS</span><strong id="sideBeam">–</strong></div></div>
-</aside>
-
-</div></main>
-
-<script>
-"use strict";
-const $=id=>document.getElementById(id);
-const probes={
- am4r45:{a:45,f:4,nf:30,w:8,h:9,name:"AM4R 8×9 – 45°"},
- am4r60:{a:60,f:4,nf:30,w:8,h:9,name:"AM4R 8×9 – 60°"},
- am4r70:{a:70,f:4,nf:30,w:8,h:9,name:"AM4R 8×9 – 70°"},
- am2r45:{a:45,f:2,nf:15,w:8,h:9,name:"AM2R 8×9 – 45°"},
- am2r60:{a:60,f:2,nf:15,w:8,h:9,name:"AM2R 8×9 – 60°"},
- am2r70:{a:70,f:2,nf:15,w:8,h:9,name:"AM2R 8×9 – 70°"},
- am2r1445:{a:45,f:2,nf:39,w:14,h:14,name:"AM2R 14×14 – 45°",wave:"shear"},
- am2r1460:{a:60,f:2,nf:39,w:14,h:14,name:"AM2R 14×14 – 60°",wave:"shear"},
- am2r1470:{a:70,f:2,nf:39,w:14,h:14,name:"AM2R 14×14 – 70°",wave:"shear"},
- am2r2045:{a:45,f:2,nf:79,w:20,h:22,name:"AM2R 20×22 – 45°",wave:"shear"},
- am2r2060:{a:60,f:2,nf:79,w:20,h:22,name:"AM2R 20×22 – 60°",wave:"shear"},
- am2r2070:{a:70,f:2,nf:79,w:20,h:22,name:"AM2R 20×22 – 70°",wave:"shear"},
- straight2_10:{a:0,f:2,nf:null,w:10,h:10,name:"Rechte taster 10 mm – 2 MHz",wave:"longitudinal"},
- straight2_24:{a:0,f:2,nf:null,w:24,h:24,name:"Rechte taster 24 mm – 2 MHz",wave:"longitudinal"},
- straight4_10:{a:0,f:4,nf:null,w:10,h:10,name:"Rechte taster 10 mm – 4 MHz",wave:"longitudinal"},
- straight4_24:{a:0,f:4,nf:null,w:24,h:24,name:"Rechte taster 24 mm – 4 MHz",wave:"longitudinal"}
-};
-Object.values(probes).forEach(p=>{if(!p.wave)p.wave=p.a===0?"longitudinal":"shear";});
-
-
-function beamPhysics(angleDeg, freqMHz, velocity, apertureMm, manualAngle){
-  const lambda=velocity/(freqMHz*1e6)*1000;
-  // Rectangular piston approximation in the drawing plane:
-  // near field N ≈ D²/(4λ), far-field first-null half-angle ≈ asin(0.886 λ/D).
-  const N=(apertureMm*apertureMm)/(4*Math.max(lambda,1e-9));
-  const ratio=Math.min(.999,Math.max(0,0.886*lambda/Math.max(apertureMm,.1)));
-  const diffractionHalf=Math.asin(ratio)*180/Math.PI;
-  const halfAngle=manualAngle!=null?manualAngle:diffractionHalf;
-  return {lambda,N,diffractionHalf,halfAngle};
+function probeInfo(){
+ const p=$('probe').value;
+ if(p==='4 MHz 8x9') return {kind:'angle',freq:4,size:'8x9',spread:3.0,label:'Olympus 4 MHz 8x9',wave:'TRANSVERSAAL'};
+ if(p==='2 MHz 8x9') return {kind:'angle',freq:2,size:'8x9',spread:4.0,label:'Olympus 2 MHz 8x9',wave:'TRANSVERSAAL'};
+ if(p==='2 MHz 14x14') return {kind:'angle',freq:2,size:'14x14',spread:3.0,label:'Olympus 2 MHz 14x14',wave:'TRANSVERSAAL'};
+ if(p==='Recht 10 mm') return {kind:'straight',freq:4,size:'Ø10',spread:5.0,label:'Olympus recht Ø10 mm',wave:'LONGITUDINAAL'};
+ return {kind:'straight',freq:2,size:'Ø24',spread:3.0,label:'Olympus recht Ø24 mm',wave:'LONGITUDINAAL'};
 }
 
-function beamAtDepth(gm, depth){
-  const d=Math.max(0,Math.min(gm.t,depth));
-  let x=gm.scan, dir=1, travelled=0;
-  const legHeight=gm.t;
-  for(let leg=1;leg<=30;leg++){
-    const remain=legHeight-travelled;
-    const step=Math.min(d-travelled,remain);
-    if(step>=0){
-      x += dir*step*Math.tan(gm.a);
-      if(d-travelled<=remain+1e-9) return {x,leg};
-    }
-    x += dir*remain*Math.tan(gm.a);
-    travelled=0;
-    dir*=-1;
-  }
-  return {x,leg:30};
+function plateGeom(){
+ const leftT=Math.max(1,n('thickL')), rightT=Math.max(1,n('thickR'));
+ const top=82,left=35,right=665,W=700,H=390;
+ const maxT=Math.max(leftT,rightT);
+ const sy=Math.min(3.15,235/Math.max(20,maxT));
+ const sx=sy;
+ const diff=Math.abs(leftT-rightT)>0.01 && $('taper').value==='yes';
+ const flipped=$('plateFlip')?.value==='flipped';
+ const c=430;
+ const baseY=top+maxT*sy;
+ const flatTop=top;
+ const flatBack=baseY;
+ const surfL=flipped ? baseY-leftT*sy : flatTop;
+ const surfR=flipped ? baseY-rightT*sy : flatTop;
+ const backL=flipped ? flatBack : top+leftT*sy;
+ const backR=flipped ? flatBack : top+rightT*sy;
+ let tL=c,tR=c;
+ if(diff){
+   const len=Math.max(5,n('taperLen'))*sx;
+   if(leftT>rightT){tL=Math.max(left+25,c-len);tR=c;}
+   else {tL=c;tR=Math.min(right-25,c+len);}
+ }
+ function ySurface(x){
+   if(!diff) return flatTop;
+   if(x<=tL) return surfL;
+   if(x>=tR) return surfR;
+   return surfL+(surfR-surfL)*(x-tL)/(tR-tL);
+ }
+ function yBack(x){
+   if(!diff) return flipped?flatBack:(x<c?backL:backR);
+   if(x<=tL) return backL;
+   if(x>=tR) return backR;
+   return backL+(backR-backL)*(x-tL)/(tR-tL);
+ }
+ const surfacePts=diff?[[left,surfL],[tL,surfL],[tR,surfR],[right,surfR]]:[[left,flatTop],[right,flatTop]];
+ const backPts=diff?[[left,backL],[tL,backL],[tR,backR],[right,backR]]:[[left,backL],[c,backL],[c,backR],[right,backR]];
+ return {left,right,top:flatTop,sy,sx,yL:backL,yR:backR,taperOn:diff,tL,tR,yBottom:yBack,ySurface,yBack,surfacePts,backPts,bottomPts:backPts,leftT,rightT,maxT,c,flipped,baseY};
 }
 
-function beamWidthAtDepth(gm, depth){
-  const d=Math.max(0,Math.min(gm.t,depth));
-  // Aperture-limited geometric opening after the modeled near field.
-  // Inside near field keep a narrow transition; beyond N use the far-field angle.
-  const z=Math.max(0,d-gm.nf);
-  const spread=Math.max(0.05,z*Math.tan(gm.div*Math.PI/180));
-  const nearSpread=Math.min(d*.12,gm.aperture/2);
-  return Math.max(nearSpread,spread);
-}
-
-function materialVelocity(wave){
- const mat=$("material").value;
- if(mat==="steel") return wave==="longitudinal"?5920:3230;
- if(mat==="aluminium") return wave==="longitudinal"?6320:3130;
- return Math.max(1,+$("velocity").value||(wave==="longitudinal"?5920:3230));
-}
-function materialAngle(nominalSteelAngle, materialVelocityValue, wave){
- if(wave==="longitudinal") return 0;
- const sn=Math.sin(nominalSteelAngle*Math.PI/180)*materialVelocityValue/3230;
- return Math.asin(Math.max(-.999,Math.min(.999,sn)))*180/Math.PI;
-}
-function g(){
- const p=probes[$("probeModel").value];
- const wave=p.wave||"shear";
- const t=Math.max(1,Math.max(+$("tLeft").value||20,+$("tRight").value||20));
- const v=materialVelocity(wave);
- const angle=materialAngle(p.a,v,wave);
- const a=angle*Math.PI/180;
- const half=t*Math.tan(a);
- const aperture=Math.max(1,+$("aperture").value||p.w);
- const model=$("beamModel").value;
- const manual=model==="manual"?Math.max(0,+$("divergence").value||4):null;
- const bp=beamPhysics(angle,p.f,v,aperture,manual);
- const nf=(p.nf==null)?bp.N:p.nf;
- return {
-   p,nominalAngle:p.a,angle,a,t,v,wave,f:p.f,half,full:2*half,lambda:bp.lambda,
-   nf,theoreticalN:bp.N,aperture,div:bp.halfAngle,model,
-   frontToSeam:Math.max(0,+$("frontToSeam").value||0),
-   scan:-(Math.max(0,+$("frontToSeam").value||0)),
-   faultX:+$("faultX").value||0,
-   faultDepth:Math.max(0,+$("faultDepth").value||0),
-   gap:+$("gap").value||0,land:+$("land").value||0
+function weldGeometry(pg){
+ const type=$('weldType').value;
+ const symmetry=$('weldSymmetry')?.value||'equal';
+ const c=pg.c;
+ const prep=Math.max(10,Math.min(80,n('prepAngle')||60));
+ const a=prep*Math.PI/180;
+ const gap=Math.max(0,n('rootGap'))*pg.sx;
+ const land=Math.max(0,n('rootLand'))*pg.sy;
+ const width=Math.max(4,n('weld'))*pg.sx;
+ const radius=Math.max(2,n('grooveRadius')||8)*pg.sy;
+ const yTop=pg.ySurface(c), yRoot=pg.yBack(c);
+ const dir=yRoot>=yTop?1:-1;
+ const depth=Math.max(10,Math.abs(yRoot-yTop));
+ const clampFrac=v=>Math.max(.12,Math.min(.88,v));
+ const topFrac=clampFrac(state.weldTopFrac), bottomFrac=clampFrac(state.weldBottomFrac);
+ const hTop=depth*topFrac, hBottom=depth*bottomFrac;
+ const topRootY=yTop+dir*hTop;
+ const bottomRootY=yRoot-dir*hBottom;
+ const centerY=(topRootY+bottomRootY)/2;
+ const halfTop=Math.max(gap/2+3,Math.min(width/2,Math.max(8,hTop*Math.tan(a/2))));
+ const halfBottom=Math.max(gap/2+3,Math.min(width/2,Math.max(8,hBottom*Math.tan(a/2))));
+ const xTL=c-halfTop, xTR=c+halfTop, xR1=c-gap/2, xR2=c+gap/2;
+ const unequal=symmetry==='unequal';
+ const oneSided=(type==='V-naad (enkelzijdig) - Full Pen'||type==='½ V-naad - Full Pen'||type==='U-naad - Full Pen'||type==='J-naad - Full Pen'||type==='½ U-naad - Full Pen');
+ const doubleSided=!oneSided;
+ const topH=doubleSided?Math.max(0.2,topFrac):1;
+ const botH=doubleSided?Math.max(0.2,bottomFrac):0;
+ const mid=doubleSided?(yTop+dir*depth*(topH/(topH+botH))):yRoot;
+ const topEnd=doubleSided?mid-dir*land/2:yRoot-dir*land;
+ const botEnd=doubleSided?mid+dir*land/2:yRoot;
+ const bevelHalf=Math.max(gap/2+2,Math.min(width/2,Math.max(7,Math.abs(topEnd-yTop)*Math.tan(a/2))));
+ const bevelBottom=Math.max(gap/2+2,Math.min(width/2,Math.max(7,Math.abs(yRoot-botEnd)*Math.tan(a/2))));
+ const topL=c-bevelHalf, topR=c+bevelHalf;
+ const r=Math.min(radius,Math.abs(yRoot-yTop)*.28,Math.max(4,width*.32));
+ const makeU=(left=true,j=false)=>{
+   const s=dir;
+   const outerX=left?(c-width/2):(c+width/2), rootX=left?(c-gap/2):(c+gap/2);
+   const sign=left?-1:1;
+   const pts=[];
+   pts.push([outerX,yTop]);
+   pts.push([outerX+sign*2*r,yTop+s*r*.15]);
+   pts.push([rootX-sign*r,yRoot-s*r]);
+   pts.push([rootX,yRoot-s*land]);
+   return pts;
  };
-}
-
-
-function beamCenterAt(gm,depth){
-  return beamAtDepth(gm,depth);
-}
-
-function beamSegments(gm){
- const legs=Math.max(1,Math.min(6,parseInt($("skips").value,10)||2));
- const segs=[];
- const dx=gm.t*Math.tan(gm.a);
- let x=gm.scan, y=0, dir=1, path=0;
- for(let i=0;i<legs;i++){
-   const y2=(i%2===0)?gm.t:0;
-   const x2=x+dir*dx;
-   const len=Math.hypot(x2-x,y2-y);
-   segs.push({x1:x,y1:y,x2,y2,len,pathStart:path,pathEnd:path+len,leg:i+1});
-   x=x2; y=y2; path+=len;
- }
- return segs;
-}
-function hitInfo(gm){
- const fy=Math.min(gm.t,Math.max(0,gm.faultDepth));
- let best=null;
- for(const s of beamSegments(gm)){
-   const vx=s.x2-s.x1, vy=s.y2-s.y1;
-   const wx=gm.faultX-s.x1, wy=fy-s.y1;
-   const vv=vx*vx+vy*vy;
-   const u=Math.max(0,Math.min(1,(wx*vx+wy*vy)/Math.max(vv,1e-9)));
-   const cx=s.x1+u*vx, cy=s.y1+u*vy;
-   const dist=Math.hypot(gm.faultX-cx,fy-cy);
-   const localPath=s.len*u;
-   const totalPath=s.pathStart+localPath;
-   const halfWidth=beamWidthAtDepth(gm,Math.abs(cy));
-   const inside=dist<=halfWidth;
-   const candidate={leg:s.leg,b:{x:cx,y:cy},halfWidth,width:2*halfWidth,off:dist,path:totalPath,insideCore:dist<=Math.max(.1,halfWidth*.55),inside};
-   if(!best || dist<best.off) best=candidate;
-   if(inside && (!best || !best.inside || dist<best.off)) best=candidate;
- }
- return best||{b:{x:gm.scan,y:0},halfWidth:0,width:0,off:Infinity,path:0,insideCore:false,inside:false,leg:0};
-}
-
-
-function drawAll(){
- const gm=g(), faultOn=$("faultMode").value==="on";
- const hi=faultOn?hitInfo(gm):null;
- $("angleInfo").textContent=gm.angle.toFixed(1)+"°";
- $("freqInfo").textContent=gm.f+" MHz";
- $("waveInfo").textContent=gm.wave==="longitudinal"?"Longitudinaal / lengtegolf":"Transversaal / dwarsgolf";
- $("elementInfo").textContent=gm.p.w+" × "+gm.p.h+" mm";
- $("nearInfo").textContent=gm.nf.toFixed(1)+" mm";
- $("beamPhysics").textContent =
-   gm.model==="auto"
-   ? `Automatisch bundelmodel: λ ${gm.lambda.toFixed(3)} mm • apertuur ${gm.aperture.toFixed(1)} mm • fabrikant-near-field ${gm.nf.toFixed(1)} mm • theoretische N ${gm.theoreticalN.toFixed(1)} mm • nominale diffractie-halfhoek ${gm.div.toFixed(1)}°.`
-   : `Handmatig bundelmodel: λ ${gm.lambda.toFixed(3)} mm • effectieve apertuur ${gm.aperture.toFixed(1)} mm • ingestelde halfhoek ${gm.div.toFixed(1)}°.`;
-
- $("half").textContent=gm.half.toFixed(2);
- $("full").textContent=gm.full.toFixed(2);
- $("lambda").textContent=gm.lambda.toFixed(3);
- $("nf").textContent=gm.nf.toFixed(1);
- const rangeNow=getScanRange();
- $("gainRead").textContent=(Math.max(0,Math.min(80,+$("gainDb").value||36))).toFixed(1)+" dB";
- $("rangeRead").textContent=rangeNow.toFixed(0)+" mm";
- $("sideAngle").textContent=gm.angle+"°";
- $("sideFreq").textContent=gm.f+" MHz";
- const skipLabelsSide=["½","1","1½","2","2½","3"];
- const skipNSide=Math.max(1,Math.min(6,parseInt($("skips").value,10)||2));
- $("sideSkip").textContent=skipLabelsSide[skipNSide-1]+" sprong";
- $("sideBeam").textContent=faultOn?(hi.insideCore?"CENTRAAL":(hi.inside?"SPREIDING":"BUITEN")):"GEEN FOUT";
- const gs=Math.max(0,+$("gateStart").value||0), ge=Math.max(gs+0.1,+$("gateEnd").value||80);
- $("gateMeter").style.width=Math.max(0,Math.min(100,((ge-gs)/Math.max(rangeNow,1))*100)).toFixed(1)+"%";
- $("path").textContent=faultOn?hi.path.toFixed(2):"–";
- $("beamCenter").textContent=faultOn?hi.b.x.toFixed(2):"–";
- $("offset").textContent=faultOn?hi.off.toFixed(2):"–";
- $("beamWidth").textContent=faultOn?(2*hi.halfWidth).toFixed(2):"–";
- if(faultOn){
-   $("status").className="status "+(hi.insideCore?"ok":(hi.inside?"warn":"bad"));
-   $("status").textContent=hi.insideCore
-     ?"FOUT IN CENTRALE BUNDEL"
-     :(hi.inside
-       ?"FOUT BINNEN BUNDELSPREIDING — buiten de centrale kern"
-       :"FOUT BUITEN DE GEMODELLEERDE BUNDEL");
- }else{
-   $("status").className="status ok";
-   $("status").textContent="ZONDER FOUTSIMULATIE • alleen taster, bundel, bundelspreiding en reflecties.";
- }
- drawCross(gm,hi,faultOn); drawTop(gm,hi,faultOn); drawScan(gm,hi,faultOn);
-}
-
-function drawCross(gm,hi,faultOn){
- const c=$("cross"),x=c.getContext("2d"),W=c.width,H=c.height;
- x.clearRect(0,0,W,H);
- x.fillStyle="#eef3f6"; x.fillRect(0,0,W,H);
-
- // Header
- x.fillStyle="#122b3b"; x.fillRect(0,0,W,86);
- x.fillStyle="#fff"; x.font="bold 22px Arial";
- x.fillText("UT LASDOORSNEDE – LASGEOMETRIE",24,34);
- x.font="12px Arial"; x.fillStyle="#cbd8e1";
- x.fillText(`${gm.p.name} • ${gm.f} MHz • ${gm.angle}° • plaat ${gm.t.toFixed(1)} mm`,24,58);
-
- const top=205;
- const scale=Math.min(8.5,300/gm.t);
- const back=top+gm.t*scale;
- const center=600;
- const plateL=70, plateR=W-150;
- const prep=$("prep").value;
- const bevelL=Math.max(0,+$("bevelL").value||30);
- const bevelR=Math.max(0,+$("bevelR").value||30);
- const gapPx=Math.max(0,gm.gap*scale);
- const landPx=Math.max(0,gm.land*scale);
- const capH=Math.max(0,+$("capTop").value||0)*scale;
- const bottomCap=Math.max(0,+$("capBottom").value||0)*scale;
- const leftT=Math.max(1,+$("tLeft").value||20);
- const rightT=Math.max(1,+$("tRight").value||20);
- const leftBack=top+leftT*scale;
- const rightBack=top+rightT*scale;
-
- // Parent plates: two real rectangular pieces, meeting at the weld.
- const metal=x.createLinearGradient(0,top,0,back);
- metal.addColorStop(0,"#aeb9be"); metal.addColorStop(.45,"#d0d5d8"); metal.addColorStop(1,"#929da3");
- x.fillStyle=metal;
- x.fillRect(plateL,top,center-plateL, leftBack-top);
- x.fillRect(center,top,plateR-center, rightBack-top);
- x.strokeStyle="#46545d"; x.lineWidth=3;
- x.strokeRect(plateL,top,center-plateL,leftBack-top);
- x.strokeRect(center,top,plateR-center,rightBack-top);
-
- // Fine material grain for a technical drawing.
- x.save(); x.globalAlpha=.12; x.strokeStyle="#53616a"; x.lineWidth=1;
- for(let yy=top+12;yy<Math.max(leftBack,rightBack);yy+=12){
-   x.beginPath(); x.moveTo(plateL,yy); x.lineTo(plateR,yy); x.stroke();
- }
- x.restore();
-
- const maxDepth=Math.min(leftT,rightT);
- const rootY=top+(maxDepth*scale)-landPx;
- const totalGrooveDepth=Math.max(1,rootY-top);
- const halfV_L=totalGrooveDepth*Math.tan(bevelL*Math.PI/180);
- const halfV_R=totalGrooveDepth*Math.tan(bevelR*Math.PI/180);
- const topL=center-halfV_L-gapPx/2;
- const topR=center+halfV_R+gapPx/2;
- const rootL=center-gapPx/2;
- const rootR=center+gapPx/2;
-
- // For I and X geometries, use dedicated outlines.
- function weldFill(){
-   const wg=x.createLinearGradient(center,top,center,rootY);
-   wg.addColorStop(0,"#d9dee0"); wg.addColorStop(.45,"#b8c1c5"); wg.addColorStop(1,"#929da2");
-   x.fillStyle=wg;
-   x.strokeStyle="#46525a"; x.lineWidth=2.5;
- }
-
- if(prep==="v" || prep==="halfv"){
-   // Actual V groove: straight bevel faces, flat root land, weld metal filling the groove.
-   const leftShoulder=prep==="halfv" ? center : topL;
-   weldFill();
-   x.beginPath();
-   x.moveTo(leftShoulder,top);
-   x.lineTo(rootL,rootY);
-   x.lineTo(rootR,rootY);
-   x.lineTo(topR,top);
-   x.closePath(); x.fill(); x.stroke();
-
-   // Bevel/root lines are distinct from weld body.
-   x.strokeStyle="#26343c"; x.lineWidth=3;
-   x.beginPath();x.moveTo(leftShoulder,top);x.lineTo(rootL,rootY);x.stroke();
-   x.beginPath();x.moveTo(topR,top);x.lineTo(rootR,rootY);x.stroke();
-   x.beginPath();x.moveTo(rootL,rootY);x.lineTo(rootR,rootY);x.stroke();
-
-   // Subtle, realistic cap reinforcement: shallow convex bead, not a giant hump.
-   if(capH>0){
-     const capW=Math.max(24,Math.abs(topR-leftShoulder)+Math.abs(topR-center)*0.18);
-     const capLeft=center-capW/2, capRight=center+capW/2;
-     x.fillStyle="#c5cdd0"; x.strokeStyle="#58656d"; x.lineWidth=2;
-     x.beginPath();
-     x.moveTo(capLeft,top);
-     x.quadraticCurveTo(center,top-capH,capRight,top);
-     x.lineTo(topR,top);
-     x.lineTo(leftShoulder,top);
-     x.closePath(); x.fill(); x.stroke();
+ // Reference library: full-penetration preparations. These are drawn as actual groove geometries, not a generic triangle.
+ let polys=[], edges=[], handleTop=topEnd, handleBottom=botEnd, hasBottom=false;
+ if(type==='V-naad (enkelzijdig) - Full Pen'){
+   polys=[[[c-bevelHalf,yTop],[c+bevelHalf,yTop],[c+gap/2,topEnd],[c-gap/2,topEnd]]];
+   edges=[[c-bevelHalf,yTop,c-gap/2,topEnd],[c+bevelHalf,yTop,c+gap/2,topEnd]];
+ } else if(type==='½ V-naad - Full Pen'){
+   polys=[[[c-width/2,yTop],[c+bevelHalf,yTop],[c+gap/2,topEnd],[c-gap/2,topEnd],[c-width/2,yRoot]]];
+   edges=[[c-width/2,yTop,c-gap/2,topEnd],[c+bevelHalf,yTop,c+gap/2,topEnd]];
+ } else if(type==='X-naad - Full Pen'){
+   // Echte dubbelzijdige X-naad: beide voorbereidingen lopen door de volledige plaatdikte naar de centrale wortelzone.
+   hasBottom=true;
+   const centerTop=mid-dir*land/2;
+   const centerBottom=mid+dir*land/2;
+   const topHalf=Math.max(gap/2+4,Math.min(width/2,Math.max(10,Math.abs(centerTop-yTop)*Math.tan(a/2))));
+   const bottomHalf=Math.max(gap/2+4,Math.min(width/2,Math.max(10,Math.abs(yRoot-centerBottom)*Math.tan(a/2))));
+   polys=[
+     [[c-topHalf,yTop],[c+topHalf,yTop],[c+gap/2,centerTop],[c-gap/2,centerTop]],
+     [[c-gap/2,centerBottom],[c+gap/2,centerBottom],[c+bottomHalf,yRoot],[c-bottomHalf,yRoot]]
+   ];
+   edges=[
+     [c-topHalf,yTop,c-gap/2,centerTop],[c+topHalf,yTop,c+gap/2,centerTop],
+     [c-gap/2,centerBottom,c-bottomHalf,yRoot],[c+gap/2,centerBottom,c+bottomHalf,yRoot]
+   ];
+   handleTop=centerTop; handleBottom=centerBottom;
+ } else if(type==='ongelijkzijdige X-naad - Full Pen'){
+   // Ongelijkzijdige X: boven- en ondervoorbereiding hebben onafhankelijk instelbare breedte/hoogte.
+   hasBottom=true;
+   const aTop=unequal?Math.max(gap/2+4,bevelHalf):bevelHalf;
+   const aBot=unequal?Math.max(gap/2+4,bevelBottom*.72):bevelBottom;
+   const centerTop=mid-dir*land/2;
+   const centerBottom=mid+dir*land/2;
+   polys=[
+     [[c-aTop,yTop],[c+aTop,yTop],[c+gap/2,centerTop],[c-gap/2,centerTop]],
+     [[c-gap/2,centerBottom],[c+gap/2,centerBottom],[c+aBot,yRoot],[c-aBot,yRoot]]
+   ];
+   edges=[
+     [c-aTop,yTop,c-gap/2,centerTop],[c+aTop,yTop,c+gap/2,centerTop],
+     [c-gap/2,centerBottom,c-aBot,yRoot],[c+gap/2,centerBottom,c+aBot,yRoot]
+   ];
+   handleTop=centerTop; handleBottom=centerBottom;
+ } else if(type==='V-naad (dubbelzijdig) - Full Pen'){
+   hasBottom=true;
+   polys=[[[c-bevelHalf,yTop],[c+bevelHalf,yTop],[c+gap/2,topEnd],[c-gap/2,topEnd]],[[c-gap/2,botEnd],[c+gap/2,botEnd],[c+bevelBottom,yRoot],[c-bevelBottom,yRoot]]];
+   edges=[[c-bevelHalf,yTop,c-gap/2,topEnd],[c+bevelHalf,yTop,c+gap/2,topEnd],[c-gap/2,botEnd,c-bevelBottom,yRoot],[c+gap/2,botEnd,c+bevelBottom,yRoot]];
+ } else if(type==='U-naad - Full Pen' || type==='Dubbele U-naad - Full Pen' || type==='J-naad - Full Pen' || type==='Dubbele J-naad - Full Pen' || type==='½ U-naad - Full Pen'){
+   const dbl=(type==='Dubbele U-naad - Full Pen'||type==='Dubbele J-naad - Full Pen');
+   const half=(type==='½ U-naad - Full Pen');
+   const rad=Math.min(radius,depth*.35);
+   const topWidth=Math.max(gap+8,width*.72);
+   const topL=c-topWidth/2, topR=c+topWidth/2;
+   const midY=dbl?mid:yRoot-dir*land;
+   const pts=[];
+   if(half){
+     pts.push([c-width/2,yTop],[c+topWidth/2,yTop],[c+gap/2,midY]);
+     for(let i=0;i<=6;i++){const t=i/6;const ang=Math.PI/2*t;pts.push([c+gap/2-rad*(1-Math.cos(ang)),midY+dir*rad*Math.sin(ang)]);} 
+     pts.push([c-gap/2,yRoot],[c-width/2,yRoot]);
+   } else {
+     pts.push([topL,yTop],[topR,yTop]);
+     for(let i=0;i<=8;i++){const t=i/8;const ang=Math.PI*t;pts.push([c+(topWidth/2-rad)*(Math.cos(ang)),yTop+dir*(rad*(1-Math.sin(ang))) ]);}
+     pts.push([c+gap/2,midY],[c-gap/2,midY]);
+     if(dbl){
+       for(let i=0;i<=8;i++){const t=i/8;const ang=Math.PI*t;pts.push([c-(topWidth/2-rad)*Math.cos(ang),yRoot-dir*(rad*(1-Math.sin(ang))) ]);}
+     } else pts.push([c-gap/2,yRoot]);
+     pts.push([c-width/2,yRoot]);
    }
-  } else if(prep==="x" || prep==="asymx"){
-   // Echte X-naad: dubbele V. Boven- en onderzijde spiegelen rond een
-   // horizontaal centraal land. Bij ongelijkzijdige X zijn de vier
-   // laskanten onafhankelijk in hoogte/hoek gemodelleerd.
-   const midY = top + (back-top)/2;
-   const landH = Math.max(1, landPx);
-   const landTop = midY - landH/2;
-   const landBottom = midY + landH/2;
-   const aL = bevelL*Math.PI/180;
-   const aR = bevelR*Math.PI/180;
-   const lowL = prep==="asymx" ? Math.max(5, bevelL-8)*Math.PI/180 : aL;
-   const lowR = prep==="asymx" ? Math.max(5, bevelR+8)*Math.PI/180 : aR;
-   const upperDepth = Math.max(1, landTop-top);
-   const lowerDepth = Math.max(1, back-landBottom);
-   const upperLeft = center-gapPx/2-upperDepth*Math.tan(aL);
-   const upperRight = center+gapPx/2+upperDepth*Math.tan(aR);
-   const lowerLeft = center-gapPx/2-lowerDepth*Math.tan(lowL);
-   const lowerRight = center+gapPx/2+lowerDepth*Math.tan(lowR);
-   const landLeft=center-gapPx/2, landRight=center+gapPx/2;
-
-   // Lasmetaal: twee afzonderlijke V-vullingen, met een echte horizontale middenland.
-   weldFill();
-   x.beginPath();
-   x.moveTo(upperLeft,top); x.lineTo(landLeft,landTop);
-   x.lineTo(landRight,landTop); x.lineTo(upperRight,top); x.closePath();
-   x.fill(); x.stroke();
-   x.beginPath();
-   x.moveTo(landLeft,landBottom); x.lineTo(lowerLeft,back);
-   x.lineTo(lowerRight,back); x.lineTo(landRight,landBottom); x.closePath();
-   x.fill(); x.stroke();
-
-   // Centraal horizontaal land/root face — geen verticale strook meer.
-   x.fillStyle="#8f999e"; x.strokeStyle="#26343c"; x.lineWidth=2.5;
-   x.beginPath();
-   x.moveTo(landLeft,landTop); x.lineTo(landRight,landTop);
-   x.lineTo(landRight,landBottom); x.lineTo(landLeft,landBottom); x.closePath();
-   x.fill(); x.stroke();
-
-   // Duidelijke smelt-/laskanten.
-   x.strokeStyle="#26343c"; x.lineWidth=3;
-   x.beginPath();x.moveTo(upperLeft,top);x.lineTo(landLeft,landTop);x.stroke();
-   x.beginPath();x.moveTo(upperRight,top);x.lineTo(landRight,landTop);x.stroke();
-   x.beginPath();x.moveTo(lowerLeft,back);x.lineTo(landLeft,landBottom);x.stroke();
-   x.beginPath();x.moveTo(lowerRight,back);x.lineTo(landRight,landBottom);x.stroke();
-
-   if(capH>0){
-     const capW=Math.max(28,upperRight-upperLeft);
-     x.fillStyle="#c5cdd0";x.strokeStyle="#58656d";x.lineWidth=2;
-     x.beginPath();x.moveTo(center-capW/2,top);x.quadraticCurveTo(center,top-capH,center+capW/2,top);
-     x.lineTo(upperRight,top);x.lineTo(upperLeft,top);x.closePath();x.fill();x.stroke();
-   }
-   if(bottomCap>0){
-     const capW=Math.max(28,lowerRight-lowerLeft);
-     x.fillStyle="#c5cdd0";x.strokeStyle="#58656d";x.lineWidth=2;
-     x.beginPath();x.moveTo(lowerLeft,back);x.lineTo(center-capW/2,back);
-     x.quadraticCurveTo(center,back+bottomCap,center+capW/2,back);
-     x.lineTo(lowerRight,back);x.closePath();x.fill();x.stroke();
-   }
-
-   x.fillStyle="#1769aa";x.font="bold 12px Arial";
-   x.fillText("BOVEN-V",center-24,top+38);
-   x.fillText("ONDER-V",center-25,back-28);
-   x.fillText(`X-naad: ${bevelL.toFixed(0)}° / ${bevelR.toFixed(0)}°`,center-62,midY+35);
+   polys=[pts];
+   edges=[];
+   if(dbl)hasBottom=true;
  } else {
-   // I / square butt.
-   x.fillStyle="#aab5ba";x.strokeStyle="#26343c";x.lineWidth=3;
-   x.beginPath();x.moveTo(center-2,top);x.lineTo(center+2,top);x.lineTo(center+2,back);x.lineTo(center-2,back);x.closePath();x.fill();x.stroke();
-   if(capH>0){
-     x.fillStyle="#c5cdd0";x.beginPath();x.moveTo(center-30,top);x.quadraticCurveTo(center,top-capH,center+30,top);x.lineTo(center+2,top);x.lineTo(center-2,top);x.closePath();x.fill();x.stroke();
-   }
+   polys=[[[c-bevelHalf,yTop],[c+bevelHalf,yTop],[c+gap/2,topEnd],[c-gap/2,topEnd]]];
+   edges=[[c-bevelHalf,yTop,c-gap/2,topEnd],[c+bevelHalf,yTop,c+gap/2,topEnd]];
  }
+ return {type,symmetry,c,width,prep,gap,land,radius,yTop,yRoot,rootY:yRoot,topRootY:topEnd,bottomRootY:botEnd,centerY,dir,polys,edges,hasBottom,handleTop,handleBottom,bevelHalf,bevelBottom,xTL:c-bevelHalf,xTR:c+bevelHalf,xR1:c-gap/2,xR2:c+gap/2};
+}
+function weldPolygons(pg,w){ return w.polys; }
 
- // Labels / dimensions
- x.fillStyle="#1769aa";x.font="bold 13px Arial";
- if(prep!=="square"){
-   x.fillText(`${bevelL.toFixed(0)}°`,Math.max(plateL+20,topL+10),top+54);
-   x.fillText(`${bevelR.toFixed(0)}°`,Math.min(plateR-55,topR-35),top+54);
-   x.fillText(`naadhoek ${(bevelL+bevelR).toFixed(0)}°`,center-48,top-20);
+function pointInPoly(x,y,poly){
+ let inside=false;
+ for(let i=0,j=poly.length-1;i<poly.length;j=i++){
+  const xi=poly[i][0],yi=poly[i][1],xj=poly[j][0],yj=poly[j][1];
+  const hit=((yi>y)!==(yj>y))&&(x<(xj-xi)*(y-yi)/(yj-yi+1e-12)+xi);
+  if(hit)inside=!inside;
  }
- x.fillStyle="#24343e";x.font="bold 11px Arial";
- x.fillText(`wortelopening ${gm.gap.toFixed(1)} mm`,center-50,rootY-13);
- x.fillText(`wortelvlak ${gm.land.toFixed(1)} mm`,center-40,rootY+18);
- if(capH>0)x.fillText(`versterking +${(+$("capTop").value||0).toFixed(1)} mm`,center-54,top-40);
-
-
- // De voorzijde van de taster is de zijde naar de las toe. De opgegeven
- // maat is exact: voorkant taster -> hartlijn las. De probe-index wordt
- // daaruit visueel afgeleid zodat beide referenties geometrisch kloppen.
- const pw=105,ph=58,pt=top-ph;
- const frontX=center-gm.frontToSeam*scale;
- const px=frontX-pw/2;
- gm.scan=((frontX-center)/scale);
- $("scanPos").value=gm.scan.toFixed(1);
- const pg=x.createLinearGradient(px-pw/2,pt,px+pw/2,top);
- pg.addColorStop(0,"#d8dcde");pg.addColorStop(.5,"#8d979b");pg.addColorStop(1,"#48545a");
- x.fillStyle=pg;x.beginPath();x.moveTo(px-pw/2+8,top);x.lineTo(px+pw/2-8,top);x.lineTo(px+pw/2-17,pt+5);x.quadraticCurveTo(px+pw/2-25,pt,px+pw/2-34,pt);x.lineTo(px-pw/2+25,pt);x.quadraticCurveTo(px-pw/2+15,pt,px-pw/2+8,pt+5);x.closePath();x.fill();x.strokeStyle="#26343c";x.lineWidth=2;x.stroke();
- // geïntegreerde hoekstraalbehuizing en kabel/LEMO-aansluiting
- x.fillStyle="#313c42";x.fillRect(px+pw/2-29,pt+8,18,22);x.strokeStyle="#151d21";x.strokeRect(px+pw/2-29,pt+8,18,22);
- x.fillStyle="#9ea8ac";x.fillRect(px+pw/2-24,pt+11,8,5);
- x.strokeStyle="#20282d";x.lineWidth=8;x.beginPath();x.moveTo(px+pw/2-12,pt+15);x.bezierCurveTo(px+pw/2+25,pt-15,px+pw/2+65,pt-25,px+pw/2+95,pt-10);x.stroke();
- x.fillStyle="#f3f7f8";x.font="bold 9px Arial";x.fillText("OLYMPUS / EVIDENT",px-45,pt+23);x.fillText(gm.p.name,px-42,pt+37);x.fillText(`${gm.f} MHz • ${gm.p.w}×${gm.p.h} mm`,px-36,pt+50);
- const exitX=frontX;x.fillStyle="#ffd34d";x.beginPath();x.arc(exitX,top,6,0,Math.PI*2);x.fill();
- x.fillStyle="#17202a";x.font="bold 10px Arial";x.fillText("index / uitgangspunt",exitX+10,top-7);
-
- // Hartlijn las: vaste referentielijn voor de positionering.
- x.strokeStyle="#1769aa";x.lineWidth=2;x.setLineDash([8,6]);
- x.beginPath();x.moveTo(center,top-30);x.lineTo(center,back+35);x.stroke();x.setLineDash([]);
- x.fillStyle="#1769aa";x.font="bold 11px Arial";x.fillText("HART LAS",Math.min(center+7,W-75),top+18);
-
- // Maatlijn voorkant taster -> hart las.
- x.strokeStyle="#1769aa";x.lineWidth=1.8;
- const dimY=top-78;
- x.beginPath();x.moveTo(frontX,dimY);x.lineTo(center,dimY);x.stroke();
- x.beginPath();x.moveTo(frontX,dimY-6);x.lineTo(frontX,dimY+6);x.stroke();
- x.beginPath();x.moveTo(center,dimY-6);x.lineTo(center,dimY+6);x.stroke();
- x.fillStyle="#1769aa";x.font="bold 11px Arial";
- x.fillText(`voorkant taster → hart las: ${gm.frontToSeam.toFixed(1)} mm`,Math.max(20,(frontX+center)/2-75),dimY-9);
-
- // Beam and reflections — true UT V-path geometry.
- // DEFINITIE:
- // 1 been  = ½ sprong: oppervlak -> achterwand
- // 2 benen = 1 hele sprong: oppervlak -> achterwand -> oppervlak
- // 3 benen = 1½ sprong: oppervlak -> achterwand -> oppervlak -> achterwand
- // enzovoort. Een hele sprong is dus nadrukkelijk een VOLLEDIGE V.
- const legs=Math.max(1,Math.min(6,parseInt($("skips").value,10)||2));
- const legDx=Math.abs(gm.t*Math.tan(gm.a)*scale);
- const points=[{x:exitX,y:top}];
- let curX=exitX, curY=top, dir=1;
- for(let i=0;i<legs;i++){
-   const nextY=(i%2===0)?back:top;
-   const nextX=curX+dir*legDx;
-   points.push({x:nextX,y:nextY});
-   curX=nextX; curY=nextY;
-   // Bij een reflectie aan de achterwand/het oppervlak keert alleen de verticale
-   // component van de bundel om. De horizontale scanrichting blijft gelijk.
-   // Daardoor ontstaat de echte UT-V: x blijft naar voren lopen per been.
-   dir=1;
- }
-
- // Draw each leg as a real straight sound path, including beam envelope.
- for(let i=0;i<legs;i++){
-   const a0=points[i], a1=points[i+1];
-   const dy=Math.abs(a1.y-a0.y);
-   const spread=Math.max(3,Math.max(0,dy-gm.nf*scale)*Math.tan(gm.div*Math.PI/180));
-   const nearSpread=Math.min(Math.max(1,dy)*.12,gm.aperture*scale/2);
-   const totalSpread=Math.max(spread,nearSpread);
-
-   x.fillStyle="rgba(201,34,42,.11)";
-   x.beginPath();
-   x.moveTo(a0.x-2,a0.y);
-   x.lineTo(a1.x-totalSpread,a1.y);
-   x.lineTo(a1.x+totalSpread,a1.y);
-   x.lineTo(a0.x+2,a0.y);
-   x.closePath(); x.fill();
-
-   x.strokeStyle="#c9222a"; x.lineWidth=4;
-   x.beginPath();x.moveTo(a0.x,a0.y);x.lineTo(a1.x,a1.y);x.stroke();
-
-   x.strokeStyle="#c9222a";x.lineWidth=1.3;x.setLineDash([7,6]);
-   x.beginPath();x.moveTo(a0.x-2,a0.y);x.lineTo(a1.x-totalSpread,a1.y);x.stroke();
-   x.beginPath();x.moveTo(a0.x+2,a0.y);x.lineTo(a1.x+totalSpread,a1.y);x.stroke();
-   x.setLineDash([]);
-
-   // Number every leg so the V geometry is unambiguous.
-   const lx=(a0.x+a1.x)/2, ly=(a0.y+a1.y)/2;
-   x.fillStyle="#9d2028";x.font="bold 11px Arial";
-   x.fillText(`BEEN ${i+1}`,lx+7,ly-7);
- }
-
- // Reflection points: backwall and scanning surface.
- for(let i=1;i<points.length;i++){
-   const pt=points[i];
-   x.fillStyle="#ffd34d";x.strokeStyle="#5f4b00";x.lineWidth=1.2;
-   x.beginPath();x.arc(pt.x,pt.y,6,0,Math.PI*2);x.fill();x.stroke();
-   if(i<legs){
-     x.fillStyle="#59666e";x.font="bold 10px Arial";
-     x.fillText(pt.y===back?"REFLECTIE ACHTERWAND":"REFLECTIE OPPERVLAK",pt.x+8,pt.y+(pt.y===back?16:-10));
-   }
- }
-
- const skipLabels=["½ SPRONG","1 HELE SPRONG","1½ SPRONG","2 HELE SPRONGEN","2½ SPRONG","3 HELE SPRONGEN"];
- x.fillStyle="#1769aa";x.font="bold 13px Arial";
- const selectedSkip=skipLabels[legs-1]||"";
- x.fillText(`GETEKEND: ${selectedSkip}`,24,108);
- x.fillStyle="#6fd2f5";x.font="bold 10px Arial";x.fillText("CONVENTIONELE HOEKSTRAALPROBE • GEEN PAUT • GEEN TOFD",24,92);
- x.font="bold 12px Arial";
- x.fillText(`½ sprong = ${gm.half.toFixed(2)} mm  •  1 hele sprong = ${gm.full.toFixed(2)} mm`,24,126);
- x.fillStyle="#4f5c63";x.font="11px Arial";
- x.fillText("HELE SPRONG = volledige V: achterwandreflectie + terugkeer naar het scanoppervlak",24,144);
- // Modelmatige near-field boundary, shown only on the first leg.
- const nfX=exitX+Math.min(gm.nf*Math.tan(gm.a),gm.t*1.2)*scale;
- x.strokeStyle="#7b8790";x.lineWidth=1.5;x.setLineDash([4,5]);
- x.beginPath();x.moveTo(nfX,top);x.lineTo(nfX,Math.min(back,top+gm.nf*scale));x.stroke();x.setLineDash([]);
- x.fillStyle="#66737c";x.font="11px Arial";x.fillText("modelmatige near-fieldgrens",Math.min(nfX+6,W-190),top+105);
-
- if(faultOn){
-   const fx=center+gm.faultX*scale,fy=top+gm.faultDepth*scale;
-   drawFault(x,fx,fy,$("faultType").value,+$("faultLength").value||8,+$("faultDir").value||0);
-   x.fillStyle=hi.inside?"#18794e":"#8d1d1d";x.font="bold 13px Arial";
-   x.fillText(hi.insideCore?"FOUT IN CENTRALE BUNDEL":(hi.inside?"FOUT IN BUNDELSPREIDING":"FOUT BUITEN BUNDEL"),fx+15,fy+23);
- }
-
- // Plate thickness dimension
- x.strokeStyle="#1769aa";x.lineWidth=2;x.beginPath();x.moveTo(W-42,top);x.lineTo(W-42,back);x.stroke();
- x.save();x.translate(W-47,(top+back)/2);x.rotate(-Math.PI/2);x.fillStyle="#1769aa";x.font="bold 12px Arial";x.fillText(`plaatdikte ${gm.t.toFixed(1)} mm`,0,0);x.restore();
-
- // Scale
- x.strokeStyle="#17202a";x.lineWidth=5;x.beginPath();x.moveTo(55,680);x.lineTo(155,680);x.stroke();
- x.fillStyle="#17202a";x.font="11px Arial";x.fillText("100 mm",55,670);
+ return inside;
 }
 
-/* TASTER SLEEPBEDIENING — touch op iPhone/iPad + muis op desktop.
-   Alleen de horizontale tasterpositie wordt bediend; de bestaande rekenkern
-   en overige bediening blijven ongewijzigd. */
-(function enableProbeDrag(){
-  const canvas=$('cross');
-  if(!canvas) return;
-  canvas.style.cursor='grab';
-  canvas.style.touchAction='none';
-  let dragging=false;
-  let pointerId=null;
-  const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
-  function canvasX(ev){
-    const r=canvas.getBoundingClientRect();
-    return (ev.clientX-r.left)*(canvas.width/r.width);
+function faultPoint(pg,w){
+ const rel=n('flawX');
+ const depth=Math.max(.5,n('flawDepth'));
+ const polyList=weldPolygons(pg,w);
+ const targetX=w.c+rel*pg.sx;
+ let y=pg.ySurface(targetX)+depth*pg.sy;
+ if(pg.flipped) y=pg.ySurface(targetX)-depth*pg.sy;
+ const allowed=[];
+ for(const poly of polyList){for(const pt of poly)allowed.push(pt);}
+ const minX=Math.min(...allowed.map(p=>p[0]))+4,maxX=Math.max(...allowed.map(p=>p[0]))-4;
+ const minY=Math.min(...allowed.map(p=>p[1]))+4,maxY=Math.max(...allowed.map(p=>p[1]))-4;
+ let x=Math.max(minX,Math.min(maxX,targetX));
+ y=Math.max(minY,Math.min(maxY,y));
+ let ok=polyList.some(poly=>pointInPoly(x,y,poly));
+ if(!ok){
+   // Pull toward weld centre until the requested point is inside the weld.
+   x=w.c; y=Math.max(minY,Math.min(maxY,y));
+   for(let i=0;i<30&&!ok;i++){y=minY+(maxY-minY)*(i/29);ok=polyList.some(poly=>pointInPoly(x,y,poly));}
+ }
+ return {x,y,depth:Math.max(.5,(Math.abs(y-pg.ySurface(x))/pg.sy)),relX:(x-w.c)/pg.sx};
+}
+
+function lineIntersection(p,d,a,b){
+ const sx=b[0]-a[0],sy=b[1]-a[1],den=d[0]*sy-d[1]*sx;
+ if(Math.abs(den)<1e-9)return null;
+ const qx=a[0]-p[0],qy=a[1]-p[1];
+ const t=(qx*sy-qy*sx)/den,u=(qx*d[1]-qy*d[0])/den;
+ if(t>1e-6&&u>=-1e-7&&u<=1.0000001)return {t,u,point:[p[0]+t*d[0],p[1]+t*d[1]]};
+ return null;
+}
+
+function boundaryHit(p,d,pg){
+ let best=null;
+ const consider=(pts,kind)=>{
+  for(let i=0;i<pts.length-1;i++){
+   const h=lineIntersection(p,d,pts[i],pts[i+1]);
+   if(h&&(!best||h.t<best.t))best={...h,segA:pts[i],segB:pts[i+1],kind};
   }
-  function geometry(){
-    const gm=g();
-    const scale=Math.min(8.5,300/gm.t);
-    const center=600;
-    const frontX=center-gm.frontToSeam*scale;
-    const pw=105;
-    return {gm,scale,center,frontX,halfW:pw/2};
-  }
-  function onDown(ev){
-    if(ev.pointerType==='mouse' && ev.button!==0) return;
-    const z=geometry();
-    const x=canvasX(ev);
-    /* Alleen de getekende tasterzone is sleepbaar. */
-    if(Math.abs(x-z.frontX)>z.halfW+18) return;
-    dragging=true;
-    pointerId=ev.pointerId;
-    canvas.setPointerCapture?.(pointerId);
-    canvas.style.cursor='grabbing';
-    ev.preventDefault();
-  }
-  function onMove(ev){
-    if(!dragging || ev.pointerId!==pointerId) return;
-    const z=geometry();
-    const x=canvasX(ev);
-    /* De taster blijft aan de linkerzijde van het las-hart; 0 mm is de grens. */
-    const maxLeft=250;
-    const frontToSeam=clamp((z.center-x)/z.scale,0,maxLeft);
-    $('frontToSeam').value=frontToSeam.toFixed(1);
-    drawAll();
-    ev.preventDefault();
-  }
-  function onUp(ev){
-    if(ev.pointerId!==pointerId) return;
-    dragging=false;
-    pointerId=null;
-    canvas.style.cursor='grab';
-    ev.preventDefault();
-  }
-  canvas.addEventListener('pointerdown',onDown,{passive:false});
-  canvas.addEventListener('pointermove',onMove,{passive:false});
-  canvas.addEventListener('pointerup',onUp,{passive:false});
-  canvas.addEventListener('pointercancel',onUp,{passive:false});
-  canvas.addEventListener('lostpointercapture',()=>{
-    dragging=false;
-    pointerId=null;
-    canvas.style.cursor='grab';
-  });
-})();
-
-function drawFault(x,cx,cy,type,len,deg){
- x.save();x.translate(cx,cy);x.rotate(deg*Math.PI/180);x.lineWidth=3;x.strokeStyle="#c9222a";x.fillStyle="#c9222a";
- if(type==="point"){x.beginPath();x.arc(0,0,8,0,Math.PI*2);x.fill()}
- else if(type==="pore"){x.beginPath();x.ellipse(0,0,Math.max(4,len/3),Math.max(3,len/5),0,0,Math.PI*2);x.fill()}
- else if(type==="slag"){x.fillStyle="#7d3d20";x.beginPath();x.ellipse(0,0,Math.max(5,len/2),Math.max(3,len/4),0,0,Math.PI*2);x.fill()}
- else{x.beginPath();x.moveTo(-len/2,0);x.lineTo(len/2,0);x.stroke()}
- x.restore();
+ };
+ consider(pg.backPts,'backwall');
+ consider(pg.surfacePts,'surface');
+ if(d[0]>1e-9){const t=(pg.right-p[0])/d[0];if(t>1e-6&&(!best||t<best.t))best={t,point:[pg.right,p[1]+t*d[1]],kind:'side'};}
+ if(d[0]<-1e-9){const t=(pg.left-p[0])/d[0];if(t>1e-6&&(!best||t<best.t))best={t,point:[pg.left,p[1]+t*d[1]],kind:'side'};}
+ return best;
 }
 
-function drawTop(gm,hi,faultOn){
- const c=$("top"),x=c.getContext("2d"),W=c.width,H=c.height;x.clearRect(0,0,W,H);x.fillStyle="#f6f8fa";x.fillRect(0,0,W,H);
- x.fillStyle="#172b3a";x.fillRect(0,0,W,52);x.fillStyle="#fff";x.font="bold 17px Arial";x.fillText("BOVENAANZICHT – SCANPOSITIE / DEKKING",20,32);
- const seam=W/2,y=165,left=70,right=W-70,scale=5;
- x.fillStyle="#b9c3c8";x.fillRect(left,y-28,right-left,56);x.strokeStyle="#46535d";x.strokeRect(left,y-28,right-left,56);
- x.strokeStyle="#34424b";x.setLineDash([7,5]);x.beginPath();x.moveTo(seam,y-48);x.lineTo(seam,y+48);x.stroke();x.setLineDash([]);
- const px=seam+gm.scan*scale;x.fillStyle="#5b666c";x.fillRect(px-38,y-24,76,48);x.fillStyle="#fff";x.font="bold 10px Arial";x.fillText("TASTER",px-19,y+4);
- const cov=Math.max(12,gm.half*scale);x.fillStyle="rgba(201,34,42,.12)";x.fillRect(px-cov,y-28,cov*2,56);x.strokeStyle="#c9222a";x.setLineDash([6,5]);x.strokeRect(px-cov,y-28,cov*2,56);x.setLineDash([]);
- if(faultOn){const fx=seam+gm.faultX*scale;x.fillStyle="#c9222a";x.beginPath();x.arc(fx,y,8,0,Math.PI*2);x.fill();x.fillStyle="#17202a";x.font="bold 11px Arial";x.fillText("fout",fx+11,y-9)}
- x.fillStyle="#1769aa";x.font="bold 11px Arial";x.fillText("probe-index "+gm.scan.toFixed(1)+" mm",px-52,y-42);x.fillText("hart las = 0 mm",seam-45,y+58);
- x.fillText(faultOn?"fout X "+gm.faultX.toFixed(1)+" mm":"geen foutsimulatie",seam-45,y+75);
+function reflect(d,a,b){
+ const tx=b[0]-a[0],ty=b[1]-a[1],L=Math.hypot(tx,ty)||1;
+ const ux=tx/L,uy=ty/L,nx=-uy,ny=ux,dot=d[0]*nx+d[1]*ny;
+ return [d[0]-2*dot*nx,d[1]-2*dot*ny];
 }
 
-function getScanRange(){
- const sel=$("scanRange").value;
- if(sel==="custom") return Math.max(10,+$("scanRangeCustom").value||100);
- return Math.max(10,+sel||100);
+function rayTrace(x0,angleRad,pg,pr,maxLegs=1){
+ const dirSide=x0<pg.c?1:-1;
+ const d0=pr.kind==='straight'?[0,1]:[Math.sin(angleRad)*dirSide,Math.cos(angleRad)];
+ let d=[d0[0],d0[1]];
+ let p=[x0,pg.ySurface(x0)],out=[p.slice()],events=[];
+ for(let leg=1;leg<=maxLegs;leg++){
+  const hit=boundaryHit(p,d,pg);
+  if(!hit)break;
+  out.push(hit.point);
+  if(hit.kind==='side')break;
+  events.push({kind:hit.kind,point:hit.point,leg});
+  if(leg===maxLegs)break;
+  const nd=reflect(d,hit.segA,hit.segB),L=Math.hypot(nd[0],nd[1])||1;
+  d=[nd[0]/L,nd[1]/L];
+  p=[hit.point[0]+d[0]*.05,hit.point[1]+d[1]*.05];
+ }
+ return {points:out,events};
 }
 
-function drawScan(gm,hi,faultOn){
- const c=$("scan"),ctx=c.getContext("2d"),W=c.width,H=c.height;
- ctx.clearRect(0,0,W,H);
- ctx.fillStyle="#0f1f2b";ctx.fillRect(0,0,W,H);
- const range=getScanRange();
- const left=62,right=W-24,top=24,bottom=H-43;
- const plotW=right-left,plotH=bottom-top;
- const base=bottom-plotH*.08;
- const fullScale=Math.min(1.0,range/Math.max(range,1));
- const mmToX=d=>left+(Math.max(0,Math.min(range,d))/range)*plotW;
- const ampToY=a=>base-(Math.max(-1,Math.min(1,a))*plotH*.42);
+function beamModel(){
+ const pg=plateGeom(),pr=probeInfo();
+ const angle=pr.kind==='straight'?0:n('angleSel')*Math.PI/180;
+ const px=Math.max(pg.left+20,Math.min(pg.right-20,state.probeX));
+ const probeY=pg.ySurface(px);
+ const trace=rayTrace(px,angle,pg,pr,4);
+ let cum=0,segments=[];
+ for(let i=0;i<trace.points.length-1;i++){
+  const a=trace.points[i],b=trace.points[i+1],len=Math.hypot(b[0]-a[0],b[1]-a[1])/pg.sy;
+  segments.push({x1:a[0],y1:a[1],x2:b[0],y2:b[1],cum,endPath:cum+len});cum+=len;
+ }
+ let taperPath=null,backwallPath=null;
+ trace.events.forEach((ev,i)=>{const path=segments[i]?segments[i].endPath:null;if(ev.kind==='taper'&&taperPath==null)taperPath=path;if(ev.kind==='backwall'&&backwallPath==null)backwallPath=path;});
+ return {pg,pr,px,angle,segments,taperPath,backwallPath,spread:pr.kind==='straight'?pr.spread:pr.spread};
+}
 
- // Instrument-like grid: amplitude 0–100 % and sound path in mm.
- ctx.strokeStyle="#29414f";ctx.lineWidth=1;
- for(let i=0;i<=10;i++){
-   const xx=left+i*plotW/10;
-   ctx.beginPath();ctx.moveTo(xx,top);ctx.lineTo(xx,bottom);ctx.stroke();
+function nearestOnSegments(fx,fy,m){
+ let best=null;
+ for(const seg of m.segments){
+  const vx=seg.x2-seg.x1,vy=seg.y2-seg.y1,l2=vx*vx+vy*vy;if(!l2)continue;
+  const u=Math.max(0,Math.min(1,((fx-seg.x1)*vx+(fy-seg.y1)*vy)/l2));
+  const cx=seg.x1+u*vx,cy=seg.y1+u*vy;
+  const dist=Math.hypot(fx-cx,fy-cy);
+  const along=seg.cum+Math.hypot(cx-seg.x1,cy-seg.y1)/m.pg.sy;
+  if(!best||dist<best.dist)best={dist,along,cx,cy};
  }
- for(let i=0;i<=4;i++){
-   const yy=top+i*plotH/4;
-   ctx.beginPath();ctx.moveTo(left,yy);ctx.lineTo(right,yy);ctx.stroke();
- }
- ctx.strokeStyle="#8aa0ad";ctx.lineWidth=1.2;
- ctx.beginPath();ctx.moveTo(left,top);ctx.lineTo(left,bottom);ctx.lineTo(right,bottom);ctx.stroke();
+ return best;
+}
 
- // Header and scale labels.
- ctx.fillStyle="#f1f6f8";ctx.font="bold 13px Arial";
- ctx.fillText(`A-SCAN • MEETBEREIK ${range.toFixed(0)} mm`,left,16);
- ctx.font="10px Arial";ctx.fillStyle="#b9cbd4";
- ctx.fillText("AMPLITUDE",8,top+6);
- for(let i=0;i<=10;i+=2){
-   const d=range*i/10,xx=mmToX(d);
-   ctx.fillText(d.toFixed(0),xx-8,bottom+17);
- }
- ctx.fillText("geluidspad (mm)",right-88,bottom+32);
- for(let i=0;i<=4;i++){
-   const pct=100-i*25,yy=top+i*plotH/4;
-   ctx.fillText(String(pct),30,yy+4);
- }
+function flawEcho(){
+ const m=beamModel(),w=weldGeometry(m.pg),f=faultPoint(m.pg,w);
+ if($('defectType').value==='Geen fout')return {hit:false,path:null,dist:null};
+ const near=nearestOnSegments(f.x,f.y,m);
+ const depthPx=Math.max(1,Math.abs(f.y-m.pg.ySurface(f.x)));
+ const beamHalfPx=Math.tan((m.spread*Math.PI/180))*depthPx;
+ return {hit:!!near&&near.dist<=Math.max(5,beamHalfPx),path:near?near.along:null,dist:near?near.dist:null};
+}
 
- // Small coupling/front-wall pulse (modelled transducer ring-down).
- function pulse(d,amp,width,cycles,phase=0){
-   const sigma=width;
-   const xx=mmToX(d);
-   const span=Math.max(2,plotW*(sigma/range));
-   const samples=Math.max(12,Math.floor(span*2));
-   for(let k=0;k<samples;k++){
-     const u=(k/(samples-1))*2-1;
-     const dd=d+u*sigma;
-     if(dd<0||dd>range) continue;
-     const env=Math.exp(-3.5*u*u);
-     const carrier=Math.sin(2*Math.PI*cycles*(u+1)/2+phase);
-     const val=amp*env*carrier;
-     const x1=mmToX(dd),y=ampToY(val);
-     if(k===0||dd<=0){ctx.moveTo(x1,y)}else{ctx.lineTo(x1,y)}
+function draw(){
+ const pg=plateGeom(),w=weldGeometry(pg),pr=probeInfo(),svg=$('beamSvg'),W=700,H=390;
+ const px=Math.max(pg.left+20,Math.min(pg.right-20,state.probeX));
+ state.probeX=px;
+ const probeY=pg.ySurface(px);
+ const f=faultPoint(pg,w), defectType=$('defectType').value;
+ const selectedSkip=$('skipSelect').value;
+ const selectedBounces = selectedSkip==='half' ? 1 : (selectedSkip==='whole' ? 2 : 3);
+ // ½ sprong = oppervlak → achterwand (1 traject),
+ // 1 hele sprong = oppervlak → achterwand → oppervlak (2 trajecten),
+ // 1½ sprong = oppervlak → achterwand → oppervlak → achterwand (3 trajecten).
+ // De centrale bundel én de randstralen worden exact tot dezelfde gekozen sprong getekend.
+ const main=rayTrace(px,pr.kind==='straight'?0:n('angleSel')*Math.PI/180,pg,pr,selectedBounces);
+ const edgeA=pr.kind==='straight'?0:(n('angleSel')-pr.spread)*Math.PI/180;
+ const edgeB=pr.kind==='straight'?0:(n('angleSel')+pr.spread)*Math.PI/180;
+ const edge1=rayTrace(px,edgeA,pg,pr,selectedBounces),edge2=rayTrace(px,edgeB,pg,pr,selectedBounces);
+ const platePath=`M ${pg.surfacePts.map(p=>p.join(' ')).join(' L ')} L ${pg.backPts.slice().reverse().map(p=>p.join(' ')).join(' L ')} Z`;
+ const wpolys=weldPolygons(pg,w);
+ const weldShape=wpolys.map(poly=>`<path d="M ${poly.map(p=>p.join(' ')).join(' L ')} Z" fill="url(#weldG)" stroke="#d5e0e5" stroke-width="1.5"/>`).join('');
+const weldCap=(w.edges||[]).map(e=>`<path d="M ${e[0]} ${e[1]} L ${e[2]} ${e[3]}" fill="none" stroke="#eef7fa" stroke-width="3"/>`).join('');
+ const defectShape=(()=>{
+  if(defectType==='Geen fout')return '';
+  const x=f.x,y=f.y;
+  if(defectType==='Scheur')return `<path d="M ${x-5} ${y+10} l 3 -7 l -2 -5 l 4 -6 l -2 -6 l 5 -7" fill="none" stroke="#ff4d5f" stroke-width="3" stroke-linecap="round"/>`;
+  if(defectType==='Gebrek aan versmelting'){const side=x>=w.c?w.xTR-2:w.xTL+2;return `<path d="M ${side} ${y-13} L ${side} ${y+13}" stroke="#ff4d5f" stroke-width="4" stroke-linecap="round"/>`;}
+  if(defectType==='Gebrek aan doorlassing')return `<path d="M ${w.xR1-4} ${w.rootY} Q ${w.c} ${w.rootY-8} ${w.xR2+4} ${w.rootY}" fill="none" stroke="#ff4d5f" stroke-width="4"/>`;
+  if(defectType==='Porositeit')return `<circle cx="${x-5}" cy="${y}" r="4.5" fill="#ff5966"/><circle cx="${x+5}" cy="${y-5}" r="3.5" fill="#ff5966"/><circle cx="${x+6}" cy="${y+6}" r="3" fill="#ff5966"/>`;
+  if(defectType==='Slakinsluiting')return `<ellipse cx="${x}" cy="${y}" rx="13" ry="5" fill="#ff5966" transform="rotate(-18 ${x} ${y})"/>`;
+  return `<path d="M ${w.xTR-2} ${w.yTop+2} q 8 8 15 0" fill="none" stroke="#ff5966" stroke-width="4"/>`;
+ })();
+ const pts=a=>a.points.map(q=>q.join(',')).join(' ');
+ const taperLabel=pg.taperOn?`<text x="${(pg.tL+pg.tR)/2}" y="${Math.min(pg.yL,pg.yR)-8}" fill="#ffd15c" font-size="11" text-anchor="middle">VERJONGING ${n('taperLen').toFixed(0)} mm</text>`:'';
+ svg.innerHTML=`<defs><linearGradient id="plateG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#314754"/><stop offset="1" stop-color="#172a35"/></linearGradient><linearGradient id="weldG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a4b5bd"/><stop offset="1" stop-color="#52636d"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="4"/></filter><clipPath id="plateClip"><path d="${platePath}"/></clipPath></defs>
+ <rect width="700" height="390" fill="#061723"/><path d="${platePath}" fill="url(#plateG)" stroke="#758994" stroke-width="2"/>
+ ${pg.taperOn?`<line x1="${pg.tL}" y1="${pg.flipped?pg.ySurface(pg.tL):pg.yBack(pg.tL)}" x2="${pg.tR}" y2="${pg.flipped?pg.ySurface(pg.tR):pg.yBack(pg.tR)}" stroke="#ffd15c" stroke-width="2.5" stroke-dasharray="6 5"/>${taperLabel}`:''}
+ ${weldShape}${weldCap}<line x1="${w.c-18}" y1="${w.centerY}" x2="${w.c+18}" y2="${w.centerY}" stroke="#ffd15c" stroke-width="2.5"/><text x="${w.c+28}" y="${w.centerY+4}" fill="#ffd15c" font-size="10" font-weight="800">WORTELZONE</text>
+ <g class="weldHandle" data-weld-handle="top"><circle cx="${w.c}" cy="${w.handleTop}" r="7"/><line x1="${w.c-10}" y1="${w.handleTop-13}" x2="${w.c+10}" y2="${w.handleTop-13}"/><text x="${w.c+11}" y="${w.handleTop-16}">HOOGTE</text></g>${w.hasBottom?`<g class="weldHandle" data-weld-handle="bottom"><circle cx="${w.c}" cy="${w.handleBottom}" r="7"/><line x1="${w.c-10}" y1="${w.handleBottom+13}" x2="${w.c+10}" y2="${w.handleBottom+13}"/><text x="${w.c+11}" y="${w.handleBottom+24}">HOOGTE</text></g>`:''}
+ <text x="${w.c}" y="42" fill="#ff6973" font-size="13" font-weight="800" text-anchor="middle">HARTLIJN LAS</text><text x="${w.c}" y="60" fill="#fff" font-size="15" font-weight="700" text-anchor="middle">${n('weld').toFixed(1)} mm</text>
+ <text x="35" y="${Math.max(35,Math.min(78,pg.ySurface(pg.left)+12))}" fill="#9db3c0" font-size="12">oppervlak</text><text x="35" y="${Math.min(375,Math.max(pg.yBack(pg.left)+18,pg.yBack(pg.right)+18))}" fill="#9db3c0" font-size="12">achterwand</text>
+ <g clip-path="url(#plateClip)"><polyline points="${pts(edge1)}" fill="none" stroke="#22d8ff" stroke-width="2" opacity=".6" stroke-dasharray="7 5"/><polyline points="${pts(edge2)}" fill="none" stroke="#22d8ff" stroke-width="2" opacity=".6" stroke-dasharray="7 5"/><polyline points="${pts(main)}" fill="none" stroke="#22d8ff" stroke-width="18" opacity=".10" filter="url(#glow)"/><polyline points="${pts(main)}" fill="none" stroke="#22d8ff" stroke-width="4"/><polyline points="${pts(main)}" fill="none" stroke="#91efff" stroke-width="1" stroke-dasharray="7 7"/></g>
+ <g data-fault-marker="1" style="cursor:move;touch-action:none">${defectShape}<circle cx="${f.x}" cy="${f.y}" r="7" fill="#ff5966" stroke="#fff" stroke-width="2"/><text x="${f.x+12}" y="${f.y-8}" fill="#ff6973" font-size="12" font-weight="800">${defectType==='Geen fout'?'LOCATIE':'FOUT'}</text></g>
+ <g data-probe="1" style="cursor:grab;touch-action:none"><path d="M ${px-24} ${probeY-28} Q ${px-19} ${probeY-36} ${px-8} ${probeY-36} L ${px+18} ${probeY-36} Q ${px+27} ${probeY-34} ${px+30} ${probeY-26} L ${px+35} ${probeY-10} L ${px+35} ${probeY} L ${px-24} ${probeY} Z" fill="#7b8b93" stroke="#dce6ea" stroke-width="1.5"/><path d="M ${px-24} ${probeY-6} L ${px+35} ${probeY-6} L ${px+30} ${pg.top} L ${px-18} ${pg.top} Z" fill="#1688ad" stroke="#65dfff" stroke-width="1.2"/><rect x="${px-12}" y="${probeY-33}" width="27" height="19" rx="4" fill="#52646d" stroke="#cbd8dd"/><text x="${px+2}" y="${probeY-20}" fill="#f7fbfd" font-size="7" font-weight="800" text-anchor="middle">${pr.freq}MHz ${pr.size}</text><text x="${px+8}" y="${probeY-44}" fill="#ffd15c" font-size="20" font-weight="800">${pr.kind==='straight'?'0':n('angleSel')}°</text></g>
+ <text x="35" y="${Math.max(pg.yL,pg.yR)+45}" fill="#9db3c0" font-size="12">Afstand langs oppervlak (mm)</text><text x="350" y="28" fill="#c7d8e0" font-size="12" text-anchor="middle">PLAAT L ${pg.leftT.toFixed(1)} / R ${pg.rightT.toFixed(1)} mm • ${pr.label} • ${pr.wave}</text><text x="350" y="48" fill="#ffd15c" font-size="11" font-weight="700" text-anchor="middle">BUNDEL: ${selectedSkip==='whole'?'1 HELE SPRONG':(selectedSkip==='onehalf'?'1½ SPRONG':'½ SPRONG')}</text>`;
+ bindDrag();
+}
+
+function bindDrag(){
+ const svg=$('beamSvg');
+ svg.onpointerdown=e=>{
+   const t=e.target.closest?.('[data-probe],[data-fault-marker],[data-weld-handle]');
+   if(!t)return;
+   if(t.hasAttribute('data-weld-handle')){state.dragMode='weld';state.weldHandle=t.getAttribute('data-weld-handle');}
+   else state.dragMode=t.hasAttribute('data-probe')?'probe':'fault';
+   state.dragPointerId=e.pointerId;svg.setPointerCapture?.(e.pointerId);e.preventDefault();
+ };
+ svg.onpointermove=e=>{
+   if(state.dragPointerId!==e.pointerId)return;
+   const r=svg.getBoundingClientRect(),vx=(e.clientX-r.left)/r.width*700,vy=(e.clientY-r.top)/r.height*390,pg=plateGeom(),w=weldGeometry(pg);
+   if(state.dragMode==='probe'){
+     state.probeX=Math.max(pg.left+20,Math.min(pg.right-20,vx));
+   }else if(state.dragMode==='fault'){
+     $('flawX').value=((vx-w.c)/pg.sx).toFixed(1);
+     $('flawDepth').value=Math.max(.5,Math.min(pg.maxT-.5,Math.abs(vy-pg.ySurface(vx))/pg.sy)).toFixed(1);
+   }else if(state.dragMode==='weld'){
+     const dir=w.dir;
+     if(state.weldHandle==='top'){
+       const frac=Math.max(.12,Math.min(.88,((vy-w.yTop)/dir)/Math.max(1,Math.abs(w.yRoot-w.yTop))));
+       state.weldTopFrac=frac;
+       if(($('weldSymmetry')?.value||'equal')==='equal') state.weldBottomFrac=frac;
+     }else if(state.weldHandle==='bottom'){
+       const frac=Math.max(.12,Math.min(.88,1+((vy-w.yRoot)/dir)/Math.max(1,Math.abs(w.yRoot-w.yTop))));
+       state.weldBottomFrac=frac;
+       if(($('weldSymmetry')?.value||'equal')==='equal') state.weldTopFrac=frac;
+     }
    }
- }
-
- // Noise floor: deterministic pseudo-random material structure noise.
- ctx.strokeStyle="#5e7b89";ctx.lineWidth=1;
- ctx.beginPath();
- for(let i=0;i<=900;i++){
-   const d=range*i/900;
-   const n=(Math.sin(i*12.9898+range*.17)+Math.sin(i*4.123+gm.f*3.7)+Math.sin(i*.73+gm.angle))*0.006;
-   const y=ampToY(n);
-   if(i===0)ctx.moveTo(mmToX(d),y);else ctx.lineTo(mmToX(d),y);
- }
- ctx.stroke();
-
- // Gate: typical inspection display element. For this training model the gate
- // follows the selected flaw zone when a flaw is simulated; otherwise it covers
- // the expected weld/first-leg region.
- let gateStart=Math.max(0,Math.min(range,gm.half*.35));
- let gateEnd=Math.max(gateStart,Math.min(range,gm.full*1.15));
- if($("gateMode").value==="manual"){
-   gateStart=Math.max(0,Math.min(range,+$("gateStart").value||0));
-   gateEnd=Math.max(gateStart+0.1,Math.min(range,+$("gateEnd").value||range));
- } else if(faultOn&&hi){
-   gateStart=Math.max(0,Math.min(range,hi.path-8));
-   gateEnd=Math.max(gateStart+4,Math.min(range,hi.path+8));
- }
- if($("gateMode").value!=="off"){
-   const gx1=mmToX(gateStart),gx2=mmToX(gateEnd),gy=top+plotH*.10,gh=plotH*.72;
-   ctx.fillStyle="rgba(205,45,50,.08)";ctx.fillRect(gx1,gy,gx2-gx1,gh);
-   ctx.strokeStyle="#e05a5f";ctx.lineWidth=2;ctx.strokeRect(gx1,gy,gx2-gx1,gh);
-   ctx.fillStyle="#f1b0b3";ctx.font="10px Arial";ctx.fillText("GATE",gx1+4,gy+13);
- }
-
- // Initial pulse / dead zone.
- ctx.beginPath();pulse(2.5,0.78,1.7,5,Math.PI/3);ctx.strokeStyle="#f2f5f7";ctx.lineWidth=1.6;ctx.stroke();
-
- // Echo helper: rectified or RF depending on selected display.
- function drawEcho(d,amp,width=1.8,cycles=5,label=""){
-   if(d<0||d>range)return;
-   const gain=Math.max(0,Math.min(80,+$("gainDb").value||36));
-   const gainFactor=Math.min(2.4,Math.pow(10,(gain-30)/40));
-   amp=Math.min(.98,amp*gainFactor);
-   const span=Math.max(1.5,width);
-   ctx.beginPath();
-   const samples=44;
-   for(let k=0;k<samples;k++){
-     const u=k/(samples-1)*2-1;
-     const dd=d+u*span;
-     const env=Math.exp(-4*u*u);
-     const carrier=Math.sin(2*Math.PI*cycles*(u+1)/2);
-     let val=amp*env*carrier;
-     if($("scanMode").value==="rect") val=Math.abs(val);
-     if(k===0)ctx.moveTo(mmToX(dd),ampToY(val));else ctx.lineTo(mmToX(dd),ampToY(val));
-   }
-   ctx.strokeStyle="#f4f7f8";ctx.lineWidth=1.8;ctx.stroke();
-   if(label){
-     ctx.fillStyle="#dce8ed";ctx.font="10px Arial";ctx.fillText(label,mmToX(d)+5,ampToY(Math.min(.95,amp)) - 5);
-   }
- }
-
- // Angle-beam geometry: first-leg wall encounter is at half-skip sound path;
- // a full V is two legs. These are structural/model echoes, not a calibrated
- // instrument waveform.
- const halfPath=gm.half/Math.max(.0001,Math.sin(gm.angle*Math.PI/180));
- // Equivalent sound path to the backwall is t/cos(theta).
- const firstLegPath=gm.t/Math.max(.0001,Math.cos(gm.a));
- const fullVPath=2*firstLegPath;
- if(firstLegPath<=range) drawEcho(firstLegPath,0.34,2.2,6,"achterwand / 1e been");
- if(fullVPath<=range) drawEcho(fullVPath,0.24,2.4,6,"V-pad / 2e been");
-
- // Flaw indication: only show a strong echo if the flaw is inside the modelled
- // beam spread. Its position is the one-way sound path, as used by UT instruments
- // when sound path is derived from time-of-flight.
- if(faultOn&&hi&&hi.inside){
-   let amp=hi.insideCore?0.82:0.46;
-   if($("faultType").value==="crack"||$("faultType").value==="lof"||$("faultType").value==="lop") amp*=1.05;
-   const attenuation=Math.max(.45,Math.exp(-hi.path/260));
-   amp=Math.min(.95,amp*attenuation);
-   drawEcho(hi.path,amp,1.9,7,"INDICATIE");
- } else if(faultOn&&hi){
-   // A reflector outside the beam should not create a false A-scan indication.
- }
-
- // A few low-level structural echoes near the weld, only inside the displayed range.
- const geom1=Math.min(range,Math.max(0,gm.half*.72));
- if(geom1>4 && geom1<range*.9) drawEcho(geom1,0.10,1.5,4,"geometrie");
-
- // Cursor/readout for the flaw echo.
- if(faultOn&&hi&&hi.inside){
-   const xx=mmToX(hi.path);
-   ctx.strokeStyle="#ffd34d";ctx.lineWidth=1.2;ctx.setLineDash([4,4]);
-   ctx.beginPath();ctx.moveTo(xx,top);ctx.lineTo(xx,bottom);ctx.stroke();ctx.setLineDash([]);
-   ctx.fillStyle="#ffd34d";ctx.font="bold 10px Arial";
-   ctx.fillText(`SP ${hi.path.toFixed(1)} mm`,Math.min(xx+5,right-70),top+30);
- }
-
- // Footer information, like a flaw detector setup line.
- ctx.fillStyle="#9fb3bd";ctx.font="10px Arial";
- const tof=(d)=>d/Math.max(.001,gm.v)*1000;
- const delay=Math.max(0,+$("scanDelay").value||0);
- ctx.fillText(`v ${gm.v.toFixed(0)} m/s • ${gm.angle}° • ${gm.f.toFixed(1)} MHz • bereik ${range.toFixed(0)} mm • delay ${delay.toFixed(1)} µs`,left,bottom+32);
- if(faultOn&&hi&&hi.inside) ctx.fillText(`Indicatie: SP ${hi.path.toFixed(2)} mm • TOF ≈ ${tof(hi.path).toFixed(2)} µs • amplitude modelmatig`,left+300,bottom+32);
- else ctx.fillText("Geen foutindicatie binnen de gemodelleerde bundel",left+300,bottom+32);
+   render();e.preventDefault();
+ };
+ svg.onpointerup=svg.onpointercancel=svg.onlostpointercapture=e=>{state.dragMode=null;state.dragPointerId=null;state.weldHandle=null;};
 }
-function setFaultMode(){
- const on=$("faultMode").value==="on";$("faultFields").classList.toggle("hidden",!on);$("toggleFault").textContent=on?"Fout UIT":"Fout AAN";drawAll();
+function render(){
+ const pg=plateGeom(),pr=probeInfo(),g=pg,angle=pr.kind==='straight'?0:n('angleSel')*Math.PI/180;
+ const echo=flawEcho(),m=beamModel();
+ const localT=state.probeX<pg.c?pg.leftT:pg.rightT;
+ const geometricPath=pr.kind==='straight'?localT:localT/Math.cos(angle);
+ const path=m.backwallPath!=null?m.backwallPath:geometricPath;
+ const half=pr.kind==='straight'?0:localT*Math.tan(angle),whole=2*half;
+ $('path').textContent=path.toFixed(2);$('speedOut').textContent=Math.round(n('soundSpeed'));$('proj').textContent=(pr.kind==='straight'?0:half).toFixed(2);$('half').textContent=half.toFixed(2);$('whole').textContent=whole.toFixed(2);$('flawPath').textContent=echo.hit&&echo.path!=null?echo.path.toFixed(2):'—';$('depthOut').textContent=Math.max(.5,n('flawDepth')).toFixed(1);
+ $('beamStatus').innerHTML=`<small>INDICATIE IN BUNDEL</small>${echo.hit?'JA':'NEE'}`;$('beamStatus').style.background=echo.hit?'#062516':'#251014';$('beamStatus').style.borderColor=echo.hit?'#13713d':'#7a2833';$('beamStatus').style.color=echo.hit?'#6cf187':'#ff7b87';
+ draw();scan();
 }
 
-$("beamModel").addEventListener("change",()=>{
-  $("manualDivRow").style.display=$("beamModel").value==="manual"?"grid":"none";
-  drawAll();
+function scan(){
+ const s=$('aScan'),range=n('range'),m=beamModel(),echo=flawEcho();
+ const bx=m.backwallPath,t=m.taperPath,ind=echo.hit?echo.path:null;
+ const pos=v=>5+Math.min(.94,v/range)*290;
+ const backX=bx!=null?pos(bx):null,taperX=t!=null?pos(t):null,indX=ind!=null?pos(ind):null;
+ // Op de A-scan staat de horizontale as voor GELUIDSPAD.
+ // Daarom worden de halve en hele sprong hier als sound-path markers weergegeven:
+ // ½ sprong = 1 been = T/cos(theta); hele sprong = 2 benen = 2T/cos(theta); 1½ sprong = 3 benen = 3T/cos(theta).
+ const localT=Math.max(1,Math.max(n('thickL'),n('thickR')));
+ const probeAngle=probeInfo().kind==='straight'?0:n('angleSel')*Math.PI/180;
+ const halfSP=probeInfo().kind==='straight'?localT:localT/Math.max(0.001,Math.cos(probeAngle));
+ const wholeSP=2*halfSP;
+ const oneHalfSP=3*halfSP;
+ const selectedSkip=$("skipSelect").value;
+ const selectedSP=selectedSkip==="whole"?wholeSP:(selectedSkip==="onehalf"?oneHalfSP:halfSP);
+ const halfX=halfSP<=range?pos(halfSP):null;
+ const wholeX=wholeSP<=range?pos(wholeSP):null;
+ const oneHalfX=oneHalfSP<=range?pos(oneHalfSP):null;
+ const selectedX=selectedSP<=range?pos(selectedSP):null;
+ const selectedLabel=selectedSkip==="whole"?"1 HELE SPRONG":(selectedSkip==="onehalf"?"1½ SPRONG":"½ SPRONG");
+ let p='M 5 190';
+ for(let x=5;x<=295;x++){let y=190-(1.2*Math.sin(x*.7)+.8*Math.sin(x*2.2));if(x>18&&x<27)y-=125*Math.exp(-Math.pow((x-22)/2,2));if(taperX!=null)y-=40*Math.exp(-Math.pow((x-taperX)/2.8,2));if(indX!=null)y-=85*Math.exp(-Math.pow((x-indX)/2.8,2));if(backX!=null)y-=105*Math.exp(-Math.pow((x-backX)/3.2,2));p+=` L ${x} ${y}`;}
+ s.innerHTML=`<rect width="300" height="220" fill="#020b11"/><g stroke="#123246" stroke-width="1"><line x1="5" y1="30" x2="5" y2="195"/><line x1="5" y1="195" x2="295" y2="195"/><line x1="75" y1="30" x2="75" y2="195"/><line x1="145" y1="30" x2="145" y2="195"/><line x1="215" y1="30" x2="215" y2="195"/><line x1="5" y1="85" x2="295" y2="85"/><line x1="5" y1="140" x2="295" y2="140"/></g>${halfX!=null?`<line x1="${halfX}" y1="30" x2="${halfX}" y2="195" stroke="#ffd15c" stroke-width="1" stroke-dasharray="5 4"/><text x="${Math.max(8,Math.min(245,halfX-18))}" y="54" fill="#ffd15c" font-size="9">½</text>`:''}${wholeX!=null?`<line x1="${wholeX}" y1="30" x2="${wholeX}" y2="195" stroke="#ff9f43" stroke-width="1" stroke-dasharray="5 4"/><text x="${Math.max(8,Math.min(245,wholeX-18))}" y="54" fill="#ffb15f" font-size="9">1</text>`:''}${oneHalfX!=null?`<line x1="${oneHalfX}" y1="30" x2="${oneHalfX}" y2="195" stroke="#b88cff" stroke-width="1" stroke-dasharray="5 4"/><text x="${Math.max(8,Math.min(245,oneHalfX-18))}" y="54" fill="#c6a6ff" font-size="9">1½</text>`:''}${selectedX!=null?`<line x1="${selectedX}" y1="30" x2="${selectedX}" y2="195" stroke="#ffffff" stroke-width="2.5"/><rect x="${Math.max(7,Math.min(235,selectedX-38))}" y="70" width="76" height="24" rx="5" fill="#0b2533" stroke="#ffffff"/><text x="${Math.max(45,Math.min(265,selectedX))}" y="80" text-anchor="middle" fill="#ffffff" font-size="9" font-weight="700">${selectedLabel}</text><text x="${Math.max(45,Math.min(265,selectedX))}" y="91" text-anchor="middle" fill="#c8d5db" font-size="8">${selectedSP.toFixed(1)} mm SP</text>`:''}<path d="${p}" fill="none" stroke="#65f36f" stroke-width="2.2"/><text x="12" y="22" fill="#fff" font-size="11">Start</text>${indX!=null?`<text x="${Math.max(45,Math.min(235,indX-18))}" y="${indX<70?125:70}" fill="#ff5966" font-size="12">Indicatie</text>`:''}${taperX!=null?`<text x="${Math.max(35,Math.min(245,taperX-25))}" y="42" fill="#ffd15c" font-size="10">Verjonging</text>`:''}${backX!=null?`<text x="238" y="22" fill="#fff" font-size="11">Achterwand</text>`:''}`;
+ $('rangeLabel').textContent=range+' mm • v = '+Math.round(n('soundSpeed'))+' m/s';
+}
+
+function setSpeedForProbe(){
+ const p=probeInfo(),el=$('soundSpeed');
+ const oldDefault=el.dataset.default||'';
+ if(!el.dataset.userEdited || String(el.value)===oldDefault) el.value=p.kind==='straight'?'5920':'3250';
+ el.dataset.default=el.value;
+}
+$('soundSpeed').addEventListener('input',()=>{$('soundSpeed').dataset.userEdited='1';render();});
+['thickL','thickR','angleSel','probe','weldType','weldSymmetry','defectType','weld','prepAngle','rootGap','rootLand','grooveRadius','taper','taperLen','plateFlip','flawDepth','flawX','range','skipSelect'].forEach(id=>{
+ $(id).addEventListener('input',render);
+ $(id).addEventListener('change',()=>{if(id==='probe')setSpeedForProbe();render();});
 });
-function defaultVelocity(){
-  const mat=$("material").value;
-  if(mat==="steel") return 3230;
-  if(mat==="aluminium") return 3130;
-  return Math.max(1,+$("velocity").value||3230);
-}
-function syncVelocity(){
-  if($("material").value!=="custom") $("velocity").value=defaultVelocity();
-}
-function syncProbeDefaults(){
-  const p=probes[$("probeModel").value];
-  $("aperture").value=p.w;
-}
-$("probeModel").addEventListener("change",()=>{syncProbeDefaults();drawAll()});
-$("material").addEventListener("change",()=>{syncVelocity();drawAll()});
-$("faultMode").addEventListener("change",setFaultMode);
-$("toggleFault").addEventListener("click",()=>{$("faultMode").value=$("faultMode").value==="on"?"off":"on";setFaultMode()});
-function updateIndexTool(){const m=parseFloat($('indexMeasure').value);$('indexResult').textContent=Number.isFinite(m)&&m>=0&&m<=100?(100-m).toFixed(1).replace('.',',')+' mm':'—';}
-$('indexMeasure')?.addEventListener('input',updateIndexTool);$('calcIndexBtn')?.addEventListener('click',updateIndexTool);
-function updateAngleCheck(){
- const B=parseFloat($('angleIndex').value);
- const A=parseFloat($('angleA').value);
- const nominal=parseFloat($('angleNominal').value);
- if(!Number.isFinite(A)||!Number.isFinite(B)||A+B<=35){
-   $('angleBC').textContent='—';
-   $('angleActual').textContent='—';
-   $('angleDelta').textContent='—';
-   return;
- }
- const BC=A+B-35;
- const actual=90-Math.atan(15/BC)*180/Math.PI;
- const delta=actual-nominal;
- $('angleBC').textContent=fmtMm(BC);
- $('angleActual').textContent=actual.toFixed(1).replace('.',',')+'°';
- $('angleDelta').textContent=(delta>=0?'+':'')+delta.toFixed(1).replace('.',',')+'°';
-}
-
-function setActiveTab(tab){
- const main=document.querySelector('main');
- const panels={index:$('tab-index'),angle:$('tab-angle'),asme:$('tab-asme'),en:$('tab-en'),dac:$('tab-dac')};
- main.hidden = tab!=='beam';
- Object.keys(panels).forEach(k=>{ if(panels[k]) panels[k].hidden = k!==tab; });
- document.querySelectorAll('.tooltab').forEach(b=>{const active=b.dataset.tab===tab;b.classList.toggle('active',active);b.setAttribute('aria-selected',active?'true':'false');});
- if(tab==='asme'||tab==='en') updateDistanceTools();
- if(tab==='index') updateIndexTool();
- if(tab==='angle') updateAngleCheck();
-}
-document.querySelectorAll('.tooltab').forEach(b=>b.addEventListener('click',()=>setActiveTab(b.dataset.tab)));
-function fmtMm(v){ return Number.isFinite(v)?v.toFixed(1).replace('.',',')+' mm':'—'; }
-const ASME_RANGE={45:3,60:4,70:7};
-const ASME_SCAN={45:2,60:3.5,70:5.5};
-const EN_RANGE={45:3.5,60:5,70:7.5};
-const EN_SCAN={45:2.5,60:4.5,70:7};
-const ASME_BLOCKS={
-  19:{th:19,hole:2.5,tol:0.8,range:'10 < t ≤ 25'},
-  38:{th:38,hole:3.0,tol:0.8,range:'25 < t ≤ 50'},
-  75:{th:75,hole:5.0,tol:0.8,range:'50 < t ≤ 100'},
-  125:{th:125,hole:6.5,tol:0.8,range:'100 < t ≤ 150'},
-  175:{th:175,hole:8.0,tol:0.8,range:'150 < t ≤ 200'}
-};
-const EN_BLOCKS={
-  20:{th:20,hole:3.0,tol:0.2,range:'8 < t ≤ 25'},
-  40:{th:40,hole:3.0,tol:0.2,range:'25 < t ≤ 50'},
-  75:{th:75,hole:3.0,tol:0.2,range:'50 < t ≤ 100'}
-};
-function blockForASME(t){
- if(t>0&&t<=25)return ASME_BLOCKS[19];
- if(t<=50)return ASME_BLOCKS[38];
- if(t<=100)return ASME_BLOCKS[75];
- if(t<=150)return ASME_BLOCKS[125];
- if(t<=200)return ASME_BLOCKS[175];
- return {th:null,hole:null,tol:null,range:'buiten bereik'};
-}
-function blockForEN(t){
- if(t>8&&t<=25)return EN_BLOCKS[20];
- if(t<=50)return EN_BLOCKS[40];
- if(t<=100)return EN_BLOCKS[75];
- return {th:null,hole:null,tol:null,range:'buiten bereik'};
-}
-function selectedBlock(map,id,t){
- const b=map[Number($(id).value)];
- return b || (map===ASME_BLOCKS?blockForASME(t):blockForEN(t));
-}
-function probeInfo(id){
- const el=$(id);
- const value=el?el.value:'';
- const m=value.match(/^(AM[24]R)-(8x9|14x14|20x22)-(45|60|70)$/);
- if(!m)return {label:'—',angle:60};
- const freq=m[1]==='AM4R'?'4 MHz':'2 MHz';
- const size=m[2].replace('x','×');
- return {label:`${m[1]} ${size} • ${freq} • ${m[3]}°`,angle:Number(m[3])};
-}
-function beamToDepth(depth,ang){
- const r=ang*Math.PI/180;
- return {x:depth*Math.tan(r), sp:depth/Math.cos(r)};
-}
-function fmtHole(b){ return b.hole==null?'—':`Ø ${b.hole.toFixed(1).replace('.',',')} ± ${b.tol.toFixed(1).replace('.',',')} mm`; }
-function fmtHoleShort(b){ return b.hole==null?'—':`Ø ${b.hole.toFixed(1).replace('.',',')} ± ${b.tol.toFixed(1).replace('.',',')}`; }
-function drawReferenceBlock(el,kind,b,ang){
- if(!b.th){el.innerHTML='<div class="calcaption">Geen referentieblok beschikbaar voor deze wanddikte binnen het geselecteerde bereik.</div>';return;}
- const isEN=kind==='EN / ISO';
- const T=b.th;
- const holes=[{f:.25,n:'¼T'},{f:.5,n:'½T'},{f:.75,n:'¾T'}];
- const W=isEN?9*T:3*T;
- const scaleY=190/T;
- const bx=75, by=70, bh=190, bw=760;
- const xForDepth=d=>bx+(d/W)*bw;
- const yForDepth=d=>by+d*scaleY;
- const holeR=Math.max(3,(b.hole/2)*scaleY);
- const labels=[];
- let svg=`<svg viewBox="0 0 940 470" role="img" aria-label="${kind} referentieblok met gaten op ware diepte en geluidswegen">
- <rect x="0" y="0" width="940" height="470" rx="12" fill="#071a27"/>
- <text x="470" y="28" text-anchor="middle" fill="#65d5ff" font-size="19" font-weight="800">${kind} • REFERENTIEBLOK • T = ${T} mm</text>
- <rect x="${bx}" y="${by}" width="${bw}" height="${bh}" fill="#aeb9bd" stroke="#41545d" stroke-width="4"/>
- <line x1="${bx}" y1="${by}" x2="${bx+bw}" y2="${by}" stroke="#26343a" stroke-width="3"/>
- <line x1="${bx}" y1="${by+bh}" x2="${bx+bw}" y2="${by+bh}" stroke="#26343a" stroke-width="3"/>
- <text x="${bx-12}" y="${by+8}" text-anchor="end" fill="#f4d06f" font-size="14">0</text>
- <text x="${bx-12}" y="${by+bh/2+5}" text-anchor="end" fill="#f4d06f" font-size="14">½T</text>
- <text x="${bx-12}" y="${by+bh+5}" text-anchor="end" fill="#f4d06f" font-size="14">T</text>`;
- holes.forEach((h,i)=>{
-   const d=T*h.f, y=yForDepth(d), x=bx+120+i*220;
-   const beam=beamToDepth(d,ang);
-   const xProbe=Math.min(bx+bw-15, Math.max(bx+15, x-beam.x));
-   svg+=`<line x1="${xProbe.toFixed(1)}" y1="${by-8}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#1978b8" stroke-width="3" stroke-dasharray="8 6"/>
-   <circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${holeR.toFixed(1)}" fill="#f2c75c" stroke="#fff1a8" stroke-width="1.5"/>
-   <text x="${x.toFixed(1)}" y="${y-16}" text-anchor="middle" fill="#f4d06f" font-size="15" font-weight="800">${h.n} = ${d.toFixed(2)} mm</text>
-   <text x="${x.toFixed(1)}" y="${y+holeR+20}" text-anchor="middle" fill="#eef5f8" font-size="12">Ø ${b.hole.toFixed(1)} ± ${b.tol.toFixed(1)} mm</text>`;
- });
- svg+=`<line x1="${bx}" y1="292" x2="${bx+bw}" y2="292" stroke="#65d5ff" stroke-width="2" opacity=".6"/>
- <text x="470" y="320" text-anchor="middle" fill="#dbe8ed" font-size="14">Bloklengte volgens bron: ${isEN?'min. 9T':'min. 3T'}${isEN?' • gaten parallel aan bovenvlak • gatdiepte min. 40 / max. 50 mm':''}</text>
- <text x="470" y="345" text-anchor="middle" fill="#65d5ff" font-size="14">Blauw = berekende geluidsbaan • geel = referentiegat</text>
- <text x="470" y="372" text-anchor="middle" fill="#f4d06f" font-size="14">Hoek ${ang}° • diepte → geluidspad / horizontale afstand</text>
- </svg>`;
- const rows=holes.map(h=>{
-   const d=T*h.f, q=beamToDepth(d,ang);
-   return `<tr><td><b>${h.n}</b></td><td>${d.toFixed(2)} mm</td><td>${fmtHoleShort(b)} mm</td><td>${q.sp.toFixed(2)} mm</td><td>${q.x.toFixed(2)} mm</td></tr>`;
- }).join('');
- el.innerHTML=`<div class="calbar">${kind} • DAC REFERENTIEGATEN OP DIEPTE</div><div class="calblock" style="position:relative;left:auto;right:auto;bottom:auto;height:auto;background:#071a27;border:0;padding:8px">${svg}</div>
- <div class="dac-table-wrap"><table class="dac-table"><thead><tr><th>Gat</th><th>Werkelijke diepte</th><th>Gatdiameter</th><th>Geluidspad naar gat</th><th>Horizontale afstand</th></tr></thead><tbody>${rows}</tbody></table></div>
- <div class="calcaption">De gaten worden getekend op de voorgeschreven diepteverhoudingen. De gele gatdiameter is op dezelfde verticale schaal als de blokdikte weergegeven. Geluidspad en horizontale afstand worden voor de gekozen tasterhoek berekend.</div>`;
-}
-function updateDistanceTools(){
- const at=parseFloat($('asmeT').value), ap=probeInfo('asmeProbe'), aa=ap.angle, et=parseFloat($('enT').value), ep=probeInfo('enProbe'), ea=ep.angle;
- const calc=(t,a)=>{const r=a*Math.PI/180;const hs=t*Math.tan(r),fs=2*hs,sp=t/Math.cos(r);return {hs,fs,sp,q:t*.25,h:t*.5,qx:t*.25*Math.tan(r),hx:t*.5*Math.tan(r)};};
- if(Number.isFinite(at)&&at>0){
-  const z=calc(at,aa),b=selectedBlock(ASME_BLOCKS,'asmeBlockSelect',at);
-  $('asmeHalfSkip').textContent=fmtMm(z.hs);$('asmeFullSkip').textContent=fmtMm(z.fs);$('asmeSoundPath').textContent=fmtMm(z.sp);$('asmeMinRange').textContent=fmtMm(ASME_RANGE[aa]*at);$('asmeScanArea').textContent=fmtMm(ASME_SCAN[aa]*at);$('asme125Skip').textContent=fmtMm(z.fs*1.25);$('asmeQuarterDepth').textContent=fmtMm(z.q);$('asmeQuarterX').textContent=fmtMm(z.qx);$('asmeHalfDepth').textContent=fmtMm(z.h);$('asmeHalfX').textContent=fmtMm(z.hx);
-  $('asmeThickness').textContent=b.th?b.th+' mm':'Buiten bereik';$('asmeSdh').textContent=fmtHole(b);$('asmeProbeInfo').textContent=ap.label;$('asmeNote').textContent=`Gekozen blok ${b.th?b.th+' mm':''} • ${fmtHole(b)} • ${ap.label}. Controle: geselecteerd blok is bedoeld voor ${b.range}. Gaten op ¼T / ½T / ¾T; geluidspad en horizontale afstand voor ${aa}°.`;drawReferenceBlock($('asmeDrawing'),'ASME',b,aa);
- }
- if(Number.isFinite(et)&&et>0){
-  const z=calc(et,ea),b=selectedBlock(EN_BLOCKS,'enBlockSelect',et);
-  $('enHalfSkip').textContent=fmtMm(z.hs);$('enFullSkip').textContent=fmtMm(z.fs);$('enSoundPath').textContent=fmtMm(z.sp);$('enMinRange').textContent=fmtMm(EN_RANGE[ea]*et);$('enScanArea').textContent=fmtMm(EN_SCAN[ea]*et);$('en125Skip').textContent=fmtMm(z.fs*1.25);$('enQuarterDepth').textContent=fmtMm(z.q);$('enQuarterX').textContent=fmtMm(z.qx);$('enHalfDepth').textContent=fmtMm(z.h);$('enHalfX').textContent=fmtMm(z.hx);
-  $('enThickness').textContent=b.th?b.th+' mm':'Buiten bereik';$('enSdh').textContent=fmtHole(b);$('enProbeInfo').textContent=ep.label;$('enNote').textContent=`Gekozen blok ${b.th?b.th+' mm':''} • ${fmtHole(b)} • ${ep.label}. Controle: geselecteerd blok is bedoeld voor ${b.range}. Gaten op ¼T / ½T / ¾T; parallel aan bovenvlak. Geluidspad en horizontale afstand voor ${ea}°.`;drawReferenceBlock($('enDrawing'),'EN / ISO',b,ea);
- }
-}
-if($('angleNominal')) $('angleNominal').addEventListener('change',updateAngleCheck);
-if($('angleIndex')) $('angleIndex').addEventListener('input',updateAngleCheck);
-if($('angleA')) $('angleA').addEventListener('input',updateAngleCheck);
-updateAngleCheck();
-['asmeT','asmeProbe','asmeBlockSelect','enT','enProbe','enBlockSelect'].forEach(id=>{ const el=$(id); if(el) el.addEventListener('input',updateDistanceTools); if(el && el.tagName==='SELECT') el.addEventListener('change',updateDistanceTools); });
-$("drawBtn").addEventListener("click",drawAll);
-$("scanRange").addEventListener("change",()=>{
-  $("scanRangeCustom").disabled=$("scanRange").value!=="custom";
-  drawAll();
-});
-$("scanRangeCustom").disabled=$("scanRange").value!=="custom";
-$("scanRangeCustom").addEventListener("input",drawAll);
-$("scanMode").addEventListener("change",drawAll);
-$("gateMode").addEventListener("change",drawAll);
-$("gainDb").addEventListener("input",drawAll);
-$("gateStart").addEventListener("input",drawAll);
-$("gateEnd").addEventListener("input",drawAll);
-$("scanDelay").addEventListener("input",drawAll);
-document.querySelectorAll("input,select").forEach(el=>{if(el.id!=="faultMode"&&el.id!=="material"&&el.id!=="probeModel")el.addEventListener("input",drawAll)});
-
-syncVelocity();
-syncProbeDefaults();
-setFaultMode();
-$("manualDivRow").style.display=$("beamModel").value==="manual"?"grid":"none";
-updateDistanceTools();
-setActiveTab("beam");
-drawAll();
-
-
-/* SMART WORKBENCH FUNCTIONS */
-function recommendBlock(kind,t){
- const map=kind==='ASME'?ASME_BLOCKS:EN_BLOCKS;
- return kind==='ASME'?blockForASME(t):blockForEN(t);
-}
-function updateRecommendation(kind){
- const p=kind.toLowerCase().replace(' / iso','');
- const t=+$((p==='asme'?'asmeT':'enT')).value||0;
- const sel=$(p==='asme'?'asmeBlockSelect':'enBlockSelect');
- const rec=recommendBlock(kind,t);
- const recEl=$(p==='asme'?'asmeRecommended':'enRecommended');
- const state=$(p==='asme'?'asmeBlockState':'enBlockState');
- const bar=$(p==='asme'?'asmeRecommendBar':'enRecommendBar');
- if(!rec||!rec.th){recEl.textContent='BUITEN BEREIK';state.textContent='Controleer projectspecificatie';bar.className='recommendbar warn';return;}
- recEl.textContent=`${rec.th} mm • ${fmtHoleShort(rec)} • ${rec.range}`;
- const selected=Number(sel.value);
- const ok=selected===rec.th;
- state.textContent=ok?'JUISTE BLOK GEKOZEN':'HANDMATIGE KEUZE — NIET DE STANDAARDKEUZE';
- bar.className='recommendbar '+(ok?'ok':'warn');
-}
-function autoBlock(kind){
- const p=kind.toLowerCase().replace(' / iso',''); const t=+$((p==='asme'?'asmeT':'enT')).value||0; const rec=recommendBlock(kind,t); if(rec&&rec.th) $(p==='asme'?'asmeBlockSelect':'enBlockSelect').value=String(rec.th); updateDistanceTools(); updateRecommendation(kind); }
-function dacRows(kind){
- const p=kind==='ASME'?'asme':'en'; const t=+$((p==='asme'?'asmeT':'enT')).value||0; const a=probeInfo(p==='asme'?'asmeProbe':'enProbe').angle; const b=selectedBlock(p==='asme'?ASME_BLOCKS:EN_BLOCKS,p==='asme'?'asmeBlockSelect':'enBlockSelect',t); if(!b.th)return [];
- return [.25,.5,.75].map(f=>{const depth=b.th*f, q=beamToDepth(depth,a); return {f,depth,sp:q.sp,x:q.x,hole:b.hole,tol:b.tol};});
-}
-function renderWorkbench(kind){
- const p=kind==='ASME'?'asme':'en'; const rows=dacRows(kind); if(!rows.length)return;
- const table=$(p+'PointTable'); table.innerHTML=`<table class="dac-table"><thead><tr><th>Punt</th><th>Diepte</th><th>Ø</th><th>Geluidspad</th><th>Horizontaal</th></tr></thead><tbody>${rows.map((r,i)=>`<tr data-point="${r.f}"><td><b>${i===0?'¼T':i===1?'½T':'¾T'}</b></td><td>${r.depth.toFixed(2)} mm</td><td>Ø ${r.hole.toFixed(1)} ± ${r.tol.toFixed(1)}</td><td>${r.sp.toFixed(2)} mm</td><td>${r.x.toFixed(2)} mm</td></tr>`).join('')}</tbody></table>`;
- const select=$(p+'PointSelect'), f=+$((select).value)||.5, row=rows.find(r=>Math.abs(r.f-f)<.01)||rows[1];
- const pos=$(p+'ProbePos'); if(!pos.dataset.touched) pos.value=row.x.toFixed(1);
- $(p+'TargetX').textContent=row.x.toFixed(2)+' mm'; $(p+'TargetSP').textContent=row.sp.toFixed(2)+' mm';
- const actual=+pos.value||0, err=Math.abs(actual-row.x); const st=$(p+'SeekStatus'); st.innerHTML=`<strong>${err<=1?'GAT GEVONDEN':'ZOEKEN'}</strong> • verschil ${err.toFixed(2)} mm • doel = ${row.x.toFixed(2)} mm`; st.className='seekStatus '+(err<=1?'good':'bad');
- table.querySelectorAll('tr[data-point]').forEach(tr=>tr.classList.toggle('active',Math.abs(+tr.dataset.point-f)<.01));
- const cmp=$(p+'AngleCompare'); cmp.innerHTML=`<table class="compare-table"><thead><tr><th>Hoek</th><th>Geluidspad</th><th>Horizontaal</th></tr></thead><tbody>${[45,60,70].map(a=>{const q=beamToDepth(row.depth,a);return `<tr><td>${a}°</td><td>${q.sp.toFixed(2)} mm</td><td>${q.x.toFixed(2)} mm</td></tr>`}).join('')}</tbody></table>`;
-}
-function bindWorkbench(kind){ const p=kind==='ASME'?'asme':'en'; [p+'PointSelect',p+'ProbePos'].forEach(id=>{const el=$(id);if(el)el.addEventListener('input',()=>{if(id.endsWith('ProbePos'))el.dataset.touched='1';renderWorkbench(kind);});}); }
-function updateAllWorkbench(){updateRecommendation('ASME');updateRecommendation('EN / ISO');renderWorkbench('ASME');renderWorkbench('EN / ISO');}
-if($('asmeAutoBlockBtn'))$('asmeAutoBlockBtn').addEventListener('click',()=>autoBlock('ASME'));
-if($('enAutoBlockBtn'))$('enAutoBlockBtn').addEventListener('click',()=>autoBlock('EN / ISO'));
-['asmeT','asmeProbe','asmeBlockSelect','enT','enProbe','enBlockSelect'].forEach(id=>{const el=$(id);if(el)el.addEventListener('input',updateAllWorkbench);if(el&&el.tagName==='SELECT')el.addEventListener('change',updateAllWorkbench);});
-bindWorkbench('ASME');bindWorkbench('EN / ISO');
-
-function setTheme(light){document.body.classList.toggle('lightMode',light);localStorage.setItem('beamThemeV2',light?'light':'dark');if($('themeBtn'))$('themeBtn').textContent=light?'🌙 DONKER':'☀ LICHT';}
-const savedTheme=localStorage.getItem('beamThemeV2');setTheme(savedTheme==='dark'?false:true);
-$('themeBtn')?.addEventListener('click',()=>setTheme(!document.body.classList.contains('lightMode')));
-$('tabletBtn')?.addEventListener('click',()=>{document.body.classList.toggle('tabletMode');localStorage.setItem('beamTablet',document.body.classList.contains('tabletMode')?'1':'0');$('tabletBtn').classList.toggle('active',document.body.classList.contains('tabletMode'));});
-if(localStorage.getItem('beamTablet')==='1'){document.body.classList.add('tabletMode');$('tabletBtn')?.classList.add('active');}
-
-function updateCalCheck(){const ids=['checkIndex','checkAngle','checkRange','checkDAC','checkSensitivity','checkFinal'];const ok=ids.every(id=>$(id)?.checked);const el=$('calCheckStatus');if(el){el.className='status '+(ok?'ok':'warn');el.textContent=ok?'KALIBRATIECHECK: ALLE PUNTEN AFGEVINKT.':'KALIBRATIECHECK: nog niet compleet.';}}
-['checkIndex','checkAngle','checkRange','checkDAC','checkSensitivity','checkFinal'].forEach(id=>$(id)?.addEventListener('change',updateCalCheck));
-$('calResetBtn')?.addEventListener('click',()=>{['checkIndex','checkAngle','checkRange','checkDAC','checkSensitivity','checkFinal'].forEach(id=>{if($(id))$(id).checked=false});updateCalCheck();$('calStamp').textContent='';});
-$('calStampBtn')?.addEventListener('click',()=>{$('calStamp').textContent=new Date().toLocaleString('nl-NL');});
-
-// Re-run after the original initialisation has populated values.
-setTimeout(updateAllWorkbench,50);
+$('k1dist').addEventListener('input',()=>$('k1out').textContent=(100-n('k1dist')).toFixed(1));
+function angleCalc(){const a=n('a'),b=n('b'),bc=a+b-35;$('bc').textContent=a&&b?bc.toFixed(2):'—';$('angleOut').textContent=a&&b&&bc>0?(Math.atan(15/bc)*180/Math.PI).toFixed(2):a&&b?'ONGELDIGE METING':'—';}
+['a','b'].forEach(id=>$(id).addEventListener('input',angleCalc));
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.tool').forEach(x=>x.classList.toggle('active',x.id===b.dataset.tool));});
+const HASH='9053a5939d7b4a748f4c4fa56fc9409ba4c00b6fd0062556803d961509b91d94';
+async function sha(s){const d=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return [...new Uint8Array(d)].map(x=>x.toString(16).padStart(2,'0')).join('');}
+let coreUnlocked=false;const modal=$('modal');
+$('coreBtn').onclick=()=>{if(coreUnlocked){coreUnlocked=false;$('coreBtn').textContent='🔐 CORE VERGRENDELD';}else{modal.classList.add('show');$('pin').value='';$('err').textContent='';}};
+$('cancel').onclick=()=>modal.classList.remove('show');
+$('unlock').onclick=async()=>{if(await sha($('pin').value)===HASH){coreUnlocked=true;modal.classList.remove('show');$('coreBtn').textContent='🔓 CORE ONTGRENDELD';}else $('err').textContent='Onjuiste PIN.';};
+window.BEAM_CORE={isUnlocked:()=>coreUnlocked,lock:()=>{coreUnlocked=false;$('coreBtn').textContent='🔐 CORE VERGRENDELD';}};
+setSpeedForProbe();render();$('k1out').textContent=(100-n('k1dist')).toFixed(1);angleCalc();
 </script>
-
-<script>
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}
-</script>
-
-</body>
-</html>
+</body></html>

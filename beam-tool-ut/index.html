@@ -104,7 +104,17 @@ body:after{content:"UT"!important;position:fixed;right:-80px;bottom:2%;font-size
 .lock{display:flex!important;align-items:center;justify-content:center;gap:8px}
 /* LASGEOMETRIE: sleepbare hoogte-handles */
 .weldHandle{cursor:ns-resize;touch-action:none;filter:drop-shadow(0 0 7px rgba(33,216,255,.65))}.weldHandle circle{fill:#071923;stroke:#22d8ff;stroke-width:3}.weldHandle line{stroke:#22d8ff;stroke-width:2}.weldHandle text{fill:#9ff2ff;font-size:9px;font-weight:800;pointer-events:none}
+/* Onderste hoogte-marker niet over de taster/neus tekenen; sleepfunctie blijft actief. */
+.weldHandle[data-weld-handle="bottom"]{opacity:0;pointer-events:auto}
+#radiusField.isHidden{display:none}.diagramTools{display:flex;gap:7px;justify-content:flex-end;padding:8px 8px 0}.diagramTools .zoomBtn{border:1px solid #1a6c8a;background:#082131;color:#dff9ff;border-radius:9px;padding:8px 10px;font-weight:800;font-size:11px;box-shadow:0 0 10px rgba(33,216,255,.12);touch-action:manipulation}.diagramTools .zoomBtn:active{transform:scale(.97)}.diagramWrap{position:relative;overflow:hidden;border-radius:12px}.diagramWrap svg{display:block;width:100%;height:auto;min-height:320px;touch-action:none}.diagramTools .zoomBtn.reset{border-color:#a9781b;color:#ffd15c}.diagramTools .zoomBtn.toggle{border-color:#1a6c8a}.diagramTools .zoomBtn.toggle.off{border-color:#586b75;color:#aab9c1}.diagramHint{padding:0 10px 7px;color:#8fa8b8;font-size:10px}.weldCenterline{stroke:#ffffff;stroke-width:1.5;stroke-dasharray:7 6;opacity:.9}.rootGuide{stroke:#ffd15c;stroke-width:1.5;stroke-dasharray:4 4}.weldDimension{stroke:#dbe8ed;stroke-width:1;fill:none}.weldDimensionText{fill:#dbe8ed;font-size:9px;font-weight:700}.rootLabel{fill:#ffd15c;font-size:9px;font-weight:800}.faultLabel{paint-order:stroke;stroke:#06131d;stroke-width:3px;stroke-linejoin:round}
 @media(max-width:430px){.tab{gap:5px;font-size:10px}.tabIcon{width:19px;height:19px;flex-basis:19px}}
+
+/* ===== LASVOORBEWERKING: TECHNISCH DUN GETEKEND ===== */
+.weldCenterline{stroke-width:1.1!important;stroke-dasharray:6 5!important}
+.rootGuide{stroke:#ffd15c!important;stroke-width:1!important;stroke-dasharray:3 3!important}
+.weldDimension{stroke-width:1!important}
+.weldDimensionText{font-size:8px!important}
+.rootLabel{font-size:8px!important}
 </style>
 </head>
 <body>
@@ -120,8 +130,8 @@ body:after{content:"UT"!important;position:fixed;right:-80px;bottom:2%;font-size
 <div class="field"><label>TASTER</label><select id="probe"><option>4 MHz 8x9</option><option>2 MHz 8x9</option><option>2 MHz 14x14</option><option>Recht 10 mm</option><option>Recht 24 mm</option></select></div>
 <div class="field"><label>LASCONFIGURATIE</label><select id="weldType"><option>V-naad (enkelzijdig) - Full Pen</option><option>X-naad - Full Pen</option><option>½ V-naad - Full Pen</option><option>U-naad - Full Pen</option><option>Dubbele U-naad - Full Pen</option><option>J-naad - Full Pen</option><option>Dubbele J-naad - Full Pen</option><option>ongelijkzijdige X-naad - Full Pen</option><option>½ U-naad - Full Pen</option></select></div>
 <div class="field"><label>LASZIJDEN</label><select id="weldSymmetry"><option value="equal" selected>Gelijkzijdig</option><option value="unequal">Ongelijkzijdig</option></select></div>
-<div class="field"><label>LASFOUT</label><select id="defectType"><option>Geen fout</option><option>Scheur</option><option>Gebrek aan versmelting</option><option>Gebrek aan doorlassing</option><option>Porositeit</option><option>Slakinsluiting</option><option>Ondersnijding</option></select></div>
-<div class="field"><label>LASBREEDTE (mm)</label><input id="weld" type="number" value="8" min="1" max="100" step="0.5"></div> <div class="field"><label>RADIUS U/J (mm)</label><input id="grooveRadius" type="number" value="8" min="2" max="30" step="0.5"></div>
+<div class="field"><label>LASFOUT</label><select id="defectType"><option>Geen fout</option><option>Scheur</option><option>Bindingsfout</option><option>Onvoldoende doorlas</option><option>Porositeit</option><option>Slakinsluiting</option><option>Ondersnijding</option></select></div>
+<div class="field"><label>LASBREEDTE (mm)</label><input id="weld" type="number" value="8" min="1" max="100" step="0.5"></div> <div class="field" id="radiusField"><label>RADIUS U/J (mm)</label><input id="grooveRadius" type="number" value="8" min="2" max="30" step="0.5"></div>
 <div class="field"><label>VOORBEREIDINGSHOEK (°)</label><input id="prepAngle" type="number" value="60" min="20" max="120" step="1"></div>
 <div class="field"><label>WORTELOPENING (mm)</label><input id="rootGap" type="number" value="2" min="0" max="20" step="0.5"></div>
 <div class="field"><label>WORTELVLAK / LAND (mm)</label><input id="rootLand" type="number" value="2" min="0" max="20" step="0.5"></div>
@@ -135,7 +145,7 @@ body:after{content:"UT"!important;position:fixed;right:-80px;bottom:2%;font-size
 <div class="field"><label>GELUIDSSNELHEID (m/s)</label><input id="soundSpeed" type="number" value="3250" min="500" max="7000" step="10"></div>
 </div></div>
 <div class="visualRow">
-<div class="diagramCard"><svg id="beamSvg" viewBox="0 0 700 390" preserveAspectRatio="xMidYMid meet"></svg><div class="legend"><span><i class="cyan"></i>Bundel (heen)</span><span><i class="cyan"></i>Bundel (terug)</span><span><i class="white"></i>Achterwand</span><span><i class="orange"></i>Taster</span><span><i class="red"></i>Indicatie</span></div><div class="caption">Sleep de oranje taster over het plaatoppervlak. De geluidshoek blijft exact behouden. Sleep de rode lasfout in de las om zelf de foutlocatie te bepalen; X wordt gemeten vanaf de hartlijn van de las en de diepte vanaf het oppervlak.</div></div>
+<div class="diagramCard"><div class="diagramTools"><button class="zoomBtn" id="zoomOut" type="button">− UITZOOMEN</button><button class="zoomBtn" id="zoomIn" type="button">＋ INZOOMEN</button><button class="zoomBtn reset" id="zoomReset" type="button">↻ RESET</button><button class="zoomBtn toggle" id="toggleBlue" type="button">🔵 CIRCEL AAN</button></div><div class="diagramWrap"><svg id="beamSvg" viewBox="0 0 700 390" preserveAspectRatio="xMidYMid meet"></svg></div><div class="diagramHint">Zoom op de lasdoorsnede om wortel, neus, stippellijn en lasfout duidelijk te bekijken.</div><div class="legend"><span><i class="cyan"></i>Bundel (heen)</span><span><i class="cyan"></i>Bundel (terug)</span><span><i class="white"></i>Achterwand</span><span><i class="orange"></i>Taster</span><span><i class="red"></i>Indicatie</span></div><div class="caption">Sleep de oranje taster over het plaatoppervlak. De geluidshoek blijft exact behouden. Sleep de rode lasfout vrij binnen de las om zelf de foutlocatie te bepalen; X wordt gemeten vanaf de hartlijn van de las en de diepte vanaf het oppervlak.</div></div>
 <div class="ascan"><h3>A-SCAN <span style="font-weight:400;color:#8fa8b8">(simulatie)</span></h3><svg id="aScan" viewBox="0 0 300 220"></svg><div class="caption">Bereik: <b id="rangeLabel">100 mm</b></div></div>
 </div>
 <div class="card"><div class="results">
@@ -149,7 +159,7 @@ body:after{content:"UT"!important;position:fixed;right:-80px;bottom:2%;font-size
 <button id="coreBtn" class="lock"><svg class="lockIcon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>CORE VERGRENDELD</span></button>
 <div id="modal" class="modal"><div class="sheet"><h3>CORE BEVEILIGING</h3><p class="help">Voer de PIN in om de rekenkern tijdelijk te ontgrendelen.</p><input id="pin" type="password" inputmode="numeric" maxlength="6"><div id="err" class="err"></div><button id="unlock" class="btn primary">ONTGRENDEL CORE</button><button id="cancel" class="btn">ANNULEREN</button></div></div>
 <script>const $=id=>document.getElementById(id);
-const state={probeX:120,dragMode:null,dragPointerId:null,weldHandle:null,weldTopFrac:.5,weldBottomFrac:.5};
+const state={probeX:120,dragMode:null,dragPointerId:null,weldHandle:null,weldTopFrac:.5,weldBottomFrac:.5,zoom:1,showBlueHandle:true};
 const n=id=>parseFloat($(id).value)||0;
 
 function probeInfo(){
@@ -200,6 +210,36 @@ function plateGeom(){
  return {left,right,top:flatTop,sy,sx,yL:backL,yR:backR,taperOn:diff,tL,tR,yBottom:yBack,ySurface,yBack,surfacePts,backPts,bottomPts:backPts,leftT,rightT,maxT,c,flipped,baseY};
 }
 
+function updateRadiusField(){
+ const type=$('weldType').value;
+ const show=/U-naad|J-naad/.test(type);
+ $('radiusField')?.classList.toggle('isHidden',!show);
+}
+function setDiagramZoom(z){
+ state.zoom=Math.max(1,Math.min(2.4,z));
+ const vw=700/state.zoom, vh=390/state.zoom;
+
+ // Bij vergroten moet de las zelf centraal blijven staan.
+ // Gebruik de actuele lasgeometrie i.p.v. het vaste SVG-midden.
+ let cx=350, cy=195;
+ if(state.zoom>1){
+   try{
+     const pg=plateGeom();
+     const w=weldGeometry(pg);
+     cx=w.c;
+     // Focus op de wortel/het hart van de las; bij X-naad op het midden van
+     // de beide voorbereidingen. Zo blijven neus, wortel, stippellijn en fout
+     // samen in beeld op de iPhone.
+     cy=(w.handleTop+w.handleBottom)/2;
+     if(!Number.isFinite(cy)) cy=w.yRoot;
+   }catch(e){}
+ }
+
+ // Houd het zoomvenster binnen de SVG zodat de las niet naar een rand schuift.
+ cx=Math.max(vw/2,Math.min(700-vw/2,cx));
+ cy=Math.max(vh/2,Math.min(390-vh/2,cy));
+ $('beamSvg').setAttribute('viewBox',`${cx-vw/2} ${cy-vh/2} ${vw} ${vh}`);
+}
 function weldGeometry(pg){
  const type=$('weldType').value;
  const symmetry=$('weldSymmetry')?.value||'equal';
@@ -290,25 +330,42 @@ function weldGeometry(pg){
    polys=[[[c-bevelHalf,yTop],[c+bevelHalf,yTop],[c+gap/2,topEnd],[c-gap/2,topEnd]],[[c-gap/2,botEnd],[c+gap/2,botEnd],[c+bevelBottom,yRoot],[c-bevelBottom,yRoot]]];
    edges=[[c-bevelHalf,yTop,c-gap/2,topEnd],[c+bevelHalf,yTop,c+gap/2,topEnd],[c-gap/2,botEnd,c-bevelBottom,yRoot],[c+gap/2,botEnd,c+bevelBottom,yRoot]];
  } else if(type==='U-naad - Full Pen' || type==='Dubbele U-naad - Full Pen' || type==='J-naad - Full Pen' || type==='Dubbele J-naad - Full Pen' || type==='½ U-naad - Full Pen'){
+   // U/J-geometrie: radius mag alleen de naadwand vormen. De root zelf blijft
+   // exact volgens rootGap/rootLand: vlak/recht, zonder ronde bol of afgeronde root.
    const dbl=(type==='Dubbele U-naad - Full Pen'||type==='Dubbele J-naad - Full Pen');
    const half=(type==='½ U-naad - Full Pen');
-   const rad=Math.min(radius,depth*.35);
+   const rad=Math.max(0,Math.min(radius,depth*.35));
    const topWidth=Math.max(gap+8,width*.72);
    const topL=c-topWidth/2, topR=c+topWidth/2;
-   const midY=dbl?mid:yRoot-dir*land;
+   const rootY=yRoot;
+   const rootLandY=yRoot-dir*land;
    const pts=[];
+   const curve=(x0,y0,x1,y1,r)=>{
+     const out=[];
+     const dx=x1-x0, dy=y1-y0;
+     const steps=8;
+     for(let i=0;i<=steps;i++){
+       const t=i/steps;
+       const ease=t*t*(3-2*t);
+       out.push([x0+dx*ease,y0+dy*ease]);
+     }
+     return out;
+   };
    if(half){
-     pts.push([c-width/2,yTop],[c+topWidth/2,yTop],[c+gap/2,midY]);
-     for(let i=0;i<=6;i++){const t=i/6;const ang=Math.PI/2*t;pts.push([c+gap/2-rad*(1-Math.cos(ang)),midY+dir*rad*Math.sin(ang)]);} 
-     pts.push([c-gap/2,yRoot],[c-width/2,yRoot]);
+     // Halve U: één afgeronde wand, maar een rechte rootzone.
+     pts.push([c-width/2,yTop],[c+topWidth/2,yTop]);
+     pts.push(...curve(c+topWidth/2,yTop,c+gap/2,rootLandY,rad));
+     pts.push([c+gap/2,rootY],[c-gap/2,rootY],[c-gap/2,rootLandY],[c-width/2,yRoot]);
    } else {
      pts.push([topL,yTop],[topR,yTop]);
-     for(let i=0;i<=8;i++){const t=i/8;const ang=Math.PI*t;pts.push([c+(topWidth/2-rad)*(Math.cos(ang)),yTop+dir*(rad*(1-Math.sin(ang))) ]);}
-     pts.push([c+gap/2,midY],[c-gap/2,midY]);
+     pts.push(...curve(topR,yTop,c+gap/2,rootLandY,rad));
+     pts.push([c+gap/2,rootY],[c-gap/2,rootY],[c-gap/2,rootLandY]);
      if(dbl){
-       for(let i=0;i<=8;i++){const t=i/8;const ang=Math.PI*t;pts.push([c-(topWidth/2-rad)*Math.cos(ang),yRoot-dir*(rad*(1-Math.sin(ang))) ]);}
-     } else pts.push([c-gap/2,yRoot]);
-     pts.push([c-width/2,yRoot]);
+       pts.push(...curve(c-gap/2,rootLandY,c-width/2,yRoot,rad));
+       pts.push([c-width/2,yRoot],[c-width/2,yTop]);
+     } else {
+       pts.push([c-width/2,yRoot],[c-width/2,yTop]);
+     }
    }
    polys=[pts];
    edges=[];
@@ -458,14 +515,14 @@ function draw(){
  const edge1=rayTrace(px,edgeA,pg,pr,selectedBounces),edge2=rayTrace(px,edgeB,pg,pr,selectedBounces);
  const platePath=`M ${pg.surfacePts.map(p=>p.join(' ')).join(' L ')} L ${pg.backPts.slice().reverse().map(p=>p.join(' ')).join(' L ')} Z`;
  const wpolys=weldPolygons(pg,w);
- const weldShape=wpolys.map(poly=>`<path d="M ${poly.map(p=>p.join(' ')).join(' L ')} Z" fill="url(#weldG)" stroke="#d5e0e5" stroke-width="1.5"/>`).join('');
-const weldCap=(w.edges||[]).map(e=>`<path d="M ${e[0]} ${e[1]} L ${e[2]} ${e[3]}" fill="none" stroke="#eef7fa" stroke-width="3"/>`).join('');
+ const weldShape=wpolys.map(poly=>`<path d="M ${poly.map(p=>p.join(' ')).join(' L ')} Z" fill="none" stroke="#eaf3f6" stroke-width="1.25" vector-effect="non-scaling-stroke"/>`).join('');
+const weldCap=(w.edges||[]).map(e=>`<path d="M ${e[0]} ${e[1]} L ${e[2]} ${e[3]}" fill="none" stroke="#f2f7f9" stroke-width="1.4" vector-effect="non-scaling-stroke"/>`).join('');
  const defectShape=(()=>{
   if(defectType==='Geen fout')return '';
   const x=f.x,y=f.y;
   if(defectType==='Scheur')return `<path d="M ${x-5} ${y+10} l 3 -7 l -2 -5 l 4 -6 l -2 -6 l 5 -7" fill="none" stroke="#ff4d5f" stroke-width="3" stroke-linecap="round"/>`;
-  if(defectType==='Gebrek aan versmelting'){const side=x>=w.c?w.xTR-2:w.xTL+2;return `<path d="M ${side} ${y-13} L ${side} ${y+13}" stroke="#ff4d5f" stroke-width="4" stroke-linecap="round"/>`;}
-  if(defectType==='Gebrek aan doorlassing')return `<path d="M ${w.xR1-4} ${w.rootY} Q ${w.c} ${w.rootY-8} ${w.xR2+4} ${w.rootY}" fill="none" stroke="#ff4d5f" stroke-width="4"/>`;
+  if(defectType==='Bindingsfout'){const side=x>=w.c?w.xTR-2:w.xTL+2;return `<path d="M ${side} ${y-13} L ${side} ${y+13}" stroke="#ff4d5f" stroke-width="4" stroke-linecap="round"/>`;}
+  if(defectType==='Onvoldoende doorlas')return `<path d="M ${w.xR1-4} ${w.rootY} Q ${w.c} ${w.rootY-8} ${w.xR2+4} ${w.rootY}" fill="none" stroke="#ff4d5f" stroke-width="4"/>`;
   if(defectType==='Porositeit')return `<circle cx="${x-5}" cy="${y}" r="4.5" fill="#ff5966"/><circle cx="${x+5}" cy="${y-5}" r="3.5" fill="#ff5966"/><circle cx="${x+6}" cy="${y+6}" r="3" fill="#ff5966"/>`;
   if(defectType==='Slakinsluiting')return `<ellipse cx="${x}" cy="${y}" rx="13" ry="5" fill="#ff5966" transform="rotate(-18 ${x} ${y})"/>`;
   return `<path d="M ${w.xTR-2} ${w.yTop+2} q 8 8 15 0" fill="none" stroke="#ff5966" stroke-width="4"/>`;
@@ -475,17 +532,51 @@ const weldCap=(w.edges||[]).map(e=>`<path d="M ${e[0]} ${e[1]} L ${e[2]} ${e[3]}
  svg.innerHTML=`<defs><linearGradient id="plateG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#314754"/><stop offset="1" stop-color="#172a35"/></linearGradient><linearGradient id="weldG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a4b5bd"/><stop offset="1" stop-color="#52636d"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="4"/></filter><clipPath id="plateClip"><path d="${platePath}"/></clipPath></defs>
  <rect width="700" height="390" fill="#061723"/><path d="${platePath}" fill="url(#plateG)" stroke="#758994" stroke-width="2"/>
  ${pg.taperOn?`<line x1="${pg.tL}" y1="${pg.flipped?pg.ySurface(pg.tL):pg.yBack(pg.tL)}" x2="${pg.tR}" y2="${pg.flipped?pg.ySurface(pg.tR):pg.yBack(pg.tR)}" stroke="#ffd15c" stroke-width="2.5" stroke-dasharray="6 5"/>${taperLabel}`:''}
- ${weldShape}${weldCap}<line x1="${w.c-18}" y1="${w.centerY}" x2="${w.c+18}" y2="${w.centerY}" stroke="#ffd15c" stroke-width="2.5"/><text x="${w.c+28}" y="${w.centerY+4}" fill="#ffd15c" font-size="10" font-weight="800">WORTELZONE</text>
- <g class="weldHandle" data-weld-handle="top"><circle cx="${w.c}" cy="${w.handleTop}" r="7"/><line x1="${w.c-10}" y1="${w.handleTop-13}" x2="${w.c+10}" y2="${w.handleTop-13}"/><text x="${w.c+11}" y="${w.handleTop-16}">HOOGTE</text></g>${w.hasBottom?`<g class="weldHandle" data-weld-handle="bottom"><circle cx="${w.c}" cy="${w.handleBottom}" r="7"/><line x1="${w.c-10}" y1="${w.handleBottom+13}" x2="${w.c+10}" y2="${w.handleBottom+13}"/><text x="${w.c+11}" y="${w.handleBottom+24}">HOOGTE</text></g>`:''}
- <text x="${w.c}" y="42" fill="#ff6973" font-size="13" font-weight="800" text-anchor="middle">HARTLIJN LAS</text><text x="${w.c}" y="60" fill="#fff" font-size="15" font-weight="700" text-anchor="middle">${n('weld').toFixed(1)} mm</text>
- <text x="35" y="${Math.max(35,Math.min(78,pg.ySurface(pg.left)+12))}" fill="#9db3c0" font-size="12">oppervlak</text><text x="35" y="${Math.min(375,Math.max(pg.yBack(pg.left)+18,pg.yBack(pg.right)+18))}" fill="#9db3c0" font-size="12">achterwand</text>
+ ${weldShape}${weldCap}
+ <line class="weldCenterline" x1="${w.c}" y1="${Math.max(65,w.yTop-20)}" x2="${w.c}" y2="${Math.min(350,w.yRoot+20)}"/>
+ <line class="rootGuide" x1="${w.xR1}" y1="${w.rootY}" x2="${w.xR2}" y2="${w.rootY}"/>
+ <text class="rootLabel" x="${w.c+34}" y="${w.rootY-7}" text-anchor="start">WORTEL / NEUS</text>
+ <text class="weldDimensionText" x="${w.c}" y="${Math.max(75,w.yTop-12)}" text-anchor="middle">HARTLIJN LAS</text>
+ <line class="weldDimension" x1="${w.xR1}" y1="${w.rootY+10}" x2="${w.xR2}" y2="${w.rootY+10}"/>
+ <line class="weldDimension" x1="${w.xR1}" y1="${w.rootY+6}" x2="${w.xR1}" y2="${w.rootY+15}"/><line class="weldDimension" x1="${w.xR2}" y1="${w.rootY+6}" x2="${w.xR2}" y2="${w.rootY+15}"/>
+ <text class="weldDimensionText" x="${w.c}" y="${w.rootY+25}" text-anchor="middle">WORTELOPENING ${n('rootGap').toFixed(1)} mm</text>
+ <text class="rootLabel" x="${w.c}" y="${w.rootY-22}" text-anchor="middle">NEUS / LAND ${n('rootLand').toFixed(1)} mm</text>
+ ${state.showBlueHandle?`<g class="weldHandle" data-weld-handle="top"><circle cx="${w.c}" cy="${w.handleTop}" r="7"/><line x1="${w.c-10}" y1="${w.handleTop-13}" x2="${w.c+10}" y2="${w.handleTop-13}"/><text x="${w.c+11}" y="${w.handleTop-16}">HOOGTE</text></g>${w.hasBottom?`<g class="weldHandle" data-weld-handle="bottom"><circle cx="${w.c}" cy="${w.handleBottom}" r="7"/><line x1="${w.c-10}" y1="${w.handleBottom+13}" x2="${w.c+10}" y2="${w.handleBottom+13}"/><text x="${w.c+11}" y="${w.handleBottom+24}">HOOGTE</text></g>`:''}`:''}
+ <text x="${w.c}" y="42" fill="#ff6973" font-size="10" font-weight="800" text-anchor="middle">HARTLIJN LAS</text><text x="${w.c}" y="60" fill="#fff" font-size="12" font-weight="700" text-anchor="middle">${n('weld').toFixed(1)} mm</text>
+ <text x="35" y="${Math.max(35,Math.min(78,pg.ySurface(pg.left)+12))}" fill="#9db3c0" font-size="10">oppervlak</text><text x="35" y="${Math.min(375,Math.max(pg.yBack(pg.left)+18,pg.yBack(pg.right)+18))}" fill="#9db3c0" font-size="10">achterwand</text>
  <g clip-path="url(#plateClip)"><polyline points="${pts(edge1)}" fill="none" stroke="#22d8ff" stroke-width="2" opacity=".6" stroke-dasharray="7 5"/><polyline points="${pts(edge2)}" fill="none" stroke="#22d8ff" stroke-width="2" opacity=".6" stroke-dasharray="7 5"/><polyline points="${pts(main)}" fill="none" stroke="#22d8ff" stroke-width="18" opacity=".10" filter="url(#glow)"/><polyline points="${pts(main)}" fill="none" stroke="#22d8ff" stroke-width="4"/><polyline points="${pts(main)}" fill="none" stroke="#91efff" stroke-width="1" stroke-dasharray="7 7"/></g>
- <g data-fault-marker="1" style="cursor:move;touch-action:none">${defectShape}<circle cx="${f.x}" cy="${f.y}" r="7" fill="#ff5966" stroke="#fff" stroke-width="2"/><text x="${f.x+12}" y="${f.y-8}" fill="#ff6973" font-size="12" font-weight="800">${defectType==='Geen fout'?'LOCATIE':'FOUT'}</text></g>
- <g data-probe="1" style="cursor:grab;touch-action:none"><path d="M ${px-24} ${probeY-28} Q ${px-19} ${probeY-36} ${px-8} ${probeY-36} L ${px+18} ${probeY-36} Q ${px+27} ${probeY-34} ${px+30} ${probeY-26} L ${px+35} ${probeY-10} L ${px+35} ${probeY} L ${px-24} ${probeY} Z" fill="#7b8b93" stroke="#dce6ea" stroke-width="1.5"/><path d="M ${px-24} ${probeY-6} L ${px+35} ${probeY-6} L ${px+30} ${pg.top} L ${px-18} ${pg.top} Z" fill="#1688ad" stroke="#65dfff" stroke-width="1.2"/><rect x="${px-12}" y="${probeY-33}" width="27" height="19" rx="4" fill="#52646d" stroke="#cbd8dd"/><text x="${px+2}" y="${probeY-20}" fill="#f7fbfd" font-size="7" font-weight="800" text-anchor="middle">${pr.freq}MHz ${pr.size}</text><text x="${px+8}" y="${probeY-44}" fill="#ffd15c" font-size="20" font-weight="800">${pr.kind==='straight'?'0':n('angleSel')}°</text></g>
+ <g data-fault-marker="1" style="cursor:move;touch-action:none;pointer-events:all"><circle cx="${f.x}" cy="${f.y}" r="13" fill="transparent" stroke="none" pointer-events="all"/>${defectShape}<circle cx="${f.x}" cy="${f.y}" r="7" fill="#ff5966" stroke="#fff" stroke-width="2"/><text x="${f.x+12}" y="${f.y-8}" fill="#ff6973" font-size="12" font-weight="800">${defectType==='Geen fout'?'LOCATIE':'FOUT'}</text></g>
+ <g data-probe="1" style="cursor:grab;touch-action:none"><path d="M ${px-24} ${probeY-28} Q ${px-19} ${probeY-36} ${px-8} ${probeY-36} L ${px+18} ${probeY-36} Q ${px+27} ${probeY-34} ${px+30} ${probeY-26} L ${px+35} ${probeY-10} L ${px+35} ${probeY} L ${px-24} ${probeY} Z" fill="#7b8b93" stroke="#dce6ea" stroke-width="1.5"/><path d="M ${px-24} ${probeY-6} L ${px+35} ${probeY-6} L ${px+30} ${pg.top} L ${px-18} ${pg.top} Z" fill="#1688ad" stroke="#65dfff" stroke-width="1.2"/><rect x="${px-12}" y="${probeY-33}" width="27" height="19" rx="4" fill="#52646d" stroke="#cbd8dd"/><path d="M ${px-24} ${probeY-2} L ${px+2} ${probeY-2} L ${px+8} ${probeY+1} L ${px-24} ${probeY+1} Z" fill="#ffbd4a" stroke="#ffe19a" stroke-width="1.2"/><text x="${px+2}" y="${probeY-20}" fill="#f7fbfd" font-size="7" font-weight="800" text-anchor="middle">${pr.freq}MHz ${pr.size}</text><text x="${px+8}" y="${probeY-44}" fill="#ffd15c" font-size="20" font-weight="800">${pr.kind==='straight'?'0':n('angleSel')}°</text></g>
  <text x="35" y="${Math.max(pg.yL,pg.yR)+45}" fill="#9db3c0" font-size="12">Afstand langs oppervlak (mm)</text><text x="350" y="28" fill="#c7d8e0" font-size="12" text-anchor="middle">PLAAT L ${pg.leftT.toFixed(1)} / R ${pg.rightT.toFixed(1)} mm • ${pr.label} • ${pr.wave}</text><text x="350" y="48" fill="#ffd15c" font-size="11" font-weight="700" text-anchor="middle">BUNDEL: ${selectedSkip==='whole'?'1 HELE SPRONG':(selectedSkip==='onehalf'?'1½ SPRONG':'½ SPRONG')}</text>`;
- bindDrag();
 }
 
+function svgPointFromEvent(e,svg){
+ const pt=svg.createSVGPoint();
+ pt.x=e.clientX; pt.y=e.clientY;
+ const ctm=svg.getScreenCTM();
+ if(ctm){const q=pt.matrixTransform(ctm.inverse()); return {x:q.x,y:q.y};}
+ const r=svg.getBoundingClientRect();
+ const vb=svg.viewBox.baseVal;
+ return {x:vb.x+(e.clientX-r.left)/r.width*vb.width,y:vb.y+(e.clientY-r.top)/r.height*vb.height};
+}
+function closestPointOnSegment(px,py,ax,ay,bx,by){
+ const dx=bx-ax,dy=by-ay,l2=dx*dx+dy*dy||1;
+ const t=Math.max(0,Math.min(1,((px-ax)*dx+(py-ay)*dy)/l2));
+ return {x:ax+t*dx,y:ay+t*dy};
+}
+function pointInWeldOrNearest(x,y,w){
+ const polys=w.polys||[];
+ for(const poly of polys){if(pointInPoly(x,y,poly)) return {x,y};}
+ let best=null;
+ for(const poly of polys){
+   for(let i=0;i<poly.length;i++){
+     const a=poly[i],b=poly[(i+1)%poly.length],q=closestPointOnSegment(x,y,a[0],a[1],b[0],b[1]);
+     const d2=(x-q.x)*(x-q.x)+(y-q.y)*(y-q.y);
+     if(!best||d2<best.d2)best={x:q.x,y:q.y,d2};
+   }
+ }
+ return best?{x:best.x,y:best.y}:{x:w.c,y:(w.yTop+w.yRoot)/2};
+}
 function bindDrag(){
  const svg=$('beamSvg');
  svg.onpointerdown=e=>{
@@ -497,12 +588,16 @@ function bindDrag(){
  };
  svg.onpointermove=e=>{
    if(state.dragPointerId!==e.pointerId)return;
-   const r=svg.getBoundingClientRect(),vx=(e.clientX-r.left)/r.width*700,vy=(e.clientY-r.top)/r.height*390,pg=plateGeom(),w=weldGeometry(pg);
+   const q=svgPointFromEvent(e,svg),vx=q.x,vy=q.y,pg=plateGeom(),w=weldGeometry(pg);
    if(state.dragMode==='probe'){
      state.probeX=Math.max(pg.left+20,Math.min(pg.right-20,vx));
    }else if(state.dragMode==='fault'){
-     $('flawX').value=((vx-w.c)/pg.sx).toFixed(1);
-     $('flawDepth').value=Math.max(.5,Math.min(pg.maxT-.5,Math.abs(vy-pg.ySurface(vx))/pg.sy)).toFixed(1);
+     const p=pointInWeldOrNearest(vx,vy,w);
+     const surfaceY=pg.ySurface(p.x);
+     const rawDepth=pg.flipped?Math.abs(surfaceY-p.y):Math.abs(p.y-surfaceY);
+     const maxDepth=Math.max(.5,Math.max(pg.leftT,pg.rightT)-.5);
+     $('flawX').value=((p.x-w.c)/pg.sx).toFixed(1);
+     $('flawDepth').value=Math.max(.5,Math.min(maxDepth,rawDepth/pg.sy)).toFixed(1);
    }else if(state.dragMode==='weld'){
      const dir=w.dir;
      if(state.weldHandle==='top'){
@@ -566,7 +661,7 @@ function setSpeedForProbe(){
 $('soundSpeed').addEventListener('input',()=>{$('soundSpeed').dataset.userEdited='1';render();});
 ['thickL','thickR','angleSel','probe','weldType','weldSymmetry','defectType','weld','prepAngle','rootGap','rootLand','grooveRadius','taper','taperLen','plateFlip','flawDepth','flawX','range','skipSelect'].forEach(id=>{
  $(id).addEventListener('input',render);
- $(id).addEventListener('change',()=>{if(id==='probe')setSpeedForProbe();render();});
+ $(id).addEventListener('change',()=>{if(id==='probe')setSpeedForProbe();if(id==='weldType')updateRadiusField();render();});
 });
 $('k1dist').addEventListener('input',()=>$('k1out').textContent=(100-n('k1dist')).toFixed(1));
 function angleCalc(){const a=n('a'),b=n('b'),bc=a+b-35;$('bc').textContent=a&&b?bc.toFixed(2):'—';$('angleOut').textContent=a&&b&&bc>0?(Math.atan(15/bc)*180/Math.PI).toFixed(2):a&&b?'ONGELDIGE METING':'—';}
@@ -579,6 +674,6 @@ $('coreBtn').onclick=()=>{if(coreUnlocked){coreUnlocked=false;$('coreBtn').textC
 $('cancel').onclick=()=>modal.classList.remove('show');
 $('unlock').onclick=async()=>{if(await sha($('pin').value)===HASH){coreUnlocked=true;modal.classList.remove('show');$('coreBtn').textContent='🔓 CORE ONTGRENDELD';}else $('err').textContent='Onjuiste PIN.';};
 window.BEAM_CORE={isUnlocked:()=>coreUnlocked,lock:()=>{coreUnlocked=false;$('coreBtn').textContent='🔐 CORE VERGRENDELD';}};
-setSpeedForProbe();render();$('k1out').textContent=(100-n('k1dist')).toFixed(1);angleCalc();
+updateRadiusField(); setDiagramZoom(1); $('zoomIn').onclick=()=>{setDiagramZoom(state.zoom+0.25);}; $('zoomOut').onclick=()=>{setDiagramZoom(state.zoom-0.25);}; $('zoomReset').onclick=()=>{setDiagramZoom(1);}; $('toggleBlue').onclick=()=>{state.showBlueHandle=!state.showBlueHandle; const b=$('toggleBlue'); b.textContent=state.showBlueHandle?'🔵 CIRCEL AAN':'⚪ CIRCEL UIT'; b.classList.toggle('off',!state.showBlueHandle); render();}; render(); bindDrag(); $('k1out').textContent=(100-n('k1dist')).toFixed(1);angleCalc();
 </script>
 </body></html>

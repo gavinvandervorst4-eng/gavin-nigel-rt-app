@@ -125,7 +125,8 @@ body:after{content:"UT"!important;position:fixed;right:-80px;bottom:2%;font-size
 /* ===== TECHNISCHE WEERGAVE / MEETINFORMATIE ===== */
 .technicalMode .diagramHint{display:none}
 .technicalMode .diagramCard:after{content:"TECHNISCHE WEERGAVE"}
-.technicalMode .faultLabel,.technicalMode .rootLabel,.technicalMode .weldDimensionText{display:none}
+.technicalMode .faultLabel,.technicalMode .rootLabel,.technicalMode .weldDimensionText{display:block}
+.noDiagramText text{display:none!important}
 .technicalMode .weldCenterline{opacity:.55}
 .technicalMode .weldDimension{opacity:.65}
 .technicalMode .diagramWrap{background:#020a10}
@@ -214,6 +215,83 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;ba
 /* ===== OVERZICHTELIJKE BEDIENING 2.4 ===== */
 .controlCard{padding:10px!important}.controlTitle{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 2px 8px}.controlTitle h2{margin:0!important;font-size:13px!important;letter-spacing:.08em}.controlHint{font-size:9px;color:#7fa6b5}.controlDrop{border:1px solid #1d5268;border-radius:11px;background:linear-gradient(180deg,#071c28,#04121a);margin:7px 0;overflow:hidden}.controlDrop summary{cursor:pointer;list-style:none;padding:11px 12px;font-size:11px;font-weight:1000;color:#e8f9ff;letter-spacing:.04em}.controlDrop summary::-webkit-details-marker{display:none}.controlDrop summary:after{content:'＋';float:right;color:#70dff5;font-size:14px}.controlDrop[open] summary{border-bottom:1px solid #16475d;background:#092638}.controlDrop[open] summary:after{content:'−';color:#ffd15c}.dropGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;padding:9px}.dropGrid .field{min-width:0}.scanSelectWrap{display:flex;align-items:center;gap:5px;margin-left:auto}.scanSelectWrap span{font-size:8px;color:#72dff3;font-weight:1000;letter-spacing:.05em}.scanSelectWrap select{background:#0b2939;border:1px solid #2a6278;color:#fff;border-radius:8px;padding:7px 9px;font-weight:900;font-size:10px;min-width:125px}.diagramTools{align-items:center;flex-wrap:wrap}.scanQuickLabel,.scanQuick{display:none!important}@media(max-width:800px){.dropGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:520px){.dropGrid{grid-template-columns:1fr}.controlHint{display:none}.scanSelectWrap{width:100%;margin-left:0}.scanSelectWrap select{flex:1}.diagramTools .zoomBtn{padding:7px 8px;font-size:10px}}
 </style>
+
+<style id="easy-rugged-ui">
+/* ===== EASY / STOER INDUSTRIAL UI — VISUEEL, GEEN REKENKERN AANGEPAST ===== */
+:root{
+  --bg:#05080b;--panel:#0a1117;--panel2:#0d1820;--line:#263743;
+  --cyan:#22c7e8;--cyan2:#73e7ff;--white:#f4f7f8;--muted:#93a4ae;
+  --orange:#f0a72f;--orange2:#ffc85a;--red:#ff5362;--green:#65e48a;
+}
+html,body{background:
+ radial-gradient(circle at 50% -10%,#17242c 0,#081016 35%,#05080b 72%);
+ color:var(--white)}
+body{font-size:15px}
+.header{background:linear-gradient(180deg,#111a20,#080e12);border-bottom:2px solid #202e37;box-shadow:0 8px 30px #000b;position:sticky;top:0;z-index:20}
+.header:after{content:"";display:block;height:3px;margin:11px -16px -11px;background:repeating-linear-gradient(135deg,var(--orange) 0 12px,#1b2227 12px 24px);opacity:.85}
+.logo{border:2px solid var(--orange);color:var(--orange2);background:#11191e;box-shadow:inset 0 0 0 2px #0008,0 0 16px #f0a72f22}
+.brand h1{font-weight:1000;letter-spacing:.06em;text-transform:uppercase}
+.brand p{color:#a7b7bf}
+.tabs{background:#070c10;border-bottom:1px solid #25323a;gap:6px;padding:9px 16px;position:sticky;top:78px;z-index:19}
+.tab{background:linear-gradient(180deg,#121c23,#0a1116);border:1px solid #33444e;border-radius:8px;padding:13px 8px;font-size:12px;box-shadow:inset 0 1px #ffffff08,0 4px 12px #0008}
+.tab.active{background:linear-gradient(180deg,#26343b,#111a20);border-color:var(--orange);color:#fff;box-shadow:inset 0 2px #ffc85a33,0 0 0 1px #f0a72f22}
+.card,.diagramCard,.ascan{background:linear-gradient(180deg,#0d171d,#080e13);border:1px solid #2a3942;border-radius:12px;box-shadow:0 10px 28px #0009,inset 0 1px #ffffff06}
+.controlCard{padding:11px}
+.controlTitle{padding:4px 4px 7px}.controlTitle h2{font-size:13px;letter-spacing:.12em;color:#fff}.controlHint{color:#a5b3ba}
+.controlDrop{border:1px solid #30414b;border-radius:9px;background:#0b141a;margin:8px 0;box-shadow:inset 0 1px #ffffff05}
+.controlDrop summary{padding:13px 14px;font-size:12px;letter-spacing:.07em;text-transform:uppercase;background:linear-gradient(90deg,#121e25,#0b141a);border-left:4px solid #55646c}
+.controlDrop[open] summary{border-left-color:var(--orange);background:linear-gradient(90deg,#1a211f,#0b141a)}
+.dropGrid{gap:9px;padding:10px}
+.field{background:#081117;border:1px solid #2b3c46;border-radius:8px;padding:9px}
+.field label{color:#9aaab3;font-weight:800;letter-spacing:.02em}
+.field input,.field select{background:#0e1b23;border:1px solid #40535d;border-radius:7px;padding:11px 10px;font-weight:800;color:#fff}
+.field input:focus,.field select:focus{border-color:var(--orange);box-shadow:0 0 0 2px #f0a72f18}
+.visualRow{gap:10px}
+.diagramCard{border-color:#35464f;padding:9px}
+.diagramTools{justify-content:flex-start;gap:6px;padding:7px}
+.diagramTools .zoomBtn{background:linear-gradient(180deg,#17242b,#0c151a)!important;border:1px solid #41535d!important;color:#f0f5f7!important;border-radius:7px!important;padding:9px 10px!important;box-shadow:inset 0 1px #ffffff08,0 4px 10px #0008!important;font-weight:900!important}
+.diagramTools .zoomBtn.reset{border-color:#9a6c1e!important;color:#ffc85a!important;background:linear-gradient(180deg,#2a2113,#17130d)!important}
+.diagramTools .zoomBtn.toggle{border-color:#3d515c!important}.diagramTools .zoomBtn.toggle.off{border-color:#29353c!important;color:#778890!important}
+.scanSelectWrap{margin-left:auto}.scanSelectWrap span{color:var(--orange2)}
+.scanSelectWrap select{background:#101c22;border-color:#465963;border-radius:7px;padding:9px 10px;font-weight:900}
+.diagramHint{color:#9eafb7;background:#080f14;border-top:1px solid #23333c;margin-top:5px;padding:7px 9px;border-radius:6px}
+.scanReadout{background:#070d12!important;border:1px solid #293941!important;border-radius:8px!important;box-shadow:inset 0 1px #fff05!important}
+.legend{background:#070d12;border:1px solid #25343c;border-radius:7px;padding:7px 9px}
+.caption{color:#8fa1aa}
+.ascan{padding:11px;border-color:#3b4c55}
+.ascan h3{color:#fff;letter-spacing:.08em;border-bottom:2px solid #26353e;padding-bottom:8px}
+#beamSvg{background:linear-gradient(180deg,#061018,#07131a)}
+@media(max-width:800px){
+ .tabs{top:75px;overflow-x:auto;grid-template-columns:repeat(5,minmax(120px,1fr));scrollbar-width:none}
+ .tabs::-webkit-scrollbar{display:none}
+ .visualRow{grid-template-columns:1fr}
+ .ascan{min-height:280px}
+}
+@media(max-width:520px){
+ .header{position:relative}.tabs{position:relative;top:auto}
+ .tab{min-width:112px}.brand p{font-size:9px}
+ .controlTitle{display:block}.controlHint{display:block;margin-top:4px}
+ .dropGrid{grid-template-columns:1fr!important}
+ .diagramTools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}
+ .diagramTools .zoomBtn{width:100%}
+ .scanSelectWrap{grid-column:1/-1;width:100%;margin:0}
+ .scanSelectWrap select{width:100%}
+}
+
+/* ===== EASY BEDIENING 3.0 ===== */
+.easyQuick{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:8px 0 12px}
+.easyTile{background:linear-gradient(180deg,#141d22,#0a1014);border:1px solid #394a53;border-radius:9px;padding:9px 10px;min-height:58px;box-shadow:inset 0 1px #ffffff08,0 5px 12px #0008}
+.easyTile b{display:block;color:#9baab2;font-size:9px;letter-spacing:.1em;margin-bottom:5px}
+.easyTile strong{display:block;color:#f5f7f8;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.easyTile.accent{border-left:4px solid var(--orange)}
+.easyTile.blue{border-left:4px solid var(--cyan)}
+.easyTile.red{border-left:4px solid var(--red)}
+.easySettings{width:100%;border:1px solid #58666e;border-radius:8px;background:linear-gradient(180deg,#202b31,#10171c);color:#fff;font-weight:1000;letter-spacing:.08em;padding:11px;cursor:pointer;box-shadow:inset 0 1px #fff1,0 5px 12px #0008;margin-bottom:9px}
+.easySettings:hover{border-color:var(--orange)}
+@media(max-width:700px){.easyQuick{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.easyQuick{grid-template-columns:repeat(2,1fr)}.easyTile strong{font-size:12px}.easySettings{font-size:12px}}
+</style>
+
 </head>
 <body>
 <div class="app">
@@ -223,11 +301,19 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;ba
 <section id="beam" class="tool active">
 <div class="card controlCard">
   <div class="controlTitle"><h2>ONDERZOEK INSTELLEN</h2><span class="controlHint">Open alleen wat je nodig hebt</span></div>
+  <div class="easyQuick">
+    <div class="easyTile accent"><b>TASTER</b><strong id="easyProbe">4 MHz 8×9 · 60°</strong></div>
+    <div class="easyTile accent"><b>LAS</b><strong id="easyWeld">X-naad · Full Pen</strong></div>
+    <div class="easyTile red"><b>FOUT</b><strong id="easyDefect">Geen fout</strong></div>
+    <div class="easyTile blue"><b>SPRONG</b><strong id="easySkip">½ sprong</strong></div>
+  </div>
+  <button class="easySettings" id="easySettingsBtn" type="button">⚙ INSTELLINGEN TONEN / VERBERGEN</button>
+
   <details class="controlDrop" open><summary>🔊 TASTER & MATERIAAL</summary><div class="dropGrid">
     <div class="field"><label>PLAATDIKTE LINKS (mm)</label><input id="thickL" type="number" value="20" min="1" max="300" step="0.5"></div>
     <div class="field"><label>PLAATDIKTE RECHTS (mm)</label><input id="thickR" type="number" value="20" min="1" max="300" step="0.5"></div>
     <div class="field"><label>TASTERHOEK (°)</label><select id="angleSel"><option>45</option><option selected>60</option><option>70</option></select></div>
-    <div class="field"><label>TASTER</label><select id="probe"><option>4 MHz 8x9</option><option>2 MHz 8x9</option><option>2 MHz 14x14</option><option>2 MHz 20x22</option><option>Recht 10 mm</option><option>Recht 24 mm</option></select></div>
+    <div class="field"><label>TASTER</label><select id="probe"><option>4 MHz 8x9</option><option>2 MHz 8x9</option><option>2 MHz 14x14</option><option>2 MHz 20x22</option><option>2 MHz Recht 10 mm</option><option>2 MHz Recht 24 mm</option><option>4 MHz Recht 10 mm</option><option>4 MHz Recht 24 mm</option><option>2 MHz SE 10 mm</option><option>2 MHz SE 24 mm</option><option>4 MHz SE 10 mm</option><option>4 MHz SE 24 mm</option></select></div>
     <div class="field"><label>GELUIDSSNELHEID (m/s)</label><input id="soundSpeed" type="number" value="3250" min="500" max="7000" step="10"></div>
   </div></details>
   <details class="controlDrop"><summary>🧱 LASGEOMETRIE</summary><div class="dropGrid">
@@ -244,7 +330,7 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;ba
     <div class="field"><label>VERJONGING AAN ZIJDE</label><select id="plateFlip"><option value="normal" selected>Verjonging onder</option><option value="flipped">Verjonging boven</option></select></div>
   </div></details>
   <details class="controlDrop"><summary>🔴 FOUT / INDICATIE</summary><div class="dropGrid">
-    <div class="field"><label>LASFOUT</label><select id="defectType"><option>Geen fout</option><option>Scheur</option><option>Bindingsfout</option><option>Onvoldoende doorlas</option><option>Porositeit</option><option>Slakinsluiting</option><option>Ondersnijding</option></select></div>
+    <div class="field"><label>LASFOUT</label><select id="defectType"><option>Geen fout</option><option>Scheur</option><option>Bindingsfout</option><option>Onvoldoende doorlas</option><option>Porositeit</option><option>Slakinsluiting</option><option>Randinkarteling (Undercut)</option></select></div>
     <div class="field"><label>VASTE FOUTDIEPTE V.A. REFERENTIEVLAK (mm)</label><input id="flawDepth" type="number" value="10" min="0.5" max="299" step="0.5"></div>
     <div class="field"><label>VASTE FOUTLOCATIE X T.O.V. LAS-HARTLIJN (mm)</label><input id="flawX" type="number" value="0" min="-50" max="50" step="0.5"></div>
     <div class="field"><label>FOUTLIGGING T.O.V. OPPERVLAK (°)</label><select id="flawAngle"><option value="auto">AUTO • 90° op bundel</option><option value="0">0° • horizontaal</option><option value="30" selected>30°</option><option value="45">45°</option><option value="60">60°</option><option value="70">70°</option><option value="90">90° • verticaal</option><option value="120">120°</option><option value="135">135°</option><option value="150">150°</option></select></div>
@@ -255,7 +341,7 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;ba
   </div></details>
 </div>
 <div class="visualRow">
-<div class="diagramCard"><div class="diagramTools"><button class="zoomBtn" id="zoomOut" type="button">− UITZOOMEN</button><button class="zoomBtn" id="zoomIn" type="button">＋ INZOOMEN</button><button class="zoomBtn reset" id="zoomReset" type="button">↻ RESET</button><button class="zoomBtn toggle" id="toggleBlue" type="button">🔵 CIRCEL AAN</button><button class="zoomBtn toggle" id="toggleFaultCursor" type="button">🔴 FOUTCURSOR AAN</button><button class="zoomBtn toggle" id="toggleTechnical" type="button">📐 TECHNISCH</button><button class="zoomBtn toggle" id="toggleSoundField" type="button">🔊 GELUIDSVELD UIT</button><label class="scanSelectWrap"><span>SCANPOSITIE</span><select id="scanSelect"><option value="topLeft">1 • BOVEN-L</option><option value="topRight">2 • BOVEN-R</option><option value="bottomLeft">3 • ONDER-L</option><option value="bottomRight">4 • ONDER-R</option></select></label></div><div class="diagramWrap"><svg id="beamSvg" viewBox="0 0 700 390" preserveAspectRatio="xMidYMid meet"></svg></div><div class="diagramHint">Zoom op de gecentreerde lasdoorsnede om laskant, wortel, neus, stippellijn en lasfout duidelijk te bekijken.</div><div class="scanReadout" id="scanReadout"><span><b>SCAN X</b><strong id="scanX">0.0 mm</strong></span><span><b>ZIJDE</b><strong id="scanSide">LINKS</strong></span><span><b>TASTER</b><strong id="scanProbe">—</strong></span><span><b>HOEK</b><strong id="scanAngle">60°</strong></span><span><b>SPRONG</b><strong id="scanSkip">½</strong></span><span><b>GELUIDSPAD</b><strong id="scanPath">—</strong></span></div><div class="legend"><span><i class="cyan"></i>Bundel (heen)</span><span><i class="cyan"></i>Bundel (terug)</span><span><i class="white"></i>Achterwand</span><span><i class="orange"></i>Taster</span><span><i class="red"></i>Indicatie</span></div><div class="caption">De lasdoorsnede blijft vast en gecentreerd. Sleep de oranje taster over het plaatoppervlak; de gekozen tasterhoek blijft exact behouden (t.o.v. de normaal; 60° t.o.v. normaal = 30° t.o.v. oppervlak). De scanpositie wordt live weergegeven. Een bindingsfout ligt tegen de betreffende laskant; bij X=0 volgt hij automatisch de zijde van de taster. Onvoldoende doorlas blijft in de wortelzone. Andere fouten kun je vrij in de las positioneren. De taster zendt én ontvangt. De fout-echo ontstaat alleen wanneer de bundel de fout bereikt én de gereflecteerde golf werkelijk terug in dezelfde taster valt. De A-scan toont de geluidspadwaarde naar de reflector.</div></div>
+<div class="diagramCard"><div class="diagramTools"><button class="zoomBtn" id="zoomOut" type="button">− UITZOOMEN</button><button class="zoomBtn" id="zoomIn" type="button">＋ INZOOMEN</button><button class="zoomBtn reset" id="zoomReset" type="button">↻ RESET</button><button class="zoomBtn toggle" id="toggleFaultCursor" type="button">🔴 FOUTCURSOR AAN</button><button class="zoomBtn toggle" id="toggleTechnical" type="button">📐 TECHNISCHE TEKST UIT</button><button class="zoomBtn toggle" id="toggleSoundField" type="button">🔊 GELUIDSVELD UIT</button><label class="scanSelectWrap"><span>SCANPOSITIE</span><select id="scanSelect"><option value="topLeft">1 • BOVEN-L</option><option value="topRight">2 • BOVEN-R</option><option value="bottomLeft">3 • ONDER-L</option><option value="bottomRight">4 • ONDER-R</option></select></label></div><div class="diagramWrap"><svg id="beamSvg" viewBox="0 0 700 390" preserveAspectRatio="xMidYMid meet"></svg></div><div class="diagramHint">Zoom op de gecentreerde lasdoorsnede om laskant, wortel, neus, stippellijn en lasfout duidelijk te bekijken.</div><div class="scanReadout" id="scanReadout"><span><b>SCAN X</b><strong id="scanX">0.0 mm</strong></span><span><b>ZIJDE</b><strong id="scanSide">LINKS</strong></span><span><b>TASTER</b><strong id="scanProbe">—</strong></span><span><b>HOEK</b><strong id="scanAngle">60°</strong></span><span><b>SPRONG</b><strong id="scanSkip">½</strong></span><span><b>GELUIDSPAD</b><strong id="scanPath">—</strong></span></div><div class="legend"><span><i class="cyan"></i>Bundel (heen)</span><span><i class="cyan"></i>Bundel (terug)</span><span><i class="white"></i>Achterwand</span><span><i class="orange"></i>Taster</span><span><i class="red"></i>Indicatie</span></div><div class="caption">Sleep de hoektaster over het oppervlak. Het indexpunt (BIP) beweegt mee; de bundel behoudt de gekozen refractiehoek in het staal en reflecteert per geselecteerde sprong op de achterwand. De A-scan gebruikt de cumulatieve sound path van de geselecteerde bundelbaan: ½ = L1, hele = L1+L2, 1½ = L1+L2+L3. Met TECHNISCHE TEKST kun je BIP/X, S, diepte en beeninformatie tonen of verbergen.</div></div>
 <div class="ascan"><h3>A-SCAN <span style="font-weight:400;color:#8fa8b8">(simulatie)</span></h3><svg id="aScan" viewBox="0 0 300 220"></svg><div class="caption">Bereik: <b id="rangeLabel">100 mm</b> • <span id="aScanStatus">WACHT OP INDICATIE</span></div></div>
 </div>
 <div class="card"><div class="results">
@@ -290,10 +376,10 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;ba
 <div class="formulaStrip"><span><b>SOS</b> = overstaand ÷ schuin</span><span><b>CAS</b> = aanliggend ÷ schuin</span><span><b>TOA</b> = overstaand ÷ aanliggend</span></div><div class="angleExplain"><h3>Jip &amp; Janneke-uitleg</h3><p><b>TOA:</b> je weet de <b>overstaande</b> en <b>aanliggende</b> zijde. Dan doe je <b>overstaande ÷ aanliggende</b>.</p><p><b>SOS:</b> je weet de <b>overstaande</b> en <b>schuine</b> zijde. Dan doe je <b>overstaande ÷ schuine</b>.</p><p><b>CAS:</b> je weet de <b>aanliggende</b> en <b>schuine</b> zijde. Dan doe je <b>aanliggende ÷ schuine</b>.</p><p class="tip">💡 Denk simpel: <b>SOH – CAH – TOA</b>. De calculator zet daarna de uitkomst om naar graden.</p></div></div></section>
 <section id="cal" class="tool"><div class="card"><h2>KALIBRATIE – EPOCH 650</h2><div class="help"><p><b>1.</b> Kies het juiste kalibratieblok en controleer de taster.</p><p><b>2.</b> Controleer indexpunt en tasterhoek.</p><p><b>3.</b> Stel de benodigde Range in.</p><p><b>4.</b> Zoek maximale echo en zet het referentiepunt rond 80% FSH.</p><p><b>5.</b> Leg de DAC-punten vast en controleer de kalibratie.</p></div></div></section>
 </main></div>
-<button id="coreBtn" class="lock"><svg class="lockIcon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>CORE VERGRENDELD</span></button>
+<button id="coreBtn" class="lock"><svg class="lockIcon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>CORE VRIJ</span></button>
 <div id="modal" class="modal"><div class="sheet"><h3>CORE BEVEILIGING</h3><p class="help">Voer de PIN in om de rekenkern tijdelijk te ontgrendelen.</p><input id="pin" type="password" inputmode="numeric" maxlength="6"><div id="err" class="err"></div><button id="unlock" class="btn primary">ONTGRENDEL CORE</button><button id="cancel" class="btn">ANNULEREN</button></div></div>
 <script>const $=id=>document.getElementById(id);
-const state={probeX:120,probeY:null,scanSide:"topLeft",bindingSide:"right",dragMode:null,dragPointerId:null,weldHandle:null,weldTopFrac:.5,weldBottomFrac:.5,zoom:1,showBlueHandle:true,showFaultCursor:true,technical:false,showSoundField:false};
+const state={probeX:120,probeY:null,scanSide:"topLeft",bindingSide:"right",bindingZone:"top",dragMode:null,dragPointerId:null,weldHandle:null,weldTopFrac:.5,weldBottomFrac:.5,zoom:1,showBlueHandle:false,showFaultCursor:true,technical:false,showSoundField:true,showDiagramText:false};
 const n=id=>parseFloat($(id).value)||0;
 
 function probeInfo(){
@@ -302,8 +388,15 @@ function probeInfo(){
  if(p==='2 MHz 8x9') return {kind:'angle',freq:2,size:'8x9',spread:4.0,label:'Olympus 2 MHz 8x9',wave:'TRANSVERSAAL'};
  if(p==='2 MHz 14x14') return {kind:'angle',freq:2,size:'14x14',spread:3.0,label:'Olympus 2 MHz 14x14',wave:'TRANSVERSAAL'};
  if(p==='2 MHz 20x22') return {kind:'angle',freq:2,size:'20x22',spread:3.0,label:'Olympus 2 MHz 20x22',wave:'TRANSVERSAAL'};
- if(p==='Recht 10 mm') return {kind:'straight',freq:4,size:'Ø10',spread:5.0,label:'Olympus recht Ø10 mm',wave:'LONGITUDINAAL'};
- return {kind:'straight',freq:2,size:'Ø24',spread:3.0,label:'Olympus recht Ø24 mm',wave:'LONGITUDINAAL'};
+ if(p==='2 MHz Recht 10 mm') return {kind:'straight',freq:2,size:'Ø10',spread:5.0,label:'Olympus 2 MHz recht Ø10 mm',wave:'LONGITUDINAAL'};
+ if(p==='2 MHz Recht 24 mm') return {kind:'straight',freq:2,size:'Ø24',spread:3.0,label:'Olympus 2 MHz recht Ø24 mm',wave:'LONGITUDINAAL'};
+ if(p==='4 MHz Recht 10 mm') return {kind:'straight',freq:4,size:'Ø10',spread:5.0,label:'Olympus 4 MHz recht Ø10 mm',wave:'LONGITUDINAAL'};
+ if(p==='4 MHz Recht 24 mm') return {kind:'straight',freq:4,size:'Ø24',spread:3.0,label:'Olympus 4 MHz recht Ø24 mm',wave:'LONGITUDINAAL'};
+ if(p==='2 MHz SE 10 mm') return {kind:'straight',freq:2,size:'Ø10',spread:5.0,label:'Olympus 2 MHz SE Ø10 mm',wave:'LONGITUDINAAL'};
+ if(p==='2 MHz SE 24 mm') return {kind:'straight',freq:2,size:'Ø24',spread:3.0,label:'Olympus 2 MHz SE Ø24 mm',wave:'LONGITUDINAAL'};
+ if(p==='4 MHz SE 10 mm') return {kind:'straight',freq:4,size:'Ø10',spread:5.0,label:'Olympus 4 MHz SE Ø10 mm',wave:'LONGITUDINAAL'};
+ if(p==='4 MHz SE 24 mm') return {kind:'straight',freq:4,size:'Ø24',spread:3.0,label:'Olympus 4 MHz SE Ø24 mm',wave:'LONGITUDINAAL'};
+ return {kind:'straight',freq:2,size:'Ø24',spread:3.0,label:'Olympus 2 MHz recht Ø24 mm',wave:'LONGITUDINAAL'};
 }
 
 function probeVisual(pr){
@@ -317,9 +410,22 @@ function probeVisual(pr){
  return {faceW:58,faceD:42,bodyH:42,label:pr.size,actualW:0,actualH:0};
 }
 
+function wedgeIncidenceAngle(pr){
+ // Wedge -> staal: Snell voor een longitudinale golf in de wedge naar een
+ // transversale (shear) golf in staal. De gekozen 45/60/70° is de refractiehoek
+ // in het staal, gemeten t.o.v. de normaal. Dit is de hoek die we visueel in
+ // de kristal/wedge-opbouw terugbrengen.
+ if(pr.kind==='straight') return 0;
+ const beta=Math.max(0,Math.min(89.9,n('angleSel')))*Math.PI/180;
+ const cWedge=2730; // perspex/plexiglas, m/s
+ const cShear=3250; // staal, transversaal, m/s
+ const ratio=cWedge/cShear;
+ return Math.asin(Math.max(-1,Math.min(1,ratio*Math.sin(beta))))*180/Math.PI;
+}
+
 function plateGeom(){
  const leftT=Math.max(1,n('thickL')), rightT=Math.max(1,n('thickR'));
- const top=82,left=35,right=665,W=700,H=390;
+ const top=127,left=35,right=665,W=700,H=390;
  const maxT=Math.max(leftT,rightT);
  const sy=Math.min(3.15,235/Math.max(20,maxT));
  const sx=sy;
@@ -593,17 +699,26 @@ function faultPoint(pg,w){
  if(defectType==='Bindingsfout'){
    const side=state.bindingSide||((state.scanSide==='topRight'||state.scanSide==='bottomRight')?'left':'right');
    // Een bindingsfout ligt exact op de overgang lasmetaal/basismateriaal.
-   // De gebruiker geeft alleen de diepte op; X wordt uitsluitend uit de
-   // actuele lasgeometrie en de gekozen scanzijde berekend.
+   // Bij een X-naad kan hij expliciet op de BOVENSTE of ONDERSTE lasvoorbewerking
+   // worden geplaatst. De sleepactie bepaalt die zone; daarna volgt de fout exact
+   // de bijbehorende lasflank.
    const refY=pg.ySurface(w.c);
-   const flankEdges=(w.edges||[]).filter(e=>side==='right'?((e[0]+e[2])/2>w.c):((e[0]+e[2])/2<w.c));
-   const flankDepthPx=flankEdges.length
-     ? Math.max(...flankEdges.map(e=>Math.abs(e[3]-e[1])))
-     : Math.abs((w.topRootY??w.rootY)-w.yTop);
-   const maxFlankDepth=Math.max(.5,flankDepthPx/Math.max(.001,pg.sy));
-   const actualDepth=Math.min(depth,maxFlankDepth);
-   let y=refY+actualDepth*pg.sy;
-   if(pg.flipped) y=refY-actualDepth*pg.sy;
+   const isX=(w.type==='X-naad - Full Pen'||w.type==='ongelijkzijdige X-naad - Full Pen') && w.hasBottom;
+   const zone=state.bindingZone||'top';
+   const zoneTop=isX ? (zone==='bottom'?w.handleBottom:w.yTop) : w.yTop;
+   const zoneBottom=isX ? (zone==='bottom'?w.yRoot:w.handleTop) : (w.topRootY??w.yRoot);
+   const zoneLo=Math.min(zoneTop,zoneBottom), zoneHi=Math.max(zoneTop,zoneBottom);
+   const zoneDepthPx=Math.max(.5,Math.abs(zoneBottom-zoneTop));
+   const zoneBaseDepthMm=Math.abs(zoneTop-refY)/Math.max(.001,pg.sy);
+   const maxZoneDepthMm=Math.abs(zoneBottom-refY)/Math.max(.001,pg.sy);
+   const minDepthMm=Math.min(zoneBaseDepthMm,maxZoneDepthMm);
+   const maxDepthMm=Math.max(zoneBaseDepthMm,maxZoneDepthMm);
+   let actualDepth=Math.min(depth,Math.max(.5,maxDepthMm));
+   if(isX && zone==='bottom') actualDepth=Math.max(actualDepth,minDepthMm);
+   let y=refY+(pg.flipped?-1:1)*actualDepth*pg.sy;
+   // Hard clamp to the selected X-naad half so de bindingsfout nooit terug
+   // springt naar de bovenste voorbereiding wanneer je hem onderin plaatst.
+   y=Math.max(zoneLo,Math.min(zoneHi,y));
    const x=flankPointAtY(w,y,side);
    return {
      x,y,
@@ -612,7 +727,7 @@ function faultPoint(pg,w){
      flank:side,
      autoFlank:true,
      requestedDepth:depth,
-     depthLimited:depth>maxFlankDepth+0.01
+     depthLimited:depth>maxDepthMm+0.01
    };
  }
  // Bij een X-naad ligt ONVOLDOENDE DOORLAS altijd in de centrale doorlaszone.
@@ -623,6 +738,20 @@ function faultPoint(pg,w){
      ? (w.handleTop+w.handleBottom)/2
      : w.rootY-w.dir*Math.max(.5,n('rootLand')*.35)*pg.sy;
    return {x,y,depth:Math.max(.5,Math.abs(y-pg.ySurface(x))/pg.sy),relX:0,isDoorlas:true};
+ }
+ if(defectType==='Randinkarteling (Undercut)'){
+   // Randinkarteling zit bij de Weld Toe: een kleine groef in het basismateriaal,
+   // direct naast de lasovergang. Links/rechts wordt bepaald door flawX;
+   // bij X=0 kiezen we de zijde van de actuele scanpositie.
+   const side=rel===0
+     ? ((state.scanSide==='topRight'||state.scanSide==='bottomRight')?'left':'right')
+     : (rel<0?'left':'right');
+   const toe=side==='left'?w.xTL:w.xTR;
+   const outward=side==='left'?-1:1;
+   const dMm=Math.max(.3,Math.min(3.0,depth));
+   const x=toe+outward*Math.max(1.5,Math.min(5,dMm*pg.sx*.55));
+   const y=pg.ySurface(x)+(pg.flipped?-dMm*pg.sy:dMm*pg.sy);
+   return {x,y,depth:dMm,relX:(x-w.c)/pg.sx,flank:side,autoWeldToe:true};
  }
  const targetX=w.c+rel*pg.sx;
  let y=pg.ySurface(targetX)+depth*pg.sy;
@@ -763,152 +892,130 @@ function nearestOnSegments(fx,fy,m){
  return best;
 }
 
+function selectedSkipInfo(){
+ const value=$('skipSelect')?.value||'half';
+ if(value==='whole') return {value,legs:2,label:'1 HELE SPRONG',legText:'L1 + L2',markerLabel:'1 HELE SPRONG • L1 + L2',index:1};
+ if(value==='onehalf') return {value,legs:3,label:'1½ SPRONG',legText:'L1 + L2 + L3',markerLabel:'1½ SPRONG • L1 + L2 + L3',index:2};
+ return {value,legs:1,label:'½ SPRONG',legText:'L1',markerLabel:'½ SPRONG • L1',index:0};
+}
+
 function flawEcho(){
- const m=beamModel(),w=weldGeometry(m.pg),f=faultPoint(m.pg,w),type=$('defectType')?.value||'Geen fout';
+ const m=beamModel(), w=weldGeometry(m.pg), f=faultPoint(m.pg,w), type=$('defectType')?.value||'Geen fout';
  if(type==='Geen fout') return {hit:false,path:null,dist:null,echoStrength:0,inBeam:false};
- const pg=m.pg, st=scanStart(pg,m.pr), sy=pg.sy||1;
- const near=nearestOnSegments(f.x,f.y,m);
- if(!near) return {hit:false,path:null,dist:null,echoStrength:0,inBeam:false};
- const distMm=near.dist/sy;
- const depthMm=Math.max(.1,Math.abs(f.y-pg.ySurface(f.x))/sy);
- const beamHalfMm=Math.max(.5,Math.tan((m.spread*Math.PI/180))*depthMm);
+ const pg=m.pg, sy=pg.sy||1;
+ const skip=selectedSkipInfo();
+ const selectedSkip=skip.value;
+ const selectedLegs=skip.legs;
+ const segs=m.segments.slice(0,selectedLegs);
+ if(!segs.length) return {hit:false,path:null,dist:null,echoStrength:0,inBeam:false,selectedLegs};
+
+ // Eén bron van waarheid: de werkelijk getekende sprongbaan.
+ // ½ = been 1, hele = been 1+2, 1½ = been 1+2+3.
+ let best=null;
+ for(let i=0;i<segs.length;i++){
+   const seg=segs[i];
+   const vx=seg.x2-seg.x1, vy=seg.y2-seg.y1;
+   const l2=vx*vx+vy*vy; if(!l2) continue;
+   const u=Math.max(0,Math.min(1,((f.x-seg.x1)*vx+(f.y-seg.y1)*vy)/l2));
+   const qx=seg.x1+u*vx, qy=seg.y1+u*vy;
+   const dpx=Math.hypot(f.x-qx,f.y-qy);
+   const along=seg.cum+Math.hypot(qx-seg.x1,qy-seg.y1)/sy;
+   if(!best || dpx<best.distPx) best={seg,i,leg:i+1,u,qx,qy,distPx:dpx,along};
+ }
+ if(!best) return {hit:false,path:null,dist:null,echoStrength:0,inBeam:false,selectedLegs};
+
+ const distMm=best.distPx/sy;
+ const depthMm=Math.max(.5,Math.abs(f.y-pg.ySurface(f.x))/sy);
+ const spreadRad=(m.spread||0)*Math.PI/180;
+ const beamHalfMm=Math.max(.5,Math.tan(spreadRad)*depthMm);
+ // De bundel is een corridor rond het werkelijk geselecteerde beam-been.
  const toleranceMm=type==='Onvoldoende doorlas'
-   ? Math.max(beamHalfMm+1.0,Math.max(2.5,n('rootGap')+1.5))
-   : beamHalfMm+1.0;
+   ? Math.max(beamHalfMm+2.0,Math.max(3.0,n('rootGap')+1.5))
+   : Math.max(beamHalfMm+2.0,3.0);
  const inBeam=distMm<=toleranceMm;
 
- // Werkelijke invallende bundelrichting op/naast de fout.
- let segInfo=null;
- for(const seg of m.segments){
-   const vx=seg.x2-seg.x1,vy=seg.y2-seg.y1,l2=vx*vx+vy*vy||1;
-   const u=Math.max(0,Math.min(1,((f.x-seg.x1)*vx+(f.y-seg.y1)*vy)/l2));
-   const qx=seg.x1+u*vx,qy=seg.y1+u*vy,d=Math.hypot(f.x-qx,f.y-qy);
-   if(!segInfo||d<segInfo.d) segInfo={seg,u,qx,qy,d};
- }
- if(!segInfo) return {hit:false,path:near.along,dist:distMm,echoStrength:0,inBeam};
- const inc0=[segInfo.seg.x2-segInfo.seg.x1,segInfo.seg.y2-segInfo.seg.y1];
- const il=Math.hypot(inc0[0],inc0[1])||1;
- const inc=[inc0[0]/il,inc0[1]/il];
+ const dx=best.seg.x2-best.seg.x1, dy=best.seg.y2-best.seg.y1;
+ const dl=Math.hypot(dx,dy)||1;
+ const inc=[dx/dl,dy/dl];
  const beamDeg=((Math.atan2(inc[1],inc[0])*180/Math.PI)%180+180)%180;
 
- // Richting van foutvlak.
+ // Reflectorvlak. Belangrijk: mis wordt berekend tussen de BUNDEL en de
+ // NORMAAL van het reflectorvlak. Bij een gunstige (haakse) inval is mis ~0°.
  const fa=$('flawAngle')?.value||'auto';
  let planeDeg=0, model='vlak';
  if(type==='Bindingsfout'){
-   // Bindingsfout = vlakke indicatie op de lasflank.
-   // De oriëntatie komt dus ALTIJD uit de werkelijke lokale flank, niet uit de
-   // algemene fout-hoek keuzelijst.
    model='bindingsfout';
    const side=f.flank||'left';
-   const y=f.y;
-   const yA=y-2, yB=y+2;
+   const yA=f.y-2, yB=f.y+2;
    const xA=flankPointAtY(w,yA,side), xB=flankPointAtY(w,yB,side);
-   // Beide laskanten worden als een absolute geometrische hoek t.o.v.
-   // het plaatoppervlak behandeld. Links mag de x-richting negatief zijn;
-   // dat mag de hoek niet omkeren naar 150°. 30° blijft dus 30° aan beide kanten.
-   const flankDeg=Math.atan2(Math.abs(xB-xA),Math.max(0.001,Math.abs(yB-yA)))*180/Math.PI;
-   // De fout blijft visueel op de 30° laskant. Voor de reflectieberekening
-   // gebruiken we de normaal op dat foutvlak: flank + 90°.
-   planeDeg=flankDeg+90;
+   planeDeg=(Math.atan2(yB-yA,xB-xA)*180/Math.PI+360)%180;
  } else if(type==='Onvoldoende doorlas'){
-   // Doorlasfout = vlakke reflector in de wortel/doorlaszone.
-   model='doorlas';
-   planeDeg=0;
- } else if(type==='Scheur'){
-   // Scheur = vlakke reflector. De gekozen foutligging is de acute hoek
-   // van het foutvlak t.o.v. het oppervlak. De juiste richting (fa of 180-fa)
-   // wordt automatisch gekozen aan de hand van de werkelijke bundelrichting.
-   model='scheur';
-   const beamPlane=((beamDeg%180)+180)%180;
-   const optimal=((beamPlane+90)%180+180)%180;
-   if(fa==='auto') planeDeg=optimal;
-   else {
-     const a=((Number(fa)%180)+180)%180, b=(180-a)%180;
-     const visualFaultNormal = (a===30 ? 120 : a);
-     const visualFaultNormalB = (b===150 ? 120 : b);
-     const da=Math.abs((((visualFaultNormal-optimal)+90)%180)-90), db=Math.abs((((visualFaultNormalB-optimal)+90)%180)-90);
-     planeDeg=da<=db?visualFaultNormal:visualFaultNormalB;
-   }
+   model='doorlas'; planeDeg=0;
  } else if(type==='Porositeit' || type==='Slakinsluiting'){
-   // Ronde/volumetrische indicaties: geen enkel dominant vlak.
-   model='diffuus';
-   planeDeg=beamDeg+90;
- } else if(type==='Ondersnijding'){
-   // Ondersnijding volgt de oppervlaktelijn/lasflank en is dus een vlakke reflector.
-   model='ondersnijding';
-   planeDeg=(fa==='auto') ? 0 : Number(fa);
+   model='diffuus'; planeDeg=beamDeg+90;
+ } else if(type==='Randinkarteling (Undercut)'){
+   model='randinkarteling';
+   // AUTO: het lokale reflectorvlak van een kleine undercut wordt benaderd als
+   // een korte, steile groef bij de Weld Toe. De exacte echo blijft afhankelijk
+   // van de werkelijke invalshoek.
+   planeDeg=(fa==='auto')?90:Number(fa);
+ } else if(type==='Scheur'){
+   model='scheur';
+   // Een scheur met AUTO wordt geometrisch als een echte verticale scheur
+   // weergegeven: haaks op het plaatoppervlak. We laten de bestaande
+   // bundelhoek volledig ongemoeid; alleen de reflector-orientatie wordt
+   // beoordeeld t.o.v. de actuele bundel.
+   if(fa==='auto') planeDeg=90;
+   else planeDeg=Number(fa);
  } else {
-   const beamPlane=((beamDeg%180)+180)%180;
-   const optimal=((beamPlane+90)%180+180)%180;
-   if(fa==='auto') planeDeg=optimal;
-   else {
-     const a=((Number(fa)%180)+180)%180, b=(180-a)%180;
-     const visualFaultNormal = (a===30 ? 120 : a);
-     const visualFaultNormalB = (b===150 ? 120 : b);
-     const da=Math.abs((((visualFaultNormal-optimal)+90)%180)-90), db=Math.abs((((visualFaultNormalB-optimal)+90)%180)-90);
-     planeDeg=da<=db?visualFaultNormal:visualFaultNormalB;
-   }
+   model='vlak';
+   planeDeg=fa==='auto'?(beamDeg+90):Number(fa);
  }
  planeDeg=((planeDeg%180)+180)%180;
 
- // Speculaire reflectie van de gekozen foutoriëntatie.
- const pa=planeDeg*Math.PI/180;
- const tangent=[Math.cos(pa),Math.sin(pa)];
- const normal=[-tangent[1],tangent[0]];
- const dn=inc[0]*normal[0]+inc[1]*normal[1];
- let refl=[inc[0]-2*dn*normal[0],inc[1]-2*dn*normal[1]];
- const rl=Math.hypot(refl[0],refl[1])||1; refl=[refl[0]/rl,refl[1]/rl];
-
- // Ontvangst wordt fysisch bepaald: de gereflecteerde straal moet het
- // actieve oppervlak raken binnen de voet van DEZELFDE taster.
- const activeSide=(state.scanSide==='bottomLeft'||state.scanSide==='bottomRight')?'bottom':'top';
- const probeHalf=Math.max(4,(probeVisual(m.pr).faceW||18)/2);
- const toProbe=[st.x-f.x,st.y-f.y];
- const tl=Math.hypot(toProbe[0],toProbe[1])||1;
- toProbe[0]/=tl; toProbe[1]/=tl;
- const returnCos=Math.max(-1,Math.min(1,refl[0]*toProbe[0]+refl[1]*toProbe[1]));
- const returnAngle=Math.acos(returnCos)*180/Math.PI;
- const surfHit=activeSurfaceHit([f.x+refl[0]*.05,f.y+refl[1]*.05],refl,pg,activeSide);
- let receiverOffsetMm=null,receiverPoint=null,receiverOnProbe=false;
- if(surfHit){
-   receiverPoint=surfHit.point;
-   receiverOffsetMm=Math.hypot(receiverPoint[0]-st.x,receiverPoint[1]-st.y)/sy;
-   receiverOnProbe=receiverOffsetMm <= probeHalf+2.0;
- }
-
- // Speculaire ontvangst: een vlakke fout geeft een sterke echo wanneer de
- // retourstraal werkelijk op de actieve tastervoet valt. Een kleine aperture
- // geeft een realistische afname i.p.v. een harde aan/uit-schakelaar.
- const specularFactor=Math.pow(Math.max(0,Math.cos(Math.min(90,returnAngle)*Math.PI/180)),2);
- let apertureFactor=0;
- if(receiverOffsetMm!=null){
-   apertureFactor=Math.max(0,1-receiverOffsetMm/Math.max(1,probeHalf+10));
- }
- let diffuseFactor=0.0;
- if(model==='bindingsfout') diffuseFactor=0.18;
- else if(model==='scheur') diffuseFactor=0.08;
- else if(model==='doorlas') diffuseFactor=0.12;
- else if(model==='diffuus') diffuseFactor=0.42;
- else if(model==='ondersnijding') diffuseFactor=0.12;
-
- const optimalPlane=beamDeg+90;
+ const optimalPlane=(beamDeg+90)%180;
  let mis=Math.abs((((planeDeg-optimalPlane)+90)%180)-90);
- mis=Math.min(mis,90);
+ mis=Math.min(90,Math.abs(mis));
  const reflection=Math.max(0,Math.cos(mis*Math.PI/180));
- const scatterFactor=(model==='diffuus')?0.30:1.0;
- const geometryFactor=receiverOnProbe ? 1 : Math.min(0.35,apertureFactor*0.35);
- const receiverFactor=Math.min(1,(0.84*specularFactor*geometryFactor)+diffuseFactor*geometryFactor);
- const echoStrength=Math.min(1,reflection*reflection*receiverFactor*scatterFactor*(inBeam?1:0));
- const hit=inBeam && ((receiverOnProbe && echoStrength>=0.035) || (model==='diffuus' && echoStrength>=0.045));
- const roundTripPath=near.along*2;
+
+ // DETECTIE — één regel voor alle vlakke fouten:
+ // 1. het geselecteerde bundelbeen moet de fout raken;
+ // 2. de reflector moet een bruikbare component terug naar de bundel hebben.
+ // De A-scan wordt NIET meer geblokkeerd door een aparte 'mist de taster'-ray.
+ // Daarmee blijven been 2 en been 3 fysiek gekoppeld aan dezelfde gekozen
+ // sprongbaan als de tekening.
+ let echoStrength=0;
+ if(model==='bindingsfout') echoStrength=0.98*reflection*reflection;
+ else if(model==='doorlas') echoStrength=0.90*reflection*reflection;
+ else if(model==='scheur') echoStrength=0.88*reflection*reflection;
+ else if(model==='randinkarteling') echoStrength=0.55*reflection*reflection;
+ else if(model==='diffuus') echoStrength=0.28;
+ else echoStrength=0.70*reflection*reflection;
+
+ // Bij een reflector die exact haaks op de bundel wordt aangestraald is
+ // reflection = 1 en dus de echo maximaal. Een scheur haaks op het oppervlak
+ // kan daardoor wél gevonden worden, maar geeft bij een schuine bundel een
+ // lagere echo dan een reflector die exact haaks op die bundel staat.
+ const usableReflection = model==='diffuus' ? true : reflection>=0.20;
+ const perpendicularHit=inBeam && (model==='diffuus' || mis<=12);
+ const hit=inBeam && usableReflection;
+
+ // Bindingsfout: als de lasflank haaks door de bundel wordt aangestraald,
+ // moet deze altijd als duidelijke/hoge indicatie verschijnen.
+ const finalEchoStrength=hit
+   ? (model==='bindingsfout' && perpendicularHit ? Math.max(echoStrength,0.90) : echoStrength)
+   : 0;
+
  return {
-   hit,path:near.along,roundTripPath,dist:distMm,beamHalf:beamHalfMm,
-   echoStrength,reflection,beamDeg,planeDeg,optimalPlane,mis,
-   returnAngle,receiverFactor,inBeam,model,isRound:model==='diffuus',
-   inc,refl,fault:[f.x,f.y],beamPoint:[near.cx,near.cy],probe:[st.x,st.y],
-   receiverPoint,receiverOffsetMm,receiverOnProbe,activeSide,probeHalf
+   hit,path:best.along,dist:distMm,beamHalf:beamHalfMm,
+   echoStrength:finalEchoStrength,reflection,beamDeg,planeDeg,optimalPlane,mis,
+   perpendicularHit,inBeam,model,isRound:model==='diffuus',
+   leg:best.leg,selectedLegs,beamPoint:[best.qx,best.qy],fault:[f.x,f.y],
+   probe:[m.px,scanStart(pg,m.pr).y],inc,receiverOnProbe:true,
+   pathPoints:[...segs.slice(0,best.i).map(seg=>[seg.x1,seg.y1]),[best.qx,best.qy]]
  };
 }
+
 function syncDefectUI(){
  const type=$('defectType')?.value;
  const xEl=$('flawX'), aEl=$('flawAngle');
@@ -917,7 +1024,7 @@ function syncDefectUI(){
  xEl.disabled=binding;
  xEl.title=binding?'Bij bindingsfout wordt X automatisch op de gekozen lasflank bepaald. Sleep de fout naar links of rechts om de flank te kiezen.':'';
  const label=xEl.previousElementSibling;
- if(label) label.textContent=binding?'LASFLANK (SLEEP LINKS/RECHTS)':'VASTE FOUTLOCATIE X T.O.V. LAS-HARTLIJN (mm)';
+ if(label) label.textContent=binding?'LASFLANK (SLEEP LINKS/RECHTS)':(type==='Randinkarteling (Undercut)'?'WELD TOE (LINKS/RECHTS)':'VASTE FOUTLOCATIE X T.O.V. LAS-HARTLIJN (mm)');
  aEl.disabled=(type==='Bindingsfout'||type==='Onvoldoende doorlas'||type==='Porositeit'||type==='Slakinsluiting');
  const autoOpt=aEl.querySelector('option[value="auto"]');
  if(autoOpt){
@@ -925,6 +1032,12 @@ function syncDefectUI(){
    autoOpt.textContent=binding?`AUTO • LASFLANK`:(type==='Scheur'?`AUTO • OPTIMALE REFLECTIE`:`AUTO • OPTIMALE REFLECTIE`);
  }
  
+}
+
+function hazShape(w,pg){
+ // Geen rechthoekige HAZ-markeringen meer in de bundelweergave.
+ // De lasgeometrie zelf blijft volledig ongewijzigd.
+ return '';
 }
 
 function draw(){
@@ -1047,6 +1160,17 @@ const angleLabel=(()=>{
   }
   if(defectType==='Porositeit')return `<g><circle class="defectPore" cx="${x-5}" cy="${y+1}" r="3.4"/><circle class="defectPore" cx="${x+4}" cy="${y-4}" r="2.6"/><circle class="defectPore" cx="${x+7}" cy="${y+5}" r="2.2"/></g>`;
   if(defectType==='Slakinsluiting')return `<ellipse class="defectSlag" cx="${x}" cy="${y}" rx="9" ry="3.2" transform="rotate(-18 ${x} ${y})"/>`;
+  if(defectType==='Randinkarteling (Undercut)'){
+    const side=f.flank||((x<w.c)?'left':'right');
+    const toe=side==='left'?w.xTL:w.xTR;
+    const outward=side==='left'?-1:1;
+    const notchW=Math.max(5,Math.min(12,Math.abs(x-toe)+5));
+    const y0=pg.ySurface(toe);
+    const x0=toe+outward*2;
+    const x1=toe+outward*notchW;
+    const yy=pg.flipped?y0-f.depth*pg.sy:y0+f.depth*pg.sy;
+    return `<path d="M ${x0} ${y0} L ${x1} ${y0} L ${x1-outward*2} ${yy}" fill="none" stroke="#ff5966" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="${x+outward*10}" y="${yy+12}" fill="#ff6973" font-size="8.5" font-weight="900">UNDERCUT • WELD TOE ${side==='left'?'L':'R'}</text>`;
+  }
   return `<path d="M ${w.xTR-1} ${w.yTop+2} q 5 5 10 0" fill="none" stroke="#ff5966" stroke-width="2.8" stroke-linecap="round"/>`;
  })();
  const pts=a=>a.points.map(q=>q.join(',')).join(' ');
@@ -1054,6 +1178,7 @@ const angleLabel=(()=>{
  svg.innerHTML=`<defs><marker id="arrowY" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 z" fill="#ffd15c"/></marker><linearGradient id="plateG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#314754"/><stop offset="1" stop-color="#172a35"/></linearGradient><linearGradient id="weldG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a4b5bd"/><stop offset="1" stop-color="#52636d"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="4"/></filter><clipPath id="plateClip"><path d="${platePath}"/></clipPath></defs>
  <rect width="700" height="390" fill="#061723"/><path d="${platePath}" fill="url(#plateG)" stroke="#758994" stroke-width="2"/>
  ${pg.taperOn?`<line x1="${pg.tL}" y1="${pg.flipped?pg.ySurface(pg.tL):pg.yBack(pg.tL)}" x2="${pg.tR}" y2="${pg.flipped?pg.ySurface(pg.tR):pg.yBack(pg.tR)}" stroke="#ffd15c" stroke-width="2.5" stroke-dasharray="6 5"/>${taperLabel}`:''}
+ ${hazShape(w,pg)}
  ${weldShape}${weldCap}${weldCaps}${landLines}${angleLabel}
  <line class="weldCenterline" x1="${w.c}" y1="${Math.max(65,w.yTop-20)}" x2="${w.c}" y2="${Math.min(350,w.yRoot+20)}"/>
  <line class="rootGuide" x1="${w.xR1}" y1="${w.rootY}" x2="${w.xR2}" y2="${w.rootY}"/><g class="rootCross"><line x1="${w.c-7}" y1="${w.rootY-7}" x2="${w.c+7}" y2="${w.rootY+7}" stroke="#fff" stroke-width="1"/><line x1="${w.c-7}" y1="${w.rootY+7}" x2="${w.c+7}" y2="${w.rootY-7}" stroke="#fff" stroke-width="1"/></g>
@@ -1064,10 +1189,10 @@ const angleLabel=(()=>{
  <line class="weldDimension" x1="${w.xR1}" y1="${w.rootY+6}" x2="${w.xR1}" y2="${w.rootY+15}"/><line class="weldDimension" x1="${w.xR2}" y1="${w.rootY+6}" x2="${w.xR2}" y2="${w.rootY+15}"/>
  <text class="weldDimensionText" x="${w.c}" y="${w.rootY+25}" text-anchor="middle">WORTELOPENING ${n('rootGap').toFixed(1)} mm</text>
  <text class="rootLabel" x="${w.c}" y="${w.rootY-22}" text-anchor="middle">NEUS / LAND ${n('rootLand').toFixed(1)} mm</text>
- ${state.showBlueHandle?`<g class="weldHandle" data-weld-handle="top"><circle cx="${w.c}" cy="${w.handleTop}" r="7"/><line x1="${w.c-10}" y1="${w.handleTop-13}" x2="${w.c+10}" y2="${w.handleTop-13}"/><text x="${w.c+11}" y="${w.handleTop-16}">HOOGTE</text></g>${w.hasBottom?`<g class="weldHandle" data-weld-handle="bottom"><circle cx="${w.c}" cy="${w.handleBottom}" r="7"/><line x1="${w.c-10}" y1="${w.handleBottom+13}" x2="${w.c+10}" y2="${w.handleBottom+13}"/><text x="${w.c+11}" y="${w.handleBottom+24}">HOOGTE</text></g>`:''}`:''}
+ 
  <g class="technicalHeader"><text x="24" y="24" fill="#ff6973" font-size="9" font-weight="900">HARTLIJN</text><text x="24" y="38" fill="#ffffff" font-size="10" font-weight="800">LAS ${n('weld').toFixed(1)} mm • ${w.prep.toFixed(0)}°</text></g>
  <text x="35" y="${Math.max(35,Math.min(78,pg.ySurface(pg.left)+12))}" fill="#9db3c0" font-size="10">oppervlak</text><text x="35" y="${Math.min(375,Math.max(pg.yBack(pg.left)+18,pg.yBack(pg.right)+18))}" fill="#9db3c0" font-size="10">achterwand</text>
- <g clip-path="url(#plateClip)"><polyline points="${pts(edge1)}" fill="none" stroke="#56dfff" stroke-width="1.3" opacity=".42" stroke-dasharray="5 6"/><polyline points="${pts(edge2)}" fill="none" stroke="#56dfff" stroke-width="1.3" opacity=".42" stroke-dasharray="5 6"/><polyline points="${pts(main)}" fill="none" stroke="#22d8ff" stroke-width="18" opacity=".08" filter="url(#glow)"/><polyline points="${pts(main)}" fill="none" stroke="#22d8ff" stroke-width="2.8"/><polyline points="${pts(main)}" fill="none" stroke="#91efff" stroke-width="1" stroke-dasharray="7 7"/></g><g opacity=".82"><text x="${Math.min(650,Math.max(55,px+42))}" y="${probeY+35}" fill="#8be9ff" font-size="8" font-weight="800">SPREIDING ±${pr.spread.toFixed(1)}° (MODEL)</text></g>${(()=>{
+ <g clip-path="url(#plateClip)"><polyline points="${pts(edge1)}" fill="none" stroke="#56dfff" stroke-width="10" opacity=".06"/><polyline points="${pts(edge2)}" fill="none" stroke="#56dfff" stroke-width="10" opacity=".06"/><polyline points="${pts(edge1)}" fill="none" stroke="#56dfff" stroke-width="1.2" opacity=".48" stroke-dasharray="5 6"/><polyline points="${pts(edge2)}" fill="none" stroke="#56dfff" stroke-width="1.2" opacity=".48" stroke-dasharray="5 6"/><polyline points="${pts(main)}" fill="none" stroke="#22d8ff" stroke-width="20" opacity=".09" filter="url(#glow)"/><polyline points="${pts(main)}" fill="none" stroke="#22d8ff" stroke-width="4.2" opacity=".25"/><polyline points="${pts(main)}" fill="none" stroke="#91efff" stroke-width="1.8"/><polyline points="${pts(main)}" fill="none" stroke="#d9fbff" stroke-width="1" stroke-dasharray="8 7"/></g><g opacity=".82"><text x="${Math.min(650,Math.max(55,px+42))}" y="${probeY+35}" fill="#8be9ff" font-size="8" font-weight="800">SPREIDING ±${pr.spread.toFixed(1)}° (MODEL)</text></g>${(()=>{
  const side=state.scanSide;
  if(side==='topRight') return `<line class="scanArrow" x1="${px+38}" y1="${probeY+28}" x2="${px+8}" y2="${probeY+28}"/><text x="${px-2}" y="${probeY+42}" fill="#ffd15c" font-size="8" font-weight="800">SCAN ←</text>`;
  if(side==='bottomLeft') return `<line class="scanArrow" x1="${px-38}" y1="${probeY-28}" x2="${px-8}" y2="${probeY-28}"/><text x="${px-36}" y="${probeY-34}" fill="#ffd15c" font-size="8" font-weight="800">SCAN →</text>`;
@@ -1077,10 +1202,13 @@ const angleLabel=(()=>{
  ${(()=>{
    if(defectType==='Geen fout') return '';
    const echoNow=flawEcho();
-   const qx=px, qy=probeY, fx=f.x, fy=f.y;
-   const dx=fx-qx, dy=fy-qy, L=Math.hypot(dx,dy)||1, mx=(qx+fx)/2, my=(qy+fy)/2;
-   const label=echoNow.path!=null?`SP ${echoNow.path.toFixed(1)} mm`:'';
-   return `<g class="soundPathMeasure"><line class="measureLine" x1="${qx}" y1="${qy}" x2="${fx}" y2="${fy}"/><line class="measureTick" x1="${qx-3}" y1="${qy-3}" x2="${qx+3}" y2="${qy+3}"/><line class="measureTick" x1="${fx-3}" y1="${fy-3}" x2="${fx+3}" y2="${fy+3}"/><text class="measureText" x="${mx+7}" y="${my-7}">${label}</text></g>`;
+   const fx=f.x, fy=f.y;
+   const pts=echoNow.hit&&echoNow.pathPoints?.length?echoNow.pathPoints:[[px,probeY],[fx,fy]];
+   const last=pts[pts.length-1]||[fx,fy];
+   const mx=(px+last[0])/2, my=(probeY+last[1])/2;
+   const d=`M ${pts.map(q=>q.join(' ')).join(' L ')}`;
+   const label=echoNow.path!=null?`SP ${echoNow.path.toFixed(1)} mm • ${echoNow.leg?`BEEN ${echoNow.leg}`:''}`:'';
+   return `<g class="soundPathMeasure"><path class="measureLine" d="${d}" fill="none"/><line class="measureTick" x1="${last[0]-3}" y1="${last[1]-3}" x2="${last[0]+3}" y2="${last[1]+3}"/><text class="measureText" x="${mx+7}" y="${my-7}">${label}</text></g>`;
  })()}
  ${depthLimitNote}
  ${state.showSoundField && defectType!=='Geen fout' ? (()=>{
@@ -1116,10 +1244,85 @@ const angleLabel=(()=>{
      rays+=`<text x="${cx+12}" y="${cy+22}" fill="#ffbd4a" font-size="9" font-weight="900">VERSTROOIING ALLE KANTEN</text>`;
    }
    const r=isRound?7:5;
-   return `<g class="soundField" pointer-events="none">${rays}<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#ffbd4a" stroke-width="2" opacity=".9"/><circle cx="${cx}" cy="${cy}" r="${r+7}" fill="none" stroke="#ffbd4a" stroke-width="1" opacity=".35" stroke-dasharray="3 4"/></g>`;
+   return `<g class="soundField" pointer-events="none">${rays}</g>`;
  })() : ''}
-<g data-fault-marker="1" style="cursor:move;touch-action:none;pointer-events:${state.showFaultCursor?'all':'none'}">${state.showFaultCursor?`<circle cx="${f.x}" cy="${f.y}" r="11" fill="transparent" stroke="none" pointer-events="all"/>`:``}${defectShape}${state.showFaultCursor?`<circle cx="${f.x}" cy="${f.y}" r="4" fill="#ff5966" stroke="#fff" stroke-width="1.5"/><text x="${f.x+8}" y="${f.y-7}" fill="#ff6973" font-size="10" font-weight="800">${defectType==='Geen fout'?'LOCATIE':'FOUT'}</text>`:``}</g>
- <g data-probe="1" style="cursor:grab;touch-action:none" transform="${(state.scanSide==='bottomLeft'||state.scanSide==='bottomRight')?`rotate(180 ${px} ${probeY})`:''}"><path d="M ${px-pv.faceW/2} ${probeY-10} L ${px+pv.faceW/2} ${probeY-10} L ${px+pv.faceW/2-6} ${probeY-pv.bodyH} Q ${px+pv.faceW/2-10} ${probeY-pv.bodyH-8} ${px+pv.faceW/2-20} ${probeY-pv.bodyH-8} L ${px-pv.faceW/2+20} ${probeY-pv.bodyH-8} Q ${px-pv.faceW/2+10} ${probeY-pv.bodyH-8} ${px-pv.faceW/2+6} ${probeY-pv.bodyH} Z" fill="#7b8b93" stroke="#dce6ea" stroke-width="1.5"/><path d="M ${px-pv.faceW/2} ${probeY-10} L ${px+pv.faceW/2} ${probeY-10} L ${px+pv.faceW/2-6} ${pg.top} L ${px-pv.faceW/2+6} ${pg.top} Z" fill="#1688ad" stroke="#65dfff" stroke-width="1.2"/><rect x="${px-18}" y="${probeY-pv.bodyH+3}" width="36" height="17" rx="4" fill="#52646d" stroke="#cbd8dd"/><path d="M ${px-pv.faceW/2+3} ${probeY-8} L ${px+pv.faceW/2-3} ${probeY-8} L ${px+pv.faceW/2-9} ${probeY-2} L ${px-pv.faceW/2+9} ${probeY-2} Z" fill="#ffbd4a" stroke="#ffe19a" stroke-width="1.2"/><text x="${px}" y="${probeY-pv.bodyH+15}" fill="${pr.freq===4?'#55b8ff':'#ffd15c'}" font-size="7" font-weight="900" text-anchor="middle">${pr.freq} MHz</text><text x="${px}" y="${probeY-pv.bodyH-14}" fill="${pr.freq===4?'#55b8ff':'#ffd15c'}" font-size="12" font-weight="900" text-anchor="middle">${pr.kind==='straight'?'0':n('angleSel')}° • ${pv.label}</text><line x1="${px-pv.faceW/2}" y1="${probeY+8}" x2="${px+pv.faceW/2}" y2="${probeY+8}" stroke="#ffd15c" stroke-width="1"/><text x="${px}" y="${probeY+21}" fill="${pr.freq===4?'#55b8ff':'#ffd15c'}" font-size="9" font-weight="800" text-anchor="middle">TASTERVOET ${pv.label}</text></g>
+${state.showDiagramText?(()=>{
+   const echoNow=flawEcho();
+   const angleDeg=pr.kind==='straight'?0:n('angleSel');
+   const localT=Math.max(1,state.probeX<pg.c?pg.leftT:pg.rightT);
+   const bipX=px, bipY=probeY;
+   const aSurface=echoNow.hit?Math.abs(f.x-bipX)/pg.sx:null;
+   const xValue=Math.max(0,(pr.kind==='straight'?pv.faceW*.5:pv.faceW*.62)/pg.sx);
+   const depth=echoNow.hit?Math.max(.5,Math.abs(f.y-pg.ySurface(f.x))/pg.sy):null;
+   const sp=echoNow.hit?echoNow.path:null;
+   const leg=echoNow.hit?echoNow.leg:null;
+   const legText=leg?`BEEN ${leg}`:'GESELECTEERDE BUNDEL';
+   return `<g class="utTechOverlay" pointer-events="none">
+     <text x="${bipX+7}" y="${bipY-16}" fill="#c7d8e0" font-size="7.5">X ≈ ${xValue.toFixed(1)} mm</text>
+     ${echoNow.hit?`<line x1="${bipX}" y1="${bipY+13}" x2="${f.x}" y2="${f.y}" stroke="#ffd15c" stroke-width="1" stroke-dasharray="4 4"/><text x="${(bipX+f.x)/2+6}" y="${(bipY+f.y)/2-6}" fill="#ffd15c" font-size="8" font-weight="900">S ${sp.toFixed(1)} mm • ${legText}</text><text x="${f.x+10}" y="${f.y+17}" fill="#c7d8e0" font-size="8">D ${depth.toFixed(1)} mm • A ${aSurface.toFixed(1)} mm</text>`:''}
+     <text x="${Math.min(655,Math.max(45,bipX+50))}" y="${Math.max(60,pg.ySurface(bipX)-10)}" fill="#8fe9ff" font-size="8" font-weight="900">β ${angleDeg.toFixed(0)}° IN STAAL</text>
+   </g>`;
+ })():''}
+${(()=>{
+   const ptsMain=main.points||[];
+   let legMarks='';
+   for(let i=0;i<ptsMain.length-1;i++){
+     const a=ptsMain[i], b=ptsMain[i+1], mx=(a[0]+b[0])/2, my=(a[1]+b[1])/2;
+     legMarks += `<g pointer-events="none"><text x="${mx}" y="${my+2.8}" text-anchor="middle" fill="#d9fbff" font-size="7" font-weight="900">${i+1}</text><text x="${mx+10}" y="${my-5}" fill="#8fe9ff" font-size="7" font-weight="900">BEEN ${i+1}</text></g>`;
+   }
+   return `<g class="bipLegOverlay" pointer-events="none"><line x1="${px}" y1="${probeY-2}" x2="${px}" y2="${probeY-27}" stroke="#9fefff" stroke-width="0.9" stroke-dasharray="2 3" opacity=".95"/><circle cx="${px}" cy="${probeY}" r="2.7" fill="#9fefff"/><text x="${px+7}" y="${probeY-29}" fill="#9fefff" font-size="8" font-weight="900">BIP / INDEXPUNT</text>${legMarks}</g>`;
+ })()}
+<g data-fault-marker="1" style="cursor:${(defectType==='Geen fout'||!state.showFaultCursor)?'default':'move'};touch-action:none;pointer-events:${(defectType==='Geen fout'||!state.showFaultCursor)?'none':'all'}">${defectShape}${state.showFaultCursor&&defectType!=='Geen fout'?`<circle cx="${f.x}" cy="${f.y}" r="12" fill="transparent" stroke="none" pointer-events="all"/><circle cx="${f.x}" cy="${f.y}" r="4" fill="#ff5966" stroke="#fff" stroke-width="1.5"/><text x="${f.x+8}" y="${f.y-7}" fill="#ff6973" font-size="10" font-weight="800">FOUT</text>`:``}</g>
+ <g data-probe="1" style="cursor:grab;touch-action:none" transform="${(state.scanSide==='bottomLeft'||state.scanSide==='bottomRight')?`rotate(180 ${px} ${probeY})`:''}">
+ ${pr.kind==='angle'?(()=>{
+   // Compacte conventionele single-element hoektaster volgens de aangeleverde
+   // technische doorsneden. Het actieve element is het werkelijke nominale
+   // elementformaat (8x9 / 14x14 / 20x22 mm); 4 MHz blauw, 2 MHz geel.
+   // De 45/60/70° keuze is beta: de refractiehoek in staal, niet de kristalhoek.
+   const side=(state.scanSide==='topRight'||state.scanSide==='bottomRight')?-1:1;
+   const mmScale=2.25;
+   const ew=Math.max(18,Math.min(46,(pv.actualW||8)*mmScale));
+   const eh=Math.max(18,Math.min(50,(pv.actualH||9)*mmScale));
+   const bw=Math.max(76,Math.min(116,ew+50));
+   const bh=Math.max(58,Math.min(76,Math.max(62,eh*.95+38)));
+   const xL=px-bw/2, xR=px+bw/2, yTop=probeY-bh, footY=probeY-5;
+   // Oranje delay/refracting wedge; contact face is horizontal.
+   const wedgeL=px-side*bw*.30, wedgeR=px+side*bw*.34;
+   const wedgeApex=px+side*bw*.02;
+   const wedgeTop=probeY-bh*.57;
+   const wedgePath=`M ${xL+10} ${footY} L ${wedgeL} ${footY} L ${wedgeApex} ${wedgeTop} L ${wedgeR} ${footY} L ${xR-10} ${footY} Z`;
+   // Kristal op de schuine bovenzijde van de wig, niet los in de behuizing.
+   const crystalAngle=side*38;
+   const cLen=Math.max(20,Math.min(ew*1.05,50));
+   const cWid=Math.max(12,Math.min(eh*.78,30));
+   const cx=wedgeApex-side*bw*.17, cy=wedgeTop+bh*.03;
+   const crystalColor=pr.freq===4?'#1688ad':'#d9a900';
+   const crystalHi=pr.freq===4?'#62d9ff':'#ffe36b';
+   const crystalDark=pr.freq===4?'#082b3c':'#5a4600';
+   const matchW=cLen+4, matchH=Math.max(3,cWid*.18), matchY=cy+side*1.2;
+   // Connector aan de achterzijde, haaks zoals bij de 8x9 Atlas-uitvoering.
+   const socketX=xL+18, socketY=yTop+20;
+   return `
+    <rect x="${xL}" y="${yTop}" width="${bw}" height="${bh-8}" rx="8" fill="#7a878d" stroke="#dce6ea" stroke-width="1.7"/>
+    <rect x="${xL+7}" y="${yTop+7}" width="${bw-14}" height="${bh-22}" rx="5" fill="#53636a" stroke="#9eafb6" stroke-width="1" opacity=".72"/>
+    <path d="M ${xL+10} ${yTop+15} Q ${px} ${yTop+2} ${xR-10} ${yTop+15}" fill="none" stroke="#1f2b30" stroke-width="5" opacity=".9"/>
+    <path d="${wedgePath}" fill="#e8892e" stroke="#f7c27a" stroke-width="1.2"/>
+    <path d="M ${wedgeL} ${footY} L ${wedgeApex} ${wedgeTop} L ${wedgeR} ${footY}" fill="none" stroke="#ffd19b" stroke-width="1"/>
+    <rect x="${cx-matchW/2}" y="${matchY-matchH/2}" width="${matchW}" height="${matchH}" rx="1" fill="#4b9dcc" stroke="#bcecff" stroke-width=".8" transform="rotate(${crystalAngle} ${cx} ${matchY})"/>
+    <rect x="${cx-cLen/2}" y="${cy-cWid/2}" width="${cLen}" height="${cWid}" rx="1.5" fill="${crystalColor}" stroke="${crystalHi}" stroke-width="1.2" transform="rotate(${crystalAngle} ${cx} ${cy})"/>
+    <line x1="${cx-cLen*.34}" y1="${cy}" x2="${cx+cLen*.34}" y2="${cy}" stroke="${crystalDark}" stroke-width="1" transform="rotate(${crystalAngle} ${cx} ${cy})"/>
+    <g transform="rotate(${side*90} ${socketX} ${socketY})">
+      <rect x="${socketX-10}" y="${socketY-8}" width="20" height="16" rx="3" fill="#49575d" stroke="#dce6ea" stroke-width="1.1"/>
+      <rect x="${socketX-3}" y="${socketY-13}" width="6" height="8" rx="1" fill="#26343a"/>
+    </g>
+    <path d="M ${socketX+side*2} ${socketY+5} C ${socketX+side*10} ${socketY+14}, ${cx-side*8} ${cy-4}, ${cx-side*2} ${cy}" fill="none" stroke="#202c32" stroke-width="1.4"/>
+    ${state.showDiagramText?`<text x="${px}" y="${yTop+16}" fill="#e8f0f3" font-size="6.5" font-weight="900" text-anchor="middle">HOUSING</text><text x="${cx-side*20}" y="${cy-13}" fill="${crystalHi}" font-size="6.5" font-weight="900" text-anchor="middle">KRISTAL ${pv.label}</text><text x="${px+side*12}" y="${wedgeTop+20}" fill="#fff0d8" font-size="6.2" font-weight="900" text-anchor="middle">WIG</text>`:''}
+   `;
+ })():`<rect x="${px-pv.faceW/2}" y="${probeY-pv.bodyH}" width="${pv.faceW}" height="${pv.bodyH-10}" fill="#7b8b93" stroke="#dce6ea" stroke-width="1.5"/><rect x="${px-pv.faceW/2}" y="${probeY-10}" width="${pv.faceW}" height="10" fill="#1688ad" stroke="#65dfff" stroke-width="1.2"/><rect x="${px-pv.faceW*.26}" y="${probeY-pv.bodyH*.55-3}" width="${pv.faceW*.52}" height="6" rx="1" fill="${pr.freq===4?'#55b8ff':'#ffd15c'}" stroke="#d9f6ff" stroke-width="1.2"/>`}
+ <text x="${px}" y="${probeY-pv.bodyH-14}" fill="${pr.freq===4?'#55b8ff':'#ffd15c'}" font-size="12" font-weight="900" text-anchor="middle">${pr.kind==='straight'?'0':n('angleSel')}° • ${pv.label}</text>
+ </g>
+ <line x1="${px}" y1="${Math.max(50,pg.ySurface(px)-18)}" x2="${px}" y2="${pg.ySurface(px)+18}" stroke="#ffd15c" stroke-width="1" stroke-dasharray="3 3" opacity=".95" pointer-events="none"/>
+ <text x="${px+5}" y="${Math.max(46,pg.ySurface(px)-21)}" fill="#ffd15c" font-size="7.5" font-weight="800" pointer-events="none">INDEXPUNT</text>
  <text x="35" y="${Math.max(pg.yL,pg.yR)+45}" fill="#9db3c0" font-size="12">Afstand langs oppervlak (mm)</text><text x="350" y="28" fill="#c7d8e0" font-size="12" text-anchor="middle">PLAAT L ${pg.leftT.toFixed(1)} / R ${pg.rightT.toFixed(1)} mm • ${pr.label} • ${pr.wave}</text><text x="350" y="48" fill="#ffd15c" font-size="11" font-weight="700" text-anchor="middle">BUNDEL: ${selectedSkip==='whole'?'1 HELE SPRONG':(selectedSkip==='onehalf'?'1½ SPRONG':'½ SPRONG')}</text>`;
 }
 
@@ -1161,6 +1364,7 @@ function probeSurfaceTravelLimit(vx,pg,w,pr){
 }
 function bindDrag(){
  const svg=$('beamSvg');
+ svg.classList.toggle('noDiagramText',!state.showDiagramText);
  svg.onpointerdown=e=>{
    const t=e.target.closest?.('[data-probe],[data-fault-marker],[data-weld-handle]');
    if(!t)return;
@@ -1188,9 +1392,15 @@ function bindDrag(){
      const rawDepth=pg.flipped?Math.abs(surfaceY-p.y):Math.abs(p.y-surfaceY);
      const maxDepth=Math.max(.5,Math.max(pg.leftT,pg.rightT)-.5);
      if($('defectType').value==='Bindingsfout'){
-       // Bindingsfout: slepen kiest expliciet de lasflank. De fout blijft daarna
-       // exact op die flank en volgt de ingestelde diepte/geometrie.
+       // Bindingsfout: slepen kiest expliciet de lasflank én bij een X-naad
+       // automatisch de bovenste of onderste lasvoorbewerking.
        state.bindingSide = p.x < w.c ? 'left' : 'right';
+       if(w.type==='X-naad - Full Pen' || w.type==='ongelijkzijdige X-naad - Full Pen'){
+         const midY=(w.handleTop+w.handleBottom)/2;
+         state.bindingZone = w.dir>=0 ? (p.y>midY?'bottom':'top') : (p.y<midY?'bottom':'top');
+       }else{
+         state.bindingZone='top';
+       }
        $('flawDepth').value=Math.max(.5,Math.min(maxDepth,rawDepth/pg.sy)).toFixed(1);
      }else{
        $('flawX').value=((p.x-w.c)/pg.sx).toFixed(1);
@@ -1247,11 +1457,10 @@ function bindProcedureTools(){
  $('toggleProcInfo')?.addEventListener('click',()=>{const e=$('procInfo');e.style.display=e.style.display==='none'?'block':'none';});
 }
 function enforceLockedGeometry(){
- if(typeof coreUnlocked==='undefined' || coreUnlocked) return;
- const angle=$('angleSel'), prep=$('prepAngle'), wt=$('weldType');
- if(angle) angle.value='60';
- if(prep) prep.value='30';
- if(wt) wt.value='V-naad (enkelzijdig) - Full Pen';
+ // GEOMETRIE NIET AUTOMATISCH OVERSCHRIJVEN. De bestaande 60° taster en
+ // 30° laskant blijven behouden als huidige instellingen, maar de sloten
+ // mogen de gebruiker niet meer terugzetten naar een vaste waarde.
+ return;
 }
 
 function render(){
@@ -1286,7 +1495,7 @@ function render(){
  $('scanAngle').textContent=(pr.kind==='straight'?0:n('angleSel'))+'°';
  $('scanSkip').textContent=selectedSkip==='whole'?'1 HELE':(selectedSkip==='onehalf'?'1½':'½');
  $('scanPath').textContent=(echo.hit?echo.path:path).toFixed(1)+' mm';
- $('beamStatus').innerHTML=`<small>${echo.hit?(echo.isDoorlas?'DOORLASFOUT + ONTVANGST':'INDICATIE + ONTVANGST'):(echo.inBeam?'FOUT IN BUNDEL • GEEN ONTVANGST':'FOUT BUITEN EFFECTIEVE BUNDEL')}</small>${echo.hit?'JA':'NEE'}`;
+ $('beamStatus').innerHTML=`<small>${echo.hit?(echo.isDoorlas?'DOORLASFOUT + INDICATIE':'INDICATIE + INDICATIESTERKTE'):(echo.inBeam?'FOUT IN BUNDEL • ZWAK/ONGUNSTIG':'FOUT BUITEN EFFECTIEVE BUNDEL')}</small>${echo.hit?'JA':'NEE'}`;
  $('beamStatus').style.background=echo.hit?'#062516':'#251014';
  $('beamStatus').style.borderColor=echo.hit?'#13713d':'#7a2833';
  $('beamStatus').style.color=echo.hit?'#6cf187':'#ff7b87';
@@ -1302,15 +1511,20 @@ function scan(){
  // De ontvangercontrole wordt apart gedaan via de gereflecteerde straal naar dezelfde taster.
  const indSP=echo.hit?echo.path:null;
  const indX=indSP!=null&&indSP<=range?pos(indSP):null;
- const localT=Math.max(1,Math.max(n('thickL'),n('thickR')));
- const probeAngle=probeInfo().kind==='straight'?0:n('angleSel')*Math.PI/180;
- const halfSP=probeInfo().kind==='straight'?localT:localT/Math.max(0.001,Math.sin(probeAngle));
- const wholeSP=2*halfSP, oneHalfSP=3*halfSP;
- const selectedSkip=$('skipSelect').value;
- const selectedSP=selectedSkip==='whole'?wholeSP:(selectedSkip==='onehalf'?oneHalfSP:halfSP);
- const halfX=halfSP<=range?pos(halfSP):null, wholeX=wholeSP<=range?pos(wholeSP):null, oneHalfX=oneHalfSP<=range?pos(oneHalfSP):null;
- const selectedX=selectedSP<=range?pos(selectedSP):null;
- const selectedLabel=selectedSkip==='whole'?'1 HELE SPRONG':(selectedSkip==='onehalf'?'1½ SPRONG':'½ SPRONG');
+ const skip=selectedSkipInfo();
+ const selectedSkip=skip.value;
+ const selectedLabel=skip.label;
+ const legText=skip.legText;
+ // De sprongmarkeringen komen rechtstreeks uit de werkelijk getekende
+ // bundelbaan. Daardoor lopen ½, hele en 1½ sprong exact gelijk met L1/L2/L3.
+ const halfSP=m.segments[0]?.endPath??null;
+ const wholeSP=m.segments[1]?.endPath??null;
+ const oneHalfSP=m.segments[2]?.endPath??null;
+ const selectedSP=selectedSkip==='whole'?(wholeSP??halfSP):(selectedSkip==='onehalf'?(oneHalfSP??wholeSP??halfSP):halfSP);
+ const halfX=halfSP!=null&&halfSP<=range?pos(halfSP):null;
+ const wholeX=wholeSP!=null&&wholeSP<=range?pos(wholeSP):null;
+ const oneHalfX=oneHalfSP!=null&&oneHalfSP<=range?pos(oneHalfSP):null;
+ const selectedX=selectedSP!=null&&selectedSP<=range?pos(selectedSP):null;
  let p='M 5 190';
  for(let x=5;x<=295;x++){
    let y=190-(1.2*Math.sin(x*.7)+.8*Math.sin(x*2.2));
@@ -1321,11 +1535,11 @@ function scan(){
    p+=` L ${x} ${y}`;
  }
  const marker=(x,label,stroke)=>x!=null?`<line x1="${x}" y1="30" x2="${x}" y2="195" stroke="${stroke}" stroke-width="1" stroke-dasharray="5 4"/><text x="${Math.max(8,Math.min(282,x-8))}" y="54" fill="${stroke}" font-size="9">${label}</text>`:'';
- s.innerHTML=`<rect width="300" height="220" fill="#020b11"/><g stroke="#123246" stroke-width="1"><line x1="5" y1="30" x2="5" y2="195"/><line x1="5" y1="195" x2="295" y2="195"/><line x1="75" y1="30" x2="75" y2="195"/><line x1="145" y1="30" x2="145" y2="195"/><line x1="215" y1="30" x2="215" y2="195"/><line x1="5" y1="85" x2="295" y2="85"/><line x1="5" y1="140" x2="295" y2="140"/></g>${marker(halfX,'½','#ffd15c')}${marker(wholeX,'1','#ff9f43')}${marker(oneHalfX,'1½','#b88cff')}${selectedX!=null?`<line x1="${selectedX}" y1="30" x2="${selectedX}" y2="195" stroke="#fff" stroke-width="2.2"/><rect x="${Math.max(7,Math.min(235,selectedX-38))}" y="70" width="76" height="24" rx="5" fill="#0b2533" stroke="#fff"/><text x="${Math.max(45,Math.min(265,selectedX))}" y="80" text-anchor="middle" fill="#fff" font-size="9" font-weight="700">${selectedLabel}</text><text x="${Math.max(45,Math.min(265,selectedX))}" y="91" text-anchor="middle" fill="#c8d5db" font-size="8">${selectedSP.toFixed(1)} mm</text>`:''}<path d="${p}" fill="none" stroke="#65f36f" stroke-width="2.2"/><text x="12" y="22" fill="#fff" font-size="11">Start</text><text x="238" y="22" fill="#fff" font-size="11">Achterwand</text>${indX!=null?`<text x="${Math.max(45,Math.min(235,indX-18))}" y="70" fill="#ff5966" font-size="12" font-weight="800">FOUT-ECHO</text>`:(echo.inBeam?`<text x="150" y="70" text-anchor="middle" fill="#ff5966" font-size="10" font-weight="800">GEEN TERUGONTVANGST</text>`:'')}${taperX!=null?`<text x="${Math.max(35,Math.min(245,taperX-25))}" y="42" fill="#ffd15c" font-size="10">Verjonging</text>`:''}`;
+ s.innerHTML=`<rect width="300" height="220" fill="#020b11"/><g stroke="#123246" stroke-width="1"><line x1="5" y1="30" x2="5" y2="195"/><line x1="5" y1="195" x2="295" y2="195"/><line x1="75" y1="30" x2="75" y2="195"/><line x1="145" y1="30" x2="145" y2="195"/><line x1="215" y1="30" x2="215" y2="195"/><line x1="5" y1="85" x2="295" y2="85"/><line x1="5" y1="140" x2="295" y2="140"/></g>${marker(halfX,'½ SPRONG • L1','#ffd15c')}${marker(wholeX,'1 HELE SPRONG • L1 + L2','#ff9f43')}${marker(oneHalfX,'1½ SPRONG • L1 + L2 + L3','#b88cff')}${selectedX!=null?`<line x1="${selectedX}" y1="30" x2="${selectedX}" y2="195" stroke="#fff" stroke-width="2.2"/><rect x="${Math.max(7,Math.min(235,selectedX-38))}" y="70" width="76" height="24" rx="5" fill="#0b2533" stroke="#fff"/><text x="${Math.max(45,Math.min(265,selectedX))}" y="80" text-anchor="middle" fill="#fff" font-size="9" font-weight="700">${selectedLabel}</text><text x="${Math.max(45,Math.min(265,selectedX))}" y="91" text-anchor="middle" fill="#c8d5db" font-size="8">${selectedSP.toFixed(1)} mm</text>`:''}<path d="${p}" fill="none" stroke="#65f36f" stroke-width="2.2"/><text x="12" y="22" fill="#fff" font-size="11">Start</text><text x="238" y="22" fill="#fff" font-size="11">Achterwand</text>${indX!=null?`<text x="${Math.max(45,Math.min(235,indX-18))}" y="70" fill="#ff5966" font-size="12" font-weight="800">FOUT-ECHO</text>`:(echo.inBeam?`<text x="150" y="70" text-anchor="middle" fill="#ff5966" font-size="10" font-weight="800">GEEN TERUGONTVANGST</text>`:'')}${taperX!=null?`<text x="${Math.max(35,Math.min(245,taperX-25))}" y="42" fill="#ffd15c" font-size="10">Verjonging</text>`:''}`;
  const status=echo.hit
-   ? ((echo.isRound?'RONDE INDICATIE-ECHO':(echo.isDoorlas?'DOORLASFOUT-ECHO':'FOUT-ECHO'))+` • SP ${echo.path.toFixed(1)} mm`)
-   : (echo.inBeam ? `GEEN TERUGONTVANGST • REFLECTIE MIST TASTER` : 'GEEN FOUT IN EFFECTIEVE BUNDEL');
- $('rangeLabel').textContent=range+' mm • v = '+Math.round(n('soundSpeed'))+' m/s • '+selectedLabel;
+   ? ((echo.isRound?'RONDE INDICATIE-ECHO':(echo.model==='bindingsfout'?'BINDINGSFOUT-ECHO':(echo.model==='scheur'?'SCHEUR-ECHO':(echo.model==='doorlas'?'DOORLASFOUT-ECHO':'FOUT-ECHO'))))+` • BEEN ${echo.leg} • SP ${echo.path.toFixed(1)} mm • D ${Math.max(.5,Math.abs(echo.fault[1]-pg.ySurface(echo.fault[0]))/pg.sy).toFixed(1)} mm`)
+   : (echo.inBeam ? `FOUT IN GESELECTEERDE BUNDEL • GEEN BRUIKBARE INDICATIE` : 'GEEN FOUT IN GESELECTEERDE BUNDEL');
+ $('rangeLabel').textContent=range+' mm • v = '+Math.round(n('soundSpeed'))+' m/s • '+selectedLabel+' • '+legText;
  $('aScanStatus').textContent=status;
  $('aScanStatus').style.color=echo.hit?'#6cf187':'#ff7b87';
 }
@@ -1342,9 +1556,23 @@ document.addEventListener('keydown',e=>{
  const map={'1':'topLeft','2':'topRight','3':'bottomLeft','4':'bottomRight'};
  if(map[e.key]){state.scanSide=map[e.key];state.probeX=NaN;state.probeY=NaN;render();e.preventDefault();}
 });
+updateEasySummary();
 ['thickL','thickR','angleSel','probe','weldType','weldSymmetry','defectType','weld','prepAngle','rootGap','rootLand','grooveRadius','capHeight','taper','taperLen','plateFlip','flawDepth','flawX','flawAngle','range','skipSelect'].forEach(id=>{
  $(id).addEventListener('input',()=>{if((id==='angleSel'||id==='prepAngle'||id==='weldType')&&!coreUnlocked){syncLockedGeometry();return;}render();});
- $(id).addEventListener('change',()=>{if((id==='angleSel'||id==='prepAngle'||id==='weldType')&&!coreUnlocked){syncLockedGeometry();return;}if(id==='probe')setSpeedForProbe();if(id==='weldType')updateRadiusField();if(id==='defectType'&&$('defectType').value==='Bindingsfout'){state.bindingSide=(state.scanSide==='topRight'||state.scanSide==='bottomRight')?'left':'right';}render();});
+ $(id).addEventListener('change',()=>{if((id==='angleSel'||id==='prepAngle'||id==='weldType')&&!coreUnlocked){syncLockedGeometry();return;}if(id==='probe')setSpeedForProbe();if(id==='weldType')updateRadiusField();if(id==='defectType'&&$('defectType').value==='Bindingsfout'){state.bindingSide=(state.scanSide==='topRight'||state.scanSide==='bottomRight')?'left':'right';state.bindingZone='top';}render();});
+});
+
+function updateEasySummary(){
+ const p=$('probe')?.value||'—', a=$('angleSel')?.value||'—', w=$('weldType')?.value||'—', d=$('defectType')?.value||'Geen fout', sk=$('skipSelect')?.selectedOptions?.[0]?.textContent||'—';
+ $('easyProbe').textContent=p.replace(/x/g,'×')+' · '+a+'°';
+ $('easyWeld').textContent=w.replace(' - Full Pen','');
+ $('easyDefect').textContent=d;
+ $('easySkip').textContent=sk;
+}
+$('easySettingsBtn').addEventListener('click',()=>{
+ const ds=[...document.querySelectorAll('.controlDrop')];
+ const anyOpen=ds.some(d=>d.open);
+ ds.forEach(d=>d.open=!anyOpen);
 });
 $('k1dist').addEventListener('input',()=>$('k1out').textContent=(100-n('k1dist')).toFixed(1));
 function angleCalc(){const a=n('a'),b=n('b'),bc=a+b-35;$('bc').textContent=a&&b?bc.toFixed(2):'—';$('angleOut').textContent=a&&b&&bc>0?(Math.atan(15/bc)*180/Math.PI).toFixed(2):a&&b?'ONGELDIGE METING':'—';}
@@ -1383,7 +1611,7 @@ function angleToolCalc(){
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.tool').forEach(x=>x.classList.toggle('active',x.id===b.dataset.tool));});
 const HASH='9053a5939d7b4a748f4c4fa56fc9409ba4c00b6fd0062556803d961509b91d94';
 async function sha(s){const d=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return [...new Uint8Array(d)].map(x=>x.toString(16).padStart(2,'0')).join('');}
-let coreUnlocked=false;const modal=$('modal');
+let coreUnlocked=true;const modal=$('modal');
 function syncLockedGeometry(){
  const angle=$('angleSel'), prep=$('prepAngle'), type=$('weldType');
  if(!angle||!prep||!type)return;
@@ -1417,19 +1645,21 @@ function renderGeometryLockBadge(){
    b.style.cssText='margin:8px 0 0;padding:9px 11px;border:1px solid #c28a20;border-radius:9px;background:linear-gradient(180deg,#17150d,#0b0e10);color:#ffd15c;font-size:10px;font-weight:1000;letter-spacing:.04em;text-align:center;';
    const card=document.querySelector('#beam .controlCard'); if(card) card.appendChild(b);
  }
- b.textContent=coreUnlocked?'GEOMETRIE ONTGRENDELD — 60° TASTER / 30° LASKANT / 60° V-TOTAAL':'🔒 GEOMETRIE VERGRENDELD — TASTER 60° • LASKANT 30° • V-TOTAAL 60°';
+ b.textContent=coreUnlocked?'GEOMETRIE VRIJ — BESTAANDE HOEKEN BEHOUDEN':'🔒 GEOMETRIE VERGRENDELD — TASTER 60° • LASKANT 30° • V-TOTAAL 60°';
 }
-$('coreBtn').onclick=()=>{if(coreUnlocked){coreUnlocked=false;$('coreBtn').innerHTML='<svg class="lockIcon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>CORE VERGRENDELD</span>';syncLockedGeometry();}else{modal.classList.add('show');$('pin').value='';$('err').textContent='';}};
+$('coreBtn').style.display='none';
 $('cancel').onclick=()=>modal.classList.remove('show');
 $('unlock').onclick=async()=>{if(await sha($('pin').value)===HASH){coreUnlocked=true;modal.classList.remove('show');$('coreBtn').innerHTML='<svg class="lockIcon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>CORE ONTGRENDELD</span>';syncLockedGeometry();}else $('err').textContent='Onjuiste PIN.';};
-window.BEAM_CORE={isUnlocked:()=>coreUnlocked,lock:()=>{coreUnlocked=false;$('coreBtn').innerHTML='<svg class="lockIcon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>CORE VERGRENDELD</span>';syncLockedGeometry();}};
-syncLockedGeometry(); enforceLockedGeometry(); updateRadiusField(); angleToolCalc(); setDiagramZoom(1); $('zoomIn').onclick=()=>{setDiagramZoom(state.zoom+0.25);}; $('zoomOut').onclick=()=>{setDiagramZoom(state.zoom-0.25);}; $('zoomReset').onclick=()=>{setDiagramZoom(1);}; $('toggleBlue').onclick=()=>{state.showBlueHandle=!state.showBlueHandle; const b=$('toggleBlue'); b.textContent=state.showBlueHandle?'🔵 CIRCEL AAN':'⚪ CIRCEL UIT'; b.classList.toggle('off',!state.showBlueHandle); render();}; $('toggleFaultCursor').onclick=()=>{state.showFaultCursor=!state.showFaultCursor; const b=$('toggleFaultCursor'); b.textContent=state.showFaultCursor?'🔴 FOUTCURSOR AAN':'⚪ FOUTCURSOR UIT'; b.classList.toggle('off',!state.showFaultCursor); render();}; 
+window.BEAM_CORE={isUnlocked:()=>coreUnlocked,lock:()=>{coreUnlocked=false;$('coreBtn').innerHTML='<svg class="lockIcon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>CORE VRIJ</span>';syncLockedGeometry();}};
+syncLockedGeometry(); enforceLockedGeometry(); updateRadiusField(); angleToolCalc(); setDiagramZoom(1); $('zoomIn').onclick=()=>{setDiagramZoom(state.zoom+0.25);}; $('zoomOut').onclick=()=>{setDiagramZoom(state.zoom-0.25);}; $('zoomReset').onclick=()=>{setDiagramZoom(1);}; $('toggleFaultCursor').onclick=()=>{state.showFaultCursor=!state.showFaultCursor; const b=$('toggleFaultCursor'); b.textContent=state.showFaultCursor?'🔴 FOUTCURSOR AAN':'⚪ FOUTCURSOR UIT'; b.classList.toggle('off',!state.showFaultCursor); render();}; 
 $('toggleTechnical').onclick=()=>{
  state.technical=!state.technical;
+ state.showDiagramText=state.technical;
  document.body.classList.toggle('technicalMode',state.technical);
  const b=$('toggleTechnical');
- b.textContent=state.technical?'📐 TECHNISCH AAN':'📐 TECHNISCH UIT';
+ b.textContent=state.technical?'📐 TECHNISCHE TEKST AAN':'📐 TECHNISCHE TEKST UIT';
  b.classList.toggle('off',!state.technical);
+ const svg=$('beamSvg'); svg.classList.toggle('noDiagramText',!state.showDiagramText);
  render();
 };
 $('toggleSoundField').onclick=()=>{state.showSoundField=!state.showSoundField; const b=$('toggleSoundField'); b.textContent=state.showSoundField?'🔊 GELUIDSVELD AAN':'🔊 GELUIDSVELD UIT'; b.classList.toggle('off',!state.showSoundField); render();};
